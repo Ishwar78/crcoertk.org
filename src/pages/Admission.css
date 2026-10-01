@@ -1,0 +1,1384 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap');
+
+:root {
+  --admission-navy: #102a63;
+  --admission-navy-dark: #0c214f;
+  --admission-pink: #ed0b70;
+  --admission-pink-dark: #d90864;
+  --admission-light: #fff0f7;
+  --admission-bg: #fffafd;
+  --admission-border: #f1ccdc;
+  --admission-text: #18284f;
+  --admission-muted: #68738a;
+  --admission-white: #ffffff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.admission-page {
+  font-family: "Montserrat", sans-serif;
+  color: var(--admission-text);
+  background: var(--admission-bg);
+  overflow: hidden;
+}
+
+.admission-page p {
+  font-size: 15px;
+  line-height: 1.75;
+  color: var(--admission-muted);
+}
+
+.admission-page a {
+  text-decoration: none;
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.admission-hero {
+  min-height: 500px;
+  display: grid;
+  grid-template-columns: 1fr 0.95fr;
+  align-items: stretch;
+  background:
+    radial-gradient(
+      circle at 10% 20%,
+      rgba(237, 11, 112, 0.08),
+      transparent 28%
+    ),
+    linear-gradient(
+      105deg,
+      #fff5fa 0%,
+      #ffffff 50%,
+      #ffe7f2 100%
+    );
+}
+
+.admission-hero-content {
+  padding: 75px 5vw 70px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.admission-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 13px;
+  margin-bottom: 20px;
+  color: #777f91;
+}
+
+.admission-breadcrumb a {
+  color: var(--admission-pink);
+  font-weight: 600;
+}
+
+.admission-breadcrumb span:nth-child(2) {
+  color: #aeb4c0;
+}
+
+.hero-badge {
+  width: fit-content;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  border-radius: 30px;
+  background: rgba(237, 11, 112, 0.09);
+  border: 1px solid rgba(237, 11, 112, 0.16);
+  color: var(--admission-pink);
+  font-size: 12px;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+.hero-badge svg {
+  font-size: 15px;
+}
+
+.admission-hero h1 {
+  margin: 0;
+  font-size: clamp(45px, 5vw, 68px);
+  line-height: 1.05;
+  color: var(--admission-navy);
+  font-weight: 800;
+  letter-spacing: -2px;
+}
+
+.admission-hero h1 strong {
+  color: var(--admission-pink);
+}
+
+.admission-hero h3 {
+  margin: 14px 0 0;
+  font-size: 21px;
+  line-height: 1.5;
+  color: var(--admission-navy);
+}
+
+.admission-hero h3 strong {
+  color: var(--admission-pink);
+}
+
+.hero-line {
+  width: 70px;
+  height: 4px;
+  border-radius: 20px;
+  background: var(--admission-pink);
+  margin: 20px 0;
+}
+
+.admission-hero-content > p {
+  max-width: 650px;
+  margin: 0;
+  font-size: 16px;
+}
+
+.hero-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 27px;
+}
+
+.pink-btn,
+.outline-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border-radius: 28px;
+  padding: 13px 21px;
+  font-size: 14px;
+  font-weight: 700;
+  transition: 0.3s ease;
+}
+
+.pink-btn {
+  color: #fff;
+  background: var(--admission-pink);
+  box-shadow: 0 10px 25px rgba(237, 11, 112, 0.18);
+}
+
+.pink-btn:hover {
+  background: var(--admission-pink-dark);
+  transform: translateY(-2px);
+}
+
+.outline-btn {
+  color: var(--admission-navy);
+  background: #fff;
+  border: 1px solid var(--admission-border);
+}
+
+.outline-btn:hover {
+  color: var(--admission-pink);
+  border-color: var(--admission-pink);
+  transform: translateY(-2px);
+}
+
+.admission-hero-image {
+  position: relative;
+  min-height: 500px;
+}
+
+.admission-hero-image img {
+  width: 100%;
+  height: 600px;
+  object-fit: cover;
+  display: block;
+  mask-image: linear-gradient(
+    90deg,
+    transparent 0%,
+    #000 15%,
+    #000 100%
+  );
+}
+
+.hero-image-card {
+  position: absolute;
+  left: 45px;
+  bottom: 35px;
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  background: rgba(255, 255, 255, 0.96);
+  border: 1px solid rgba(237, 11, 112, 0.18);
+  border-radius: 15px;
+  padding: 13px 18px;
+  box-shadow: 0 15px 35px rgba(16, 42, 99, 0.12);
+}
+
+.hero-image-card > svg {
+  color: var(--admission-pink);
+  font-size: 27px;
+}
+
+.hero-image-card div {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.hero-image-card strong {
+  color: var(--admission-navy);
+  font-size: 13px;
+}
+
+.hero-image-card span {
+  color: var(--admission-muted);
+  font-size: 11px;
+}
+
+
+/* =========================================================
+   COMMON SECTION
+========================================================= */
+
+.admission-section {
+  width: min(1200px, 92%);
+  margin: auto;
+  padding: 75px 0;
+}
+
+.section-title {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 35px;
+}
+
+.title-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--admission-pink);
+  background: var(--admission-light);
+  border: 1px solid var(--admission-border);
+  flex: 0 0 auto;
+}
+
+.title-icon svg {
+  font-size: 23px;
+}
+
+.section-title h2 {
+  margin: 0;
+  color: var(--admission-navy);
+  font-size: 30px;
+  line-height: 1.25;
+}
+
+.section-title h2 strong {
+  color: var(--admission-pink);
+}
+
+.section-title > div:last-child {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.section-title > div:last-child > span {
+  width: 45px;
+  height: 3px;
+  border-radius: 10px;
+  background: var(--admission-pink);
+}
+
+
+/* =========================================================
+   INTRO
+========================================================= */
+
+.admission-intro {
+  padding-bottom: 35px;
+}
+
+.intro-box {
+  display: flex;
+  align-items: flex-start;
+  gap: 22px;
+  background: #fff;
+  border: 1px solid var(--admission-border);
+  border-radius: 20px;
+  padding: 28px;
+  box-shadow: 0 10px 35px rgba(16, 42, 99, 0.04);
+}
+
+.intro-icon {
+  width: 58px;
+  height: 58px;
+  border-radius: 16px;
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  background: linear-gradient(
+    135deg,
+    var(--admission-pink),
+    #ff4c9c
+  );
+}
+
+.intro-icon svg {
+  font-size: 25px;
+}
+
+.intro-box p {
+  margin: 0 0 8px;
+}
+
+.intro-box p:last-child {
+  margin-bottom: 0;
+}
+
+
+/* =========================================================
+   PROGRAMMES
+========================================================= */
+
+.programmes-section {
+  padding-top: 45px;
+}
+
+.programme-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.programme-card {
+  position: relative;
+  padding: 27px;
+  border-radius: 20px;
+  background: #fff;
+  border: 1px solid var(--admission-border);
+  box-shadow: 0 10px 35px rgba(16, 42, 99, 0.04);
+  transition: 0.3s ease;
+  overflow: hidden;
+}
+
+.programme-card::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(
+    90deg,
+    var(--admission-pink),
+    #ff77b3
+  );
+}
+
+.programme-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 45px rgba(16, 42, 99, 0.1);
+}
+
+.programme-top {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.programme-icon {
+  width: 53px;
+  height: 53px;
+  flex: 0 0 auto;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--admission-light);
+  color: var(--admission-pink);
+}
+
+.programme-icon svg {
+  font-size: 24px;
+}
+
+.programme-top small {
+  color: #7d8598;
+  font-size: 11px;
+  font-weight: 600;
+  display: block;
+  margin-bottom: 3px;
+}
+
+.programme-top h3 {
+  margin: 0;
+  color: var(--admission-navy);
+  font-size: 22px;
+}
+
+.programme-divider {
+  height: 1px;
+  background: #f1e1e8;
+  margin: 21px 0;
+}
+
+.programme-card > p {
+  min-height: 105px;
+  margin: 0;
+  font-size: 14px;
+}
+
+.programme-info {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 9px;
+  margin: 20px 0;
+}
+
+.programme-info > div {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 11px;
+  border-radius: 11px;
+  background: #fff6fa;
+  border: 1px solid #f6dce7;
+}
+
+.programme-info svg {
+  color: var(--admission-pink);
+  font-size: 18px;
+  flex: 0 0 auto;
+}
+
+.programme-info span {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.programme-info small {
+  font-size: 10px;
+  color: #8991a3;
+}
+
+.programme-info strong {
+  color: var(--admission-navy);
+  font-size: 12px;
+}
+
+.programme-btn {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 7px;
+  border-radius: 25px;
+  padding: 12px 16px;
+  color: #fff;
+  background: var(--admission-pink);
+  font-size: 13px;
+  font-weight: 700;
+  transition: 0.3s ease;
+}
+
+.programme-btn:hover {
+  background: var(--admission-pink-dark);
+}
+
+.date-card {
+  background:
+    linear-gradient(
+      145deg,
+      #fff,
+      #fff3f8
+    );
+}
+
+.notice-box {
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+  padding: 12px;
+  border-radius: 11px;
+  background: #fff8fb;
+  border: 1px solid var(--admission-border);
+  margin: 20px 0;
+}
+
+.notice-box svg {
+  color: var(--admission-pink);
+  font-size: 18px;
+  flex: 0 0 auto;
+  margin-top: 2px;
+}
+
+.notice-box span {
+  color: #6f788b;
+  font-size: 11px;
+  line-height: 1.6;
+}
+
+
+/* =========================================================
+   PROCEDURE
+========================================================= */
+
+.procedure-section {
+  width: 100%;
+  max-width: none;
+  padding-left: 4%;
+  padding-right: 4%;
+  background: linear-gradient(
+    180deg,
+    #fff,
+    #fff7fb
+  );
+}
+
+.procedure-intro {
+  max-width: 900px;
+  margin-bottom: 35px;
+}
+
+.procedure-intro p {
+  margin: 0 0 10px;
+}
+
+.procedure-grid {
+  max-width: 1200px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 14px;
+}
+
+.procedure-card {
+  position: relative;
+  padding: 24px 19px;
+  background: #fff;
+  border: 1px solid var(--admission-border);
+  border-radius: 17px;
+  min-height: 245px;
+  transition: 0.3s ease;
+}
+
+.procedure-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(16, 42, 99, 0.08);
+}
+
+.procedure-number {
+  position: absolute;
+  right: 15px;
+  top: 13px;
+  color: #f5dce7;
+  font-size: 30px;
+  font-weight: 800;
+}
+
+.procedure-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--admission-pink);
+  background: var(--admission-light);
+  margin-bottom: 20px;
+}
+
+.procedure-icon svg {
+  font-size: 22px;
+}
+
+.procedure-card h3 {
+  color: var(--admission-navy);
+  font-size: 16px;
+  line-height: 1.4;
+  margin: 0 0 10px;
+}
+
+.procedure-card p {
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.65;
+}
+
+.counselling-highlight {
+  max-width: 1200px;
+  margin: 25px auto 0;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 20px 23px;
+  border-radius: 17px;
+  background: var(--admission-navy);
+  color: #fff;
+}
+
+.counselling-icon {
+  width: 48px;
+  height: 48px;
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 14px;
+  background: rgba(237, 11, 112, 0.2);
+  color: #ff65a8;
+}
+
+.counselling-icon svg {
+  font-size: 22px;
+}
+
+.counselling-highlight h3 {
+  margin: 0 0 4px;
+  font-size: 16px;
+}
+
+.counselling-highlight p {
+  margin: 0;
+  color: rgba(255,255,255,0.75);
+  font-size: 13px;
+}
+
+
+/* =========================================================
+   ELIGIBILITY
+========================================================= */
+
+.eligibility-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.eligibility-card {
+  background: #fff;
+  border: 1px solid var(--admission-border);
+  border-radius: 20px;
+  padding: 28px;
+  box-shadow: 0 10px 30px rgba(16, 42, 99, 0.04);
+}
+
+.eligibility-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.eligibility-icon {
+  width: 55px;
+  height: 55px;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--admission-light);
+  color: var(--admission-pink);
+}
+
+.eligibility-icon svg {
+  font-size: 24px;
+}
+
+.eligibility-header small {
+  color: #7c8496;
+  font-size: 11px;
+}
+
+.eligibility-header h3 {
+  margin: 4px 0 0;
+  color: var(--admission-navy);
+  font-size: 20px;
+}
+
+.eligibility-content {
+  margin-top: 25px;
+  display: flex;
+  gap: 12px;
+  padding: 18px;
+  border-radius: 14px;
+  background: #fff7fb;
+}
+
+.eligibility-check {
+  color: var(--admission-pink);
+  font-size: 21px;
+}
+
+.eligibility-content strong {
+  color: var(--admission-navy);
+  font-size: 13px;
+}
+
+.eligibility-content p {
+  margin: 5px 0 0;
+  font-size: 14px;
+}
+
+.eligibility-content p b {
+  color: var(--admission-pink);
+}
+
+.special-note {
+  margin-top: 15px;
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+  padding: 13px;
+  border-radius: 12px;
+  background: #fff;
+  border: 1px dashed var(--admission-border);
+}
+
+.special-note svg {
+  color: var(--admission-pink);
+  flex: 0 0 auto;
+  margin-top: 3px;
+}
+
+.special-note span {
+  color: #6e778a;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.special-note strong {
+  color: var(--admission-pink);
+}
+
+
+/* =========================================================
+   UNIVERSITY
+========================================================= */
+
+.university-section {
+  width: 100%;
+  max-width: none;
+  padding: 75px 4%;
+  background: var(--admission-light);
+}
+
+.university-layout {
+  max-width: 1200px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 1.35fr 0.65fr;
+  gap: 50px;
+  align-items: center;
+}
+
+.left-title {
+  margin-bottom: 25px;
+}
+
+.university-content > p {
+  max-width: 800px;
+}
+
+.university-points {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 25px;
+}
+
+.university-points > div {
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+  padding: 13px;
+  border-radius: 12px;
+  background: #fff;
+  border: 1px solid var(--admission-border);
+}
+
+.university-points svg {
+  color: var(--admission-pink);
+  flex: 0 0 auto;
+  margin-top: 2px;
+}
+
+.university-points span {
+  font-size: 12px;
+  line-height: 1.5;
+  color: #626d81;
+}
+
+.university-card {
+  padding: 32px;
+  border-radius: 22px;
+  background: var(--admission-navy);
+  color: #fff;
+  box-shadow: 0 20px 45px rgba(16, 42, 99, 0.15);
+}
+
+.university-card-icon {
+  width: 55px;
+  height: 55px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ff65a8;
+  background: rgba(237, 11, 112, 0.18);
+  margin-bottom: 20px;
+}
+
+.university-card-icon svg {
+  font-size: 25px;
+}
+
+.university-card > small {
+  color: rgba(255,255,255,0.6);
+  font-size: 11px;
+}
+
+.university-card h3 {
+  font-size: 23px;
+  line-height: 1.4;
+  margin: 8px 0 0;
+}
+
+.university-card h3 strong {
+  color: #ff65a8;
+}
+
+.university-line {
+  width: 45px;
+  height: 3px;
+  background: var(--admission-pink);
+  border-radius: 5px;
+  margin: 17px 0;
+}
+
+.university-card p {
+  color: rgba(255,255,255,0.7);
+  font-size: 13px;
+}
+
+.university-card a {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  margin-top: 8px;
+  color: #fff;
+  background: var(--admission-pink);
+  border-radius: 25px;
+  padding: 11px 17px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+
+/* =========================================================
+   GUIDANCE
+========================================================= */
+
+.guidance-section {
+  padding-top: 90px;
+  padding-bottom: 90px;
+}
+
+.guidance-layout {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 55px;
+  align-items: center;
+}
+
+.guidance-image {
+  position: relative;
+}
+
+.guidance-image img {
+  width: 100%;
+  height: 450px;
+  object-fit: cover;
+  border-radius: 25px;
+  display: block;
+}
+
+.guidance-image-card {
+  position: absolute;
+  left: 25px;
+  bottom: 25px;
+  right: 25px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 15px 17px;
+  border-radius: 15px;
+  background: rgba(255,255,255,0.96);
+  box-shadow: 0 15px 30px rgba(16, 42, 99, 0.12);
+}
+
+.guidance-image-card > svg {
+  color: var(--admission-pink);
+  font-size: 25px;
+}
+
+.guidance-image-card div {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.guidance-image-card strong {
+  color: var(--admission-navy);
+  font-size: 13px;
+}
+
+.guidance-image-card span {
+  color: #777f91;
+  font-size: 10px;
+}
+
+.guidance-main-text {
+  margin-bottom: 22px;
+}
+
+.guidance-list {
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+}
+
+.guidance-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 11px;
+  padding: 14px;
+  border-radius: 13px;
+  background: #fff;
+  border: 1px solid #f1dce5;
+}
+
+.guidance-check {
+  color: var(--admission-pink);
+  font-size: 19px;
+  flex: 0 0 auto;
+  margin-top: 2px;
+}
+
+.guidance-item p {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+
+/* =========================================================
+   CHECKLIST
+========================================================= */
+
+.checklist-section {
+  padding-top: 55px;
+}
+
+.centered-title {
+  justify-content: center;
+  text-align: center;
+}
+
+.centered-title > div:last-child {
+  align-items: center;
+}
+
+.checklist-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+}
+
+.checklist-card {
+  position: relative;
+  padding: 25px;
+  background: #fff;
+  border: 1px solid var(--admission-border);
+  border-radius: 18px;
+  overflow: hidden;
+  transition: 0.3s ease;
+}
+
+.checklist-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(16, 42, 99, 0.08);
+}
+
+.checklist-card > span {
+  position: absolute;
+  top: 12px;
+  right: 15px;
+  font-size: 25px;
+  font-weight: 800;
+  color: #f7dfe9;
+}
+
+.checklist-card > svg {
+  color: var(--admission-pink);
+  font-size: 25px;
+  margin-bottom: 17px;
+}
+
+.checklist-card h3 {
+  margin: 0 0 8px;
+  color: var(--admission-navy);
+  font-size: 16px;
+}
+
+.checklist-card p {
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+
+/* =========================================================
+   HELP CTA
+========================================================= */
+
+.admission-help {
+  width: min(1200px, 92%);
+  margin: 20px auto 80px;
+  padding: 30px 35px;
+  border-radius: 23px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  background:
+    linear-gradient(
+      120deg,
+      var(--admission-navy),
+      #193b7d
+    );
+  box-shadow: 0 20px 50px rgba(16, 42, 99, 0.15);
+}
+
+.help-icon {
+  width: 58px;
+  height: 58px;
+  flex: 0 0 auto;
+  border-radius: 17px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ff69aa;
+  background: rgba(237, 11, 112, 0.2);
+}
+
+.help-icon svg {
+  font-size: 24px;
+}
+
+.help-content {
+  flex: 1;
+}
+
+.help-content > span {
+  color: #ff69aa;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+}
+
+.help-content h2 {
+  color: #fff;
+  margin: 5px 0;
+  font-size: 25px;
+}
+
+.help-content h2 strong {
+  color: #ff69aa;
+}
+
+.help-content p {
+  margin: 0;
+  color: rgba(255,255,255,0.68);
+  font-size: 12px;
+  max-width: 700px;
+  line-height: 1.6;
+}
+
+.help-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 13px 21px;
+  border-radius: 25px;
+  background: var(--admission-pink);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  white-space: nowrap;
+  transition: 0.3s ease;
+}
+
+.help-btn:hover {
+  background: #ff3187;
+  transform: translateY(-2px);
+}
+
+
+/* =========================================================
+   RESPONSIVE - 1100
+========================================================= */
+
+@media (max-width: 1100px) {
+
+  .procedure-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .programme-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .date-card {
+    grid-column: span 2;
+  }
+
+  .checklist-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .guidance-layout {
+    gap: 35px;
+  }
+}
+
+
+/* =========================================================
+   RESPONSIVE - 850
+========================================================= */
+
+@media (max-width: 850px) {
+
+  .admission-hero {
+    grid-template-columns: 1fr;
+  }
+
+  .admission-hero-content {
+    padding: 55px 5%;
+  }
+
+  .admission-hero-image {
+    min-height: 360px;
+  }
+
+  .admission-hero-image img {
+    height: 360px;
+    mask-image: none;
+  }
+
+  .programme-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .date-card {
+    grid-column: auto;
+  }
+
+  .procedure-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .eligibility-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .university-layout {
+    grid-template-columns: 1fr;
+    gap: 35px;
+  }
+
+  .guidance-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .guidance-image img {
+    height: 380px;
+  }
+
+  .admission-help {
+    flex-wrap: wrap;
+  }
+}
+
+
+/* =========================================================
+   RESPONSIVE - 650
+========================================================= */
+
+@media (max-width: 650px) {
+
+  .admission-section {
+    width: 92%;
+    padding: 55px 0;
+  }
+
+  .procedure-section,
+  .university-section {
+    padding-left: 4%;
+    padding-right: 4%;
+  }
+
+  .admission-hero-content {
+    padding: 45px 18px;
+  }
+
+  .admission-hero h1 {
+    font-size: 43px;
+    letter-spacing: -1.5px;
+  }
+
+  .admission-hero h3 {
+    font-size: 18px;
+  }
+
+  .admission-hero-image {
+    min-height: 300px;
+  }
+
+  .admission-hero-image img {
+    height: 300px;
+  }
+
+  .hero-image-card {
+    left: 18px;
+    right: 18px;
+    bottom: 18px;
+  }
+
+  .section-title {
+    gap: 11px;
+    margin-bottom: 27px;
+  }
+
+  .title-icon {
+    width: 46px;
+    height: 46px;
+  }
+
+  .section-title h2 {
+    font-size: 24px;
+  }
+
+  .intro-box {
+    flex-direction: column;
+    padding: 22px;
+  }
+
+  .programme-card {
+    padding: 23px;
+  }
+
+  .programme-card > p {
+    min-height: auto;
+  }
+
+  .procedure-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .procedure-card {
+    min-height: auto;
+  }
+
+  .counselling-highlight {
+    align-items: flex-start;
+  }
+
+  .university-points {
+    grid-template-columns: 1fr;
+  }
+
+  .guidance-image img {
+    height: 300px;
+  }
+
+  .checklist-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .admission-help {
+    width: 92%;
+    padding: 25px;
+    align-items: flex-start;
+  }
+
+  .help-content {
+    width: calc(100% - 80px);
+  }
+
+  .help-btn {
+    width: 100%;
+  }
+}
+
+
+/* =========================================================
+   RESPONSIVE - 450
+========================================================= */
+
+@media (max-width: 450px) {
+
+  .admission-hero h1 {
+    font-size: 38px;
+  }
+
+  .admission-hero h3 {
+    font-size: 16px;
+  }
+
+  .admission-hero-content > p {
+    font-size: 14px;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+  }
+
+  .hero-buttons a {
+    width: 100%;
+  }
+
+  .programme-info {
+    grid-template-columns: 1fr;
+  }
+
+  .eligibility-card {
+    padding: 21px;
+  }
+
+  .university-card {
+    padding: 25px;
+  }
+
+  .help-icon {
+    width: 50px;
+    height: 50px;
+  }
+
+  .help-content h2 {
+    font-size: 22px;
+  }
+
+  .help-content {
+    width: calc(100% - 70px);
+  }
+}

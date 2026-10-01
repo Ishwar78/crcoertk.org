@@ -1,0 +1,1390 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap');
+
+:root {
+  --facility-navy: #102a63;
+  --facility-navy-dark: #0b214f;
+  --facility-pink: #ed0b70;
+  --facility-pink-dark: #d90864;
+  --facility-light: #fff0f7;
+  --facility-bg: #fffafd;
+  --facility-border: #f1ccdc;
+  --facility-text: #18284f;
+  --facility-muted: #68738a;
+  --facility-white: #fff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.facilities-page {
+  font-family: "Montserrat", sans-serif;
+  color: var(--facility-text);
+  background: var(--facility-bg);
+  overflow: hidden;
+}
+
+.facilities-page p {
+  font-size: 15px;
+  line-height: 1.75;
+  color: var(--facility-muted);
+}
+
+.facilities-page button {
+  font-family: inherit;
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.facilities-hero {
+  min-height: 440px;
+  display: grid;
+  grid-template-columns: 1fr 0.95fr;
+  align-items: stretch;
+
+  background:
+    radial-gradient(
+      circle at 10% 20%,
+      rgba(237, 11, 112, 0.08),
+      transparent 28%
+    ),
+    linear-gradient(
+      105deg,
+      #fff5fa,
+      #fff,
+      #ffe6f1
+    );
+}
+
+.facilities-hero-content {
+  padding: 65px 5vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.facilities-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+  font-size: 13px;
+}
+
+.facilities-breadcrumb a {
+  color: var(--facility-pink);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.facilities-breadcrumb span {
+  color: #7f8798;
+}
+
+.facilities-badge {
+  width: fit-content;
+
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  padding: 8px 14px;
+
+  border-radius: 30px;
+
+  color: var(--facility-pink);
+  background: rgba(237,11,112,0.08);
+  border: 1px solid rgba(237,11,112,0.15);
+
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.facilities-hero h1 {
+  margin: 15px 0 6px;
+
+  color: var(--facility-navy);
+
+  font-size: clamp(45px, 5vw, 64px);
+  line-height: 1.05;
+
+  font-weight: 800;
+  letter-spacing: -2px;
+}
+
+.facilities-hero h1 strong {
+  color: var(--facility-pink);
+}
+
+.facilities-hero h3 {
+  margin: 10px 0;
+
+  color: var(--facility-navy);
+
+  font-size: 20px;
+}
+
+.facilities-hero-line {
+  width: 70px;
+  height: 4px;
+
+  margin: 17px 0;
+
+  border-radius: 20px;
+
+  background: var(--facility-pink);
+}
+
+.facilities-hero-content > p {
+  max-width: 650px;
+  margin: 0;
+  font-size: 15px;
+}
+
+.facilities-hero-image {
+  position: relative;
+  min-height: 440px;
+}
+
+.facilities-hero-image > img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  display: block;
+
+  mask-image:
+    linear-gradient(
+      90deg,
+      transparent,
+      #000 20%
+    );
+}
+
+.facilities-image-card {
+  position: absolute;
+
+  left: 40px;
+  bottom: 30px;
+
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  padding: 13px 17px;
+
+  background: rgba(255,255,255,0.96);
+
+  border: 1px solid rgba(237,11,112,0.16);
+
+  border-radius: 15px;
+
+  box-shadow:
+    0 15px 35px rgba(16,42,99,0.13);
+}
+
+.facilities-image-card > svg {
+  color: var(--facility-pink);
+  font-size: 25px;
+}
+
+.facilities-image-card div {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.facilities-image-card strong {
+  color: var(--facility-navy);
+  font-size: 12px;
+}
+
+.facilities-image-card span {
+  color: var(--facility-muted);
+  font-size: 10px;
+}
+
+
+/* =========================================================
+   MAIN FACILITY TABS
+========================================================= */
+
+.facility-tabs {
+  padding: 0 3.5vw;
+
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+
+  gap: 3px;
+
+  background: #fff;
+}
+
+.facility-tabs button {
+  min-height: 90px;
+
+  border: 1px solid var(--facility-border);
+
+  background: #fff;
+
+  color: var(--facility-navy);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-direction: column;
+
+  gap: 8px;
+
+  padding: 10px;
+
+  font-size: 11px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition: 0.25s ease;
+}
+
+.facility-tabs button:first-child {
+  border-radius: 13px 0 0 13px;
+}
+
+.facility-tabs button:last-child {
+  border-radius: 0 13px 13px 0;
+}
+
+.facility-tabs button svg {
+  color: var(--facility-pink);
+  font-size: 25px;
+}
+
+.facility-tabs button:hover {
+  background: #fff4f9;
+}
+
+.facility-tabs button.active {
+  background: var(--facility-navy);
+  color: #fff;
+  border-color: var(--facility-navy);
+}
+
+.facility-tabs button.active svg {
+  color: #ff66a8;
+}
+
+
+/* =========================================================
+   DETAIL
+========================================================= */
+
+.facility-detail {
+  width: 93%;
+  margin: 24px auto 45px;
+
+  padding: 28px;
+
+  display: grid;
+  grid-template-columns: 1fr 0.95fr;
+
+  gap: 35px;
+  align-items: start;
+
+  background: #fff;
+
+  border: 1px solid var(--facility-border);
+  border-radius: 21px;
+
+  box-shadow:
+    0 12px 40px rgba(16,42,99,0.04);
+}
+
+.facility-copy {
+  min-width: 0;
+}
+
+.facility-title {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+
+  margin-bottom: 23px;
+}
+
+.facility-title > svg {
+  width: 58px;
+  height: 58px;
+
+  padding: 14px;
+
+  flex: 0 0 auto;
+
+  border-radius: 15px;
+
+  color: var(--facility-pink);
+  background: var(--facility-light);
+
+  border: 1px solid var(--facility-border);
+}
+
+.facility-title small {
+  color: var(--facility-pink);
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.facility-title h2 {
+  margin: 3px 0;
+
+  color: var(--facility-navy);
+
+  font-size: 30px;
+}
+
+.facility-title h3 {
+  margin: 3px 0;
+
+  color: var(--facility-pink);
+
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.facility-main-text p {
+  margin: 0 0 12px;
+}
+
+.facility-text-section {
+  margin-top: 23px;
+}
+
+.facility-text-section h3 {
+  display: inline-block;
+
+  margin: 0 0 10px;
+
+  color: var(--facility-navy);
+
+  font-size: 18px;
+
+  position: relative;
+}
+
+.facility-text-section h3::after {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+  bottom: -5px;
+
+  width: 35px;
+  height: 2px;
+
+  background: var(--facility-pink);
+}
+
+
+/* =========================================================
+   POINTS
+========================================================= */
+
+.facility-points {
+  margin-top: 25px;
+}
+
+.facility-points > h3 {
+  margin: 0 0 13px;
+
+  color: var(--facility-navy);
+
+  font-size: 18px;
+}
+
+.points-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+  gap: 9px;
+}
+
+.facility-point {
+  display: flex;
+  align-items: flex-start;
+
+  gap: 9px;
+
+  padding: 11px;
+
+  border-radius: 11px;
+
+  background: #fff7fb;
+
+  border: 1px solid #f5dce7;
+}
+
+.facility-point svg {
+  color: var(--facility-pink);
+
+  flex: 0 0 auto;
+
+  margin-top: 2px;
+}
+
+.facility-point span {
+  color: #5e6a7e;
+
+  font-size: 11px;
+
+  line-height: 1.55;
+}
+
+
+/* =========================================================
+   GALLERY
+========================================================= */
+
+.facility-gallery {
+  position: sticky;
+  top: 100px;
+}
+
+.gallery-main {
+  position: relative;
+}
+
+.gallery-main > img {
+  width: 100%;
+  height: 355px;
+
+  display: block;
+
+  object-fit: cover;
+
+  border-radius: 17px;
+}
+
+.gallery-overlay {
+  position: absolute;
+
+  left: 15px;
+  right: 15px;
+  bottom: 15px;
+
+  display: flex;
+  align-items: center;
+  gap: 9px;
+
+  padding: 11px 14px;
+
+  color: #fff;
+
+  border-radius: 11px;
+
+  background: rgba(16,42,99,0.88);
+
+  backdrop-filter: blur(6px);
+}
+
+.gallery-overlay svg {
+  color: #ff66a8;
+}
+
+.gallery-overlay span {
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.thumb-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 9px;
+
+  margin-top: 10px;
+}
+
+.thumb-row img,
+.thumb-row button {
+  width: 100%;
+  height: 70px;
+
+  padding: 0;
+
+  object-fit: cover;
+
+  border-radius: 9px;
+
+  border: 1px solid var(--facility-border);
+
+  overflow: hidden;
+
+  background: #fff;
+}
+
+.thumb-row button {
+  cursor: pointer;
+}
+
+.thumb-row img {
+  display: block;
+}
+
+
+/* =========================================================
+   LABORATORY SECTION
+========================================================= */
+
+.laboratory-subsection {
+  margin-top: 35px;
+
+  padding: 22px;
+
+  border-radius: 18px;
+
+  background: #fff7fb;
+
+  border: 1px solid var(--facility-border);
+}
+
+.laboratory-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-bottom: 17px;
+}
+
+.laboratory-heading small {
+  color: var(--facility-pink);
+
+  font-size: 9px;
+  font-weight: 800;
+
+  letter-spacing: 1px;
+}
+
+.laboratory-heading h3 {
+  margin: 4px 0 0;
+
+  color: var(--facility-navy);
+
+  font-size: 21px;
+}
+
+.laboratory-heading h3 strong {
+  color: var(--facility-pink);
+}
+
+.laboratory-heading > svg {
+  color: var(--facility-pink);
+  font-size: 25px;
+}
+
+
+/* Screenshot style lab menu */
+
+.lab-selector {
+  display: flex;
+  flex-direction: column;
+
+  border-radius: 10px;
+
+  overflow: hidden;
+
+  border: 1px solid rgba(255,255,255,0.3);
+}
+
+.lab-selector button {
+  min-height: 50px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+
+  padding: 0 14px;
+
+  border: 0;
+  border-bottom: 1px solid rgba(255,255,255,0.35);
+
+  background: #07508f;
+
+  color: #fff;
+
+  font-family: inherit;
+
+  font-size: 13px;
+
+  text-align: left;
+
+  cursor: pointer;
+
+  transition: 0.2s ease;
+}
+
+.lab-selector button:last-child {
+  border-bottom: 0;
+}
+
+.lab-selector button:hover {
+  background: #0a5da2;
+}
+
+.lab-selector button.active {
+  background: var(--facility-pink);
+}
+
+.lab-selector button > svg {
+  font-size: 18px;
+}
+
+.lab-arrow {
+  font-size: 20px;
+  line-height: 1;
+  color: #fff;
+}
+
+.lab-selector button > span:last-child {
+  font-weight: 600;
+}
+
+
+/* Selected lab */
+
+.selected-lab {
+  margin-top: 18px;
+
+  display: grid;
+  grid-template-columns: 1fr 0.75fr;
+
+  gap: 20px;
+
+  padding: 20px;
+
+  background: #fff;
+
+  border-radius: 16px;
+
+  border: 1px solid var(--facility-border);
+}
+
+.selected-lab-content {
+  min-width: 0;
+}
+
+.selected-lab-heading {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  margin-bottom: 17px;
+}
+
+.selected-lab-icon {
+  width: 47px;
+  height: 47px;
+
+  flex: 0 0 auto;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 13px;
+
+  color: var(--facility-pink);
+
+  background: var(--facility-light);
+}
+
+.selected-lab-icon svg {
+  font-size: 22px;
+}
+
+.selected-lab-heading small {
+  display: block;
+
+  color: var(--facility-pink);
+
+  font-size: 8px;
+  font-weight: 800;
+
+  letter-spacing: 0.8px;
+}
+
+.selected-lab-heading h3 {
+  margin: 2px 0;
+
+  color: var(--facility-navy);
+
+  font-size: 20px;
+}
+
+.selected-lab-heading span {
+  color: #7c8494;
+
+  font-size: 10px;
+}
+
+.selected-lab-content > p {
+  font-size: 12px;
+
+  line-height: 1.7;
+
+  margin: 0 0 9px;
+}
+
+.lab-objective-title {
+  margin: 18px 0 10px;
+}
+
+.lab-objective-title h4 {
+  margin: 0;
+
+  color: var(--facility-navy);
+
+  font-size: 14px;
+}
+
+.lab-objective-title h4::after {
+  content: "";
+
+  display: block;
+
+  width: 32px;
+  height: 2px;
+
+  margin-top: 5px;
+
+  background: var(--facility-pink);
+}
+
+.selected-lab-points {
+  display: flex;
+  flex-direction: column;
+
+  gap: 7px;
+
+  margin-top: 15px;
+}
+
+.selected-lab-points > div {
+  display: flex;
+  align-items: flex-start;
+
+  gap: 7px;
+
+  padding: 7px 9px;
+
+  background: #fff7fb;
+
+  border-radius: 8px;
+}
+
+.selected-lab-points svg {
+  flex: 0 0 auto;
+
+  margin-top: 2px;
+
+  color: var(--facility-pink);
+
+  font-size: 14px;
+}
+
+.selected-lab-points span {
+  color: #5d687b;
+
+  font-size: 10px;
+
+  line-height: 1.5;
+}
+
+.selected-lab-image {
+  position: relative;
+}
+
+.selected-lab-image img {
+  width: 100%;
+  height: 280px;
+
+  display: block;
+
+  object-fit: cover;
+
+  border-radius: 13px;
+}
+
+.lab-image-caption {
+  position: absolute;
+
+  left: 10px;
+  right: 10px;
+  bottom: 10px;
+
+  display: flex;
+  align-items: center;
+  gap: 7px;
+
+  padding: 9px 11px;
+
+  border-radius: 9px;
+
+  background: rgba(16,42,99,0.9);
+
+  color: #fff;
+
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.lab-image-caption svg {
+  color: #ff68aa;
+}
+
+
+/* =========================================================
+   OTHER FACILITIES
+========================================================= */
+
+.other-facility-grid {
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  gap: 10px;
+
+  margin-top: 22px;
+}
+
+.other-facility-card {
+  padding: 15px;
+
+  background: #fff7fb;
+
+  border: 1px solid var(--facility-border);
+
+  border-radius: 13px;
+}
+
+.other-facility-card > div {
+  width: 38px;
+  height: 38px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 10px;
+
+  background: var(--facility-light);
+
+  color: var(--facility-pink);
+}
+
+.other-facility-card h3 {
+  margin: 9px 0 5px;
+
+  color: var(--facility-navy);
+
+  font-size: 14px;
+}
+
+.other-facility-card p {
+  margin: 0;
+
+  font-size: 10px;
+
+  line-height: 1.6;
+}
+
+
+/* =========================================================
+   EXPLORE
+========================================================= */
+
+.facility-explore {
+  width: 93%;
+
+  margin: 0 auto;
+
+  padding: 10px 0 70px;
+}
+
+.section-title {
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+
+  margin-bottom: 10px;
+}
+
+.section-title-icon {
+  width: 48px;
+  height: 48px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 13px;
+
+  background: var(--facility-light);
+
+  color: var(--facility-pink);
+
+  border: 1px solid var(--facility-border);
+}
+
+.section-title-icon svg {
+  font-size: 21px;
+}
+
+.section-title h2 {
+  margin: 0;
+
+  color: var(--facility-navy);
+
+  font-size: 29px;
+}
+
+.section-title h2 strong {
+  color: var(--facility-pink);
+}
+
+.section-title > div:last-child {
+  display: flex;
+  flex-direction: column;
+
+  gap: 6px;
+}
+
+.section-title > div:last-child > span {
+  width: 43px;
+  height: 3px;
+
+  border-radius: 10px;
+
+  background: var(--facility-pink);
+}
+
+.explore-description {
+  margin: 0;
+
+  font-size: 13px;
+}
+
+
+/* =========================================================
+   FACILITY CARDS
+========================================================= */
+
+.facility-cards {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, 1fr);
+
+  gap: 16px;
+
+  margin-top: 23px;
+}
+
+.facility-cards button {
+  position: relative;
+
+  padding: 0;
+
+  border-radius: 17px;
+
+  overflow: hidden;
+
+  background: #fff;
+
+  border: 1px solid var(--facility-border);
+
+  text-align: left;
+
+  cursor: pointer;
+
+  color: var(--facility-text);
+
+  transition: 0.3s ease;
+}
+
+.facility-cards button:hover,
+.facility-cards button.selected {
+  transform: translateY(-5px);
+
+  border-color: #ec9fc0;
+
+  box-shadow:
+    0 15px 35px rgba(16,42,99,0.09);
+}
+
+.facility-card-image {
+  position: relative;
+}
+
+.facility-card-image img {
+  width: 100%;
+  height: 150px;
+
+  display: block;
+
+  object-fit: cover;
+}
+
+.facility-card-image span {
+  position: absolute;
+
+  left: 12px;
+  bottom: 10px;
+
+  padding: 6px 9px;
+
+  border-radius: 8px;
+
+  color: #fff;
+
+  background: rgba(16,42,99,0.9);
+
+  font-size: 9px;
+
+  font-weight: 700;
+}
+
+.facility-card-content {
+  padding: 14px 45px 16px 16px;
+}
+
+.facility-card-icon {
+  color: var(--facility-pink);
+
+  font-size: 20px;
+}
+
+.facility-card-content h3 {
+  margin: 6px 0 4px;
+
+  color: var(--facility-navy);
+
+  font-size: 16px;
+}
+
+.facility-card-content p {
+  margin: 0;
+
+  font-size: 11px;
+
+  line-height: 1.5;
+}
+
+.facility-card-arrow {
+  position: absolute;
+
+  right: 15px;
+  bottom: 19px;
+
+  color: var(--facility-pink);
+
+  font-size: 18px;
+}
+
+
+/* =========================================================
+   RESPONSIVE 1100
+========================================================= */
+
+@media (max-width: 1100px) {
+
+  .facility-tabs {
+    grid-template-columns:
+      repeat(4, 1fr);
+  }
+
+  .facility-tabs button {
+    border-radius: 10px !important;
+  }
+
+  .facility-detail {
+    grid-template-columns: 1fr;
+  }
+
+  .facility-gallery {
+    position: relative;
+    top: 0;
+  }
+
+  .facility-cards {
+    grid-template-columns:
+      repeat(2, 1fr);
+  }
+}
+
+
+/* =========================================================
+   RESPONSIVE 800
+========================================================= */
+
+@media (max-width: 800px) {
+
+  .facilities-hero {
+    grid-template-columns: 1fr;
+  }
+
+  .facilities-hero-image {
+    min-height: 320px;
+  }
+
+  .facilities-hero-image > img {
+    height: 320px;
+
+    mask-image: none;
+  }
+
+  .facility-tabs {
+    grid-template-columns:
+      repeat(3, 1fr);
+
+    padding: 0 18px;
+  }
+
+  .selected-lab {
+    grid-template-columns: 1fr;
+  }
+
+  .selected-lab-image {
+    order: -1;
+  }
+
+  .selected-lab-image img {
+    height: 250px;
+  }
+}
+
+
+/* =========================================================
+   RESPONSIVE 600
+========================================================= */
+
+@media (max-width: 600px) {
+
+  .facilities-hero-content {
+    padding: 40px 18px;
+  }
+
+  .facilities-hero h1 {
+    font-size: 43px;
+    letter-spacing: -1px;
+  }
+
+  .facilities-hero h3 {
+    font-size: 17px;
+  }
+
+  .facilities-hero-content > p {
+    font-size: 14px;
+  }
+
+  .facilities-hero-image {
+    min-height: 260px;
+  }
+
+  .facilities-hero-image > img {
+    height: 260px;
+  }
+
+  .facilities-image-card {
+    left: 18px;
+    right: 18px;
+    bottom: 18px;
+  }
+
+  .facility-tabs {
+    grid-template-columns:
+      repeat(2, 1fr);
+
+    padding: 0 18px;
+
+    gap: 4px;
+  }
+
+  .facility-tabs button {
+    min-height: 72px;
+  }
+
+  .facility-detail {
+    width: calc(100% - 36px);
+
+    margin: 20px 18px 35px;
+
+    padding: 18px;
+
+    gap: 25px;
+  }
+
+  .facility-title > svg {
+    width: 50px;
+    height: 50px;
+
+    padding: 12px;
+  }
+
+  .facility-title h2 {
+    font-size: 24px;
+  }
+
+  .facility-title h3 {
+    font-size: 11px;
+  }
+
+  .points-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .gallery-main > img {
+    height: 240px;
+  }
+
+  .thumb-row img,
+  .thumb-row button {
+    height: 55px;
+  }
+
+  .laboratory-subsection {
+    padding: 15px;
+  }
+
+  .laboratory-heading h3 {
+    font-size: 18px;
+  }
+
+  .lab-selector button {
+    min-height: 48px;
+
+    font-size: 12px;
+  }
+
+  .selected-lab {
+    padding: 14px;
+  }
+
+  .selected-lab-image img {
+    height: 210px;
+  }
+
+  .selected-lab-heading h3 {
+    font-size: 18px;
+  }
+
+  .selected-lab-content > p {
+    font-size: 11px;
+  }
+
+  .other-facility-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .facility-explore {
+    width: calc(100% - 36px);
+
+    padding-bottom: 50px;
+  }
+
+  .section-title h2 {
+    font-size: 23px;
+  }
+
+  .facility-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .facility-card-image img {
+    height: 170px;
+  }
+}
+
+
+/* =========================================================
+   RESPONSIVE 430
+========================================================= */
+
+@media (max-width: 430px) {
+
+  .facilities-hero h1 {
+    font-size: 38px;
+  }
+
+  .facilities-hero h3 {
+    font-size: 15px;
+  }
+
+  .facility-tabs button {
+    font-size: 10px;
+  }
+
+  .facility-tabs button svg {
+    font-size: 21px;
+  }
+
+  .facility-detail {
+    padding: 15px;
+  }
+
+  .facility-title {
+    gap: 10px;
+  }
+
+  .facility-title > svg {
+    width: 45px;
+    height: 45px;
+  }
+
+  .facility-title h2 {
+    font-size: 21px;
+  }
+
+  .facility-title h3 {
+    font-size: 10px;
+  }
+
+  .facility-point span {
+    font-size: 10px;
+  }
+
+  .laboratory-heading {
+    align-items: flex-start;
+  }
+
+  .laboratory-heading h3 {
+    font-size: 16px;
+  }
+
+  .selected-lab-heading h3 {
+    font-size: 16px;
+  }
+
+  .selected-lab-heading span {
+    font-size: 9px;
+  }
+
+  .selected-lab-image img {
+    height: 190px;
+  }
+
+  .lab-selector button {
+    font-size: 11px;
+  }
+
+  .section-title h2 {
+    font-size: 21px;
+  }
+}
