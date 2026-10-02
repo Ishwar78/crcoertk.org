@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap');
 
+* {
+  box-sizing: border-box;
+}
+
 :root {
   --facility-navy: #102a63;
   --facility-navy-dark: #0b214f;
@@ -13,9 +17,10 @@
   --facility-white: #fff;
 }
 
-* {
-  box-sizing: border-box;
-}
+
+/* =========================================================
+   GLOBAL
+========================================================= */
 
 .facilities-page {
   font-family: "Montserrat", sans-serif;
@@ -25,7 +30,7 @@
 }
 
 .facilities-page p {
-  font-size: 15px;
+  font-size: 17px;
   line-height: 1.75;
   color: var(--facility-muted);
 }
@@ -41,8 +46,11 @@
 
 .facilities-hero {
   min-height: 440px;
+
   display: grid;
+
   grid-template-columns: 1fr 0.95fr;
+
   align-items: stretch;
 
   background:
@@ -61,6 +69,7 @@
 
 .facilities-hero-content {
   padding: 65px 5vw;
+
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -69,14 +78,19 @@
 .facilities-breadcrumb {
   display: flex;
   align-items: center;
+
   gap: 8px;
+
   margin-bottom: 16px;
+
   font-size: 13px;
 }
 
 .facilities-breadcrumb a {
   color: var(--facility-pink);
+
   font-weight: 600;
+
   text-decoration: none;
 }
 
@@ -89,6 +103,7 @@
 
   display: flex;
   align-items: center;
+
   gap: 8px;
 
   padding: 8px 14px;
@@ -96,10 +111,13 @@
   border-radius: 30px;
 
   color: var(--facility-pink);
-  background: rgba(237,11,112,0.08);
-  border: 1px solid rgba(237,11,112,0.15);
+
+  background: rgba(237, 11, 112, 0.08);
+
+  border: 1px solid rgba(237, 11, 112, 0.15);
 
   font-size: 11px;
+
   font-weight: 700;
 }
 
@@ -109,9 +127,11 @@
   color: var(--facility-navy);
 
   font-size: clamp(45px, 5vw, 64px);
+
   line-height: 1.05;
 
   font-weight: 800;
+
   letter-spacing: -2px;
 }
 
@@ -129,6 +149,7 @@
 
 .facilities-hero-line {
   width: 70px;
+
   height: 4px;
 
   margin: 17px 0;
@@ -140,12 +161,15 @@
 
 .facilities-hero-content > p {
   max-width: 650px;
+
   margin: 0;
-  font-size: 15px;
+
+  font-size: 17px;
 }
 
 .facilities-hero-image {
   position: relative;
+
   min-height: 440px;
 }
 
@@ -173,6 +197,7 @@
 
   display: flex;
   align-items: center;
+
   gap: 12px;
 
   padding: 13px 17px;
@@ -189,22 +214,27 @@
 
 .facilities-image-card > svg {
   color: var(--facility-pink);
+
   font-size: 25px;
 }
 
 .facilities-image-card div {
   display: flex;
+
   flex-direction: column;
+
   gap: 3px;
 }
 
 .facilities-image-card strong {
   color: var(--facility-navy);
+
   font-size: 12px;
 }
 
 .facilities-image-card span {
   color: var(--facility-muted);
+
   font-size: 10px;
 }
 
@@ -217,6 +247,7 @@
   padding: 0 3.5vw;
 
   display: grid;
+
   grid-template-columns: repeat(7, 1fr);
 
   gap: 3px;
@@ -234,7 +265,9 @@
   color: var(--facility-navy);
 
   display: flex;
+
   align-items: center;
+
   justify-content: center;
 
   flex-direction: column;
@@ -243,7 +276,8 @@
 
   padding: 10px;
 
-  font-size: 11px;
+  font-size: 13px;
+
   font-weight: 700;
 
   cursor: pointer;
@@ -261,6 +295,7 @@
 
 .facility-tabs button svg {
   color: var(--facility-pink);
+
   font-size: 25px;
 }
 
@@ -270,7 +305,9 @@
 
 .facility-tabs button.active {
   background: var(--facility-navy);
+
   color: #fff;
+
   border-color: var(--facility-navy);
 }
 
@@ -285,19 +322,23 @@
 
 .facility-detail {
   width: 93%;
+
   margin: 24px auto 45px;
 
   padding: 28px;
 
   display: grid;
+
   grid-template-columns: 1fr 0.95fr;
 
   gap: 35px;
+
   align-items: start;
 
   background: #fff;
 
   border: 1px solid var(--facility-border);
+
   border-radius: 21px;
 
   box-shadow:
@@ -310,7 +351,9 @@
 
 .facility-title {
   display: flex;
+
   align-items: center;
+
   gap: 14px;
 
   margin-bottom: 23px;
@@ -327,6 +370,7 @@
   border-radius: 15px;
 
   color: var(--facility-pink);
+
   background: var(--facility-light);
 
   border: 1px solid var(--facility-border);
@@ -334,8 +378,11 @@
 
 .facility-title small {
   color: var(--facility-pink);
+
   font-size: 10px;
+
   font-weight: 700;
+
   text-transform: uppercase;
 }
 
@@ -353,11 +400,16 @@
   color: var(--facility-pink);
 
   font-size: 13px;
+
   line-height: 1.5;
 }
 
 .facility-main-text p {
-  margin: 0 0 12px;
+  margin: 0 0 14px;
+
+  font-size: 16px;
+color:#000;
+  line-height: 1.8;
 }
 
 .facility-text-section {
@@ -371,7 +423,7 @@
 
   color: var(--facility-navy);
 
-  font-size: 18px;
+  font-size: 19px;
 
   position: relative;
 }
@@ -382,12 +434,22 @@
   position: absolute;
 
   left: 0;
+
   bottom: -5px;
 
   width: 35px;
+
   height: 2px;
 
   background: var(--facility-pink);
+}
+
+.facility-text-section p {
+  font-size: 17px;
+color:#000;
+  line-height: 1.8;
+
+  margin-bottom: 13px;
 }
 
 
@@ -404,23 +466,25 @@
 
   color: var(--facility-navy);
 
-  font-size: 18px;
+  font-size: 19px;
 }
 
 .points-grid {
   display: grid;
+
   grid-template-columns: 1fr 1fr;
 
-  gap: 9px;
+  gap: 10px;
 }
 
 .facility-point {
   display: flex;
+
   align-items: flex-start;
 
-  gap: 9px;
+  gap: 10px;
 
-  padding: 11px;
+  padding: 13px;
 
   border-radius: 11px;
 
@@ -434,15 +498,17 @@
 
   flex: 0 0 auto;
 
-  margin-top: 2px;
+  margin-top: 3px;
+
+  font-size: 17px;
 }
 
 .facility-point span {
-  color: #5e6a7e;
+  color: #080809;
 
-  font-size: 11px;
-
-  line-height: 1.55;
+  font-size: 14px;
+font-weight: 500;
+  line-height: 1.6;
 }
 
 
@@ -452,7 +518,10 @@
 
 .facility-gallery {
   position: sticky;
+
   top: 100px;
+
+  min-width: 0;
 }
 
 .gallery-main {
@@ -461,6 +530,7 @@
 
 .gallery-main > img {
   width: 100%;
+
   height: 355px;
 
   display: block;
@@ -474,11 +544,15 @@
   position: absolute;
 
   left: 15px;
+
   right: 15px;
+
   bottom: 15px;
 
   display: flex;
+
   align-items: center;
+
   gap: 9px;
 
   padding: 11px 14px;
@@ -498,11 +572,13 @@
 
 .gallery-overlay span {
   font-size: 12px;
+
   font-weight: 700;
 }
 
 .thumb-row {
   display: grid;
+
   grid-template-columns: repeat(3, 1fr);
 
   gap: 9px;
@@ -513,7 +589,8 @@
 .thumb-row img,
 .thumb-row button {
   width: 100%;
-  height: 70px;
+
+  height: 190px;
 
   padding: 0;
 
@@ -538,13 +615,133 @@
 
 
 /* =========================================================
+   LIBRARY - TWO LARGE IMAGES
+========================================================= */
+
+.facility-detail-library .facility-gallery {
+  position: sticky;
+
+  top: 100px;
+
+  align-self: start;
+}
+
+.library-image-grid {
+  display: grid;
+
+  grid-template-columns: 1fr;
+
+  gap: 16px;
+}
+
+.library-image-grid .gallery-main {
+  position: relative;
+}
+
+.library-image-grid .gallery-main > img {
+  width: 100%;
+
+  height: 485px;
+
+  display: block;
+
+  object-fit: cover;
+
+  border-radius: 17px;
+}
+
+.library-image-grid .gallery-overlay {
+  position: absolute;
+
+  left: 15px;
+
+  right: 15px;
+
+  bottom: 15px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 9px;
+
+  padding: 11px 14px;
+
+  color: #fff;
+
+  border-radius: 11px;
+
+  background: rgba(16,42,99,0.88);
+
+  backdrop-filter: blur(6px);
+}
+
+.library-image-grid .gallery-overlay svg {
+  color: #ff66a8;
+}
+
+.library-image-grid .gallery-overlay span {
+  font-size: 12px;
+
+  font-weight: 700;
+}
+
+
+/* =========================================================
+   LABORATORY FULL WIDTH
+========================================================= */
+
+.facility-detail-laboratory {
+  grid-template-columns: 1fr 0.95fr;
+}
+
+.facility-detail-laboratory .facility-copy {
+  grid-column: 1;
+
+  grid-row: 1;
+}
+
+.facility-detail-laboratory .facility-gallery {
+  grid-column: 2;
+
+  grid-row: 1;
+
+  align-self: start;
+}
+
+
+/*
+   IMPORTANT:
+   Laboratory section now occupies complete width.
+*/
+
+.facility-detail-laboratory .laboratory-subsection {
+  grid-column: 1 / -1;
+
+  grid-row: 2;
+
+  width: 100%;
+
+  margin-top: 0;
+}
+
+.facility-detail-laboratory .laboratory-subsection .lab-selector {
+  width: 100%;
+}
+
+.facility-detail-laboratory .laboratory-subsection .selected-lab {
+  width: 100%;
+}
+
+
+/* =========================================================
    LABORATORY SECTION
 ========================================================= */
 
 .laboratory-subsection {
   margin-top: 35px;
 
-  padding: 22px;
+  padding: 24px;
 
   border-radius: 18px;
 
@@ -555,16 +752,19 @@
 
 .laboratory-heading {
   display: flex;
+
   align-items: center;
+
   justify-content: space-between;
 
-  margin-bottom: 17px;
+  margin-bottom: 18px;
 }
 
 .laboratory-heading small {
   color: var(--facility-pink);
 
-  font-size: 9px;
+  font-size: 10px;
+
   font-weight: 800;
 
   letter-spacing: 1px;
@@ -575,7 +775,7 @@
 
   color: var(--facility-navy);
 
-  font-size: 21px;
+  font-size: 25px;
 }
 
 .laboratory-heading h3 strong {
@@ -584,14 +784,18 @@
 
 .laboratory-heading > svg {
   color: var(--facility-pink);
-  font-size: 25px;
+
+  font-size: 29px;
 }
 
 
-/* Screenshot style lab menu */
+/* =========================================================
+   LAB MENU
+========================================================= */
 
 .lab-selector {
   display: flex;
+
   flex-direction: column;
 
   border-radius: 10px;
@@ -602,16 +806,18 @@
 }
 
 .lab-selector button {
-  min-height: 50px;
+  min-height: 58px;
 
   display: flex;
+
   align-items: center;
 
-  gap: 10px;
+  gap: 11px;
 
-  padding: 0 14px;
+  padding: 0 16px;
 
   border: 0;
+
   border-bottom: 1px solid rgba(255,255,255,0.35);
 
   background: #07508f;
@@ -620,7 +826,7 @@
 
   font-family: inherit;
 
-  font-size: 13px;
+  font-size: 15px;
 
   text-align: left;
 
@@ -642,12 +848,14 @@
 }
 
 .lab-selector button > svg {
-  font-size: 18px;
+  font-size: 20px;
 }
 
 .lab-arrow {
-  font-size: 20px;
+  font-size: 21px;
+
   line-height: 1;
+
   color: #fff;
 }
 
@@ -656,17 +864,20 @@
 }
 
 
-/* Selected lab */
+/* =========================================================
+   SELECTED LAB
+========================================================= */
 
 .selected-lab {
-  margin-top: 18px;
+  margin-top: 20px;
 
   display: grid;
+
   grid-template-columns: 1fr 0.75fr;
 
-  gap: 20px;
+  gap: 22px;
 
-  padding: 20px;
+  padding: 22px;
 
   background: #fff;
 
@@ -681,20 +892,24 @@
 
 .selected-lab-heading {
   display: flex;
-  align-items: center;
-  gap: 12px;
 
-  margin-bottom: 17px;
+  align-items: center;
+
+  gap: 13px;
+
+  margin-bottom: 18px;
 }
 
 .selected-lab-icon {
-  width: 47px;
-  height: 47px;
+  width: 50px;
+  height: 50px;
 
   flex: 0 0 auto;
 
   display: flex;
+
   align-items: center;
+
   justify-content: center;
 
   border-radius: 13px;
@@ -702,10 +917,12 @@
   color: var(--facility-pink);
 
   background: var(--facility-light);
+
+  border: 1px solid var(--facility-border);
 }
 
 .selected-lab-icon svg {
-  font-size: 22px;
+  font-size: 23px;
 }
 
 .selected-lab-heading small {
@@ -713,7 +930,8 @@
 
   color: var(--facility-pink);
 
-  font-size: 8px;
+  font-size: 9px;
+
   font-weight: 800;
 
   letter-spacing: 0.8px;
@@ -724,21 +942,23 @@
 
   color: var(--facility-navy);
 
-  font-size: 20px;
+  font-size: 22px;
 }
 
 .selected-lab-heading span {
   color: #7c8494;
 
-  font-size: 10px;
+  font-size: 11px;
 }
 
 .selected-lab-content > p {
-  font-size: 12px;
+  font-size: 16px;
 
-  line-height: 1.7;
+  line-height: 1.8;
 
-  margin: 0 0 9px;
+  margin: 0 0 10px;
+
+  color: var(--facility-muted);
 }
 
 .lab-objective-title {
@@ -750,7 +970,7 @@
 
   color: var(--facility-navy);
 
-  font-size: 14px;
+  font-size: 15px;
 }
 
 .lab-objective-title h4::after {
@@ -759,6 +979,7 @@
   display: block;
 
   width: 32px;
+
   height: 2px;
 
   margin-top: 5px;
@@ -768,20 +989,22 @@
 
 .selected-lab-points {
   display: flex;
+
   flex-direction: column;
 
-  gap: 7px;
+  gap: 8px;
 
   margin-top: 15px;
 }
 
 .selected-lab-points > div {
   display: flex;
+
   align-items: flex-start;
 
-  gap: 7px;
+  gap: 8px;
 
-  padding: 7px 9px;
+  padding: 9px 10px;
 
   background: #fff7fb;
 
@@ -791,19 +1014,19 @@
 .selected-lab-points svg {
   flex: 0 0 auto;
 
-  margin-top: 2px;
+  margin-top: 3px;
 
   color: var(--facility-pink);
 
-  font-size: 14px;
+  font-size: 15px;
 }
 
 .selected-lab-points span {
   color: #5d687b;
 
-  font-size: 10px;
+  font-size: 14px;
 
-  line-height: 1.5;
+  line-height: 1.6;
 }
 
 .selected-lab-image {
@@ -812,7 +1035,8 @@
 
 .selected-lab-image img {
   width: 100%;
-  height: 280px;
+
+  height: 300px;
 
   display: block;
 
@@ -825,14 +1049,18 @@
   position: absolute;
 
   left: 10px;
+
   right: 10px;
+
   bottom: 10px;
 
   display: flex;
+
   align-items: center;
+
   gap: 7px;
 
-  padding: 9px 11px;
+  padding: 10px 12px;
 
   border-radius: 9px;
 
@@ -840,7 +1068,8 @@
 
   color: #fff;
 
-  font-size: 10px;
+  font-size: 11px;
+
   font-weight: 700;
 }
 
@@ -864,7 +1093,7 @@
 }
 
 .other-facility-card {
-  padding: 15px;
+  padding: 16px;
 
   background: #fff7fb;
 
@@ -874,11 +1103,13 @@
 }
 
 .other-facility-card > div {
-  width: 38px;
-  height: 38px;
+  width: 40px;
+  height: 40px;
 
   display: flex;
+
   align-items: center;
+
   justify-content: center;
 
   border-radius: 10px;
@@ -893,15 +1124,15 @@
 
   color: var(--facility-navy);
 
-  font-size: 14px;
+  font-size: 15px;
 }
 
 .other-facility-card p {
   margin: 0;
 
-  font-size: 10px;
+  font-size: 14px;
 
-  line-height: 1.6;
+  line-height: 1.7;
 }
 
 
@@ -919,6 +1150,7 @@
 
 .section-title {
   display: flex;
+
   align-items: center;
 
   gap: 12px;
@@ -931,7 +1163,9 @@
   height: 48px;
 
   display: flex;
+
   align-items: center;
+
   justify-content: center;
 
   border-radius: 13px;
@@ -961,6 +1195,7 @@
 
 .section-title > div:last-child {
   display: flex;
+
   flex-direction: column;
 
   gap: 6px;
@@ -968,6 +1203,7 @@
 
 .section-title > div:last-child > span {
   width: 43px;
+
   height: 3px;
 
   border-radius: 10px;
@@ -978,7 +1214,7 @@
 .explore-description {
   margin: 0;
 
-  font-size: 13px;
+  font-size: 15px;
 }
 
 
@@ -1035,6 +1271,7 @@
 
 .facility-card-image img {
   width: 100%;
+
   height: 150px;
 
   display: block;
@@ -1046,6 +1283,7 @@
   position: absolute;
 
   left: 12px;
+
   bottom: 10px;
 
   padding: 6px 9px;
@@ -1056,7 +1294,7 @@
 
   background: rgba(16,42,99,0.9);
 
-  font-size: 9px;
+  font-size: 10px;
 
   font-weight: 700;
 }
@@ -1076,21 +1314,22 @@
 
   color: var(--facility-navy);
 
-  font-size: 16px;
+  font-size: 17px;
 }
 
 .facility-card-content p {
   margin: 0;
 
-  font-size: 11px;
+  font-size: 13px;
 
-  line-height: 1.5;
+  line-height: 1.6;
 }
 
 .facility-card-arrow {
   position: absolute;
 
   right: 15px;
+
   bottom: 19px;
 
   color: var(--facility-pink);
@@ -1120,12 +1359,53 @@
 
   .facility-gallery {
     position: relative;
+
     top: 0;
   }
 
   .facility-cards {
     grid-template-columns:
       repeat(2, 1fr);
+  }
+
+
+  /* Library images side-by-side */
+
+  .facility-detail-library .facility-gallery {
+    position: relative;
+
+    top: 0;
+  }
+
+  .library-image-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .library-image-grid .gallery-main > img {
+    height: 270px;
+  }
+
+
+  /* Laboratory becomes full width */
+
+  .facility-detail-laboratory {
+    grid-template-columns: 1fr;
+  }
+
+  .facility-detail-laboratory .facility-copy,
+  .facility-detail-laboratory .facility-gallery,
+  .facility-detail-laboratory .laboratory-subsection {
+    grid-column: 1;
+
+    grid-row: auto;
+  }
+
+  .facility-detail-laboratory .facility-gallery {
+    order: 2;
+  }
+
+  .facility-detail-laboratory .laboratory-subsection {
+    order: 3;
   }
 }
 
@@ -1168,6 +1448,18 @@
   .selected-lab-image img {
     height: 250px;
   }
+
+  .library-image-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .library-image-grid .gallery-main > img {
+    height: 250px;
+  }
+
+  .facility-detail-laboratory .laboratory-subsection {
+    grid-column: 1;
+  }
 }
 
 
@@ -1183,6 +1475,7 @@
 
   .facilities-hero h1 {
     font-size: 43px;
+
     letter-spacing: -1px;
   }
 
@@ -1191,7 +1484,9 @@
   }
 
   .facilities-hero-content > p {
-    font-size: 14px;
+    font-size: 15px;
+
+    line-height: 1.7;
   }
 
   .facilities-hero-image {
@@ -1204,9 +1499,12 @@
 
   .facilities-image-card {
     left: 18px;
+
     right: 18px;
+
     bottom: 18px;
   }
+
 
   .facility-tabs {
     grid-template-columns:
@@ -1219,7 +1517,10 @@
 
   .facility-tabs button {
     min-height: 72px;
+
+    font-size: 12px;
   }
+
 
   .facility-detail {
     width: calc(100% - 36px);
@@ -1231,8 +1532,10 @@
     gap: 25px;
   }
 
+
   .facility-title > svg {
     width: 50px;
+
     height: 50px;
 
     padding: 12px;
@@ -1243,12 +1546,27 @@
   }
 
   .facility-title h3 {
-    font-size: 11px;
+    font-size: 12px;
   }
+
+
+  .facility-main-text p,
+  .facility-text-section p {
+    font-size: 16px;
+
+    line-height: 1.75;
+  }
+
 
   .points-grid {
     grid-template-columns: 1fr;
   }
+
+
+  .facility-point span {
+    font-size: 14px;
+  }
+
 
   .gallery-main > img {
     height: 240px;
@@ -1259,18 +1577,19 @@
     height: 55px;
   }
 
+
   .laboratory-subsection {
     padding: 15px;
   }
 
   .laboratory-heading h3 {
-    font-size: 18px;
+    font-size: 20px;
   }
 
   .lab-selector button {
-    min-height: 48px;
+    min-height: 50px;
 
-    font-size: 12px;
+    font-size: 13px;
   }
 
   .selected-lab {
@@ -1286,12 +1605,18 @@
   }
 
   .selected-lab-content > p {
-    font-size: 11px;
+    font-size: 15px;
   }
+
+  .selected-lab-points span {
+    font-size: 13px;
+  }
+
 
   .other-facility-grid {
     grid-template-columns: 1fr;
   }
+
 
   .facility-explore {
     width: calc(100% - 36px);
@@ -1309,6 +1634,15 @@
 
   .facility-card-image img {
     height: 170px;
+  }
+
+  .facility-card-content p {
+    font-size: 13px;
+  }
+
+
+  .library-image-grid .gallery-main > img {
+    height: 230px;
   }
 }
 
@@ -1328,7 +1662,7 @@
   }
 
   .facility-tabs button {
-    font-size: 10px;
+    font-size: 11px;
   }
 
   .facility-tabs button svg {
@@ -1345,6 +1679,7 @@
 
   .facility-title > svg {
     width: 45px;
+
     height: 45px;
   }
 
@@ -1357,7 +1692,7 @@
   }
 
   .facility-point span {
-    font-size: 10px;
+    font-size: 13px;
   }
 
   .laboratory-heading {
@@ -1365,7 +1700,7 @@
   }
 
   .laboratory-heading h3 {
-    font-size: 16px;
+    font-size: 18px;
   }
 
   .selected-lab-heading h3 {
@@ -1381,10 +1716,14 @@
   }
 
   .lab-selector button {
-    font-size: 11px;
+    font-size: 12px;
   }
 
   .section-title h2 {
     font-size: 21px;
+  }
+
+  .library-image-grid .gallery-main > img {
+    height: 210px;
   }
 }

@@ -18,14 +18,11 @@ import {
   FiMic,
   FiCpu,
 } from "react-icons/fi";
-
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import "./Facilities.css";
 
-
 const facilityData = {
-
   /* =========================================================
      CLASSROOM
   ========================================================= */
@@ -52,7 +49,6 @@ const facilityData = {
     ],
   },
 
-
   /* =========================================================
      ICT CENTER
   ========================================================= */
@@ -70,16 +66,23 @@ const facilityData = {
     sections: [
       {
         title: "Objectives of the ICT Centre",
+
         paragraphs: [
           "To create general awareness among prospective teachers about Information and Communication Technology (ICT) and its use in teaching learning.",
+
           "To acquaint prospective teachers with different parts of computer system and their functions.",
+
           "To develop competency among prospective teachers in use of off-line electronic resources such as CD ROM and on-line resources such as World Wide Web.",
+
           "To encourage prospective teachers in using ICT for improving classroom teaching and professional development.",
+
           "To develop vocabulary of ICT among prospective teachers.",
         ],
       },
+
       {
         title: "Incharge",
+
         paragraphs: ["Ranju Malik"],
       },
     ],
@@ -102,7 +105,6 @@ const facilityData = {
     ],
   },
 
-
   /* =========================================================
      LIBRARY
   ========================================================= */
@@ -118,9 +120,9 @@ const facilityData = {
       "A well-equipped and rich library is the soul of good institution. With this dictum in mind, the college has arranged for a rich and well-equipped library with all modern facilities.",
 
     sections: [
-
       {
         title: "Introduction",
+
         paragraphs: [
           "A well-equipped and rich library is the soul of good institution. With this dictum in mind, the college has arranged for the rich and well-equipped library with all modern facilities.",
         ],
@@ -128,14 +130,17 @@ const facilityData = {
 
       {
         title: "Collection",
+
         paragraphs: [
           "CRCOE library is one of the oldest and largest college libraries. Library has rich collection of around 21830 books with 15000 titles on education and other subjects on the shelves of the library.",
+
           "The library subscribes 58 Journals on Education and related subjects.",
         ],
       },
 
       {
         title: "Journal Collection",
+
         paragraphs: [
           "National and Peer reviewed = 52",
           "International = 4",
@@ -147,6 +152,7 @@ const facilityData = {
 
       {
         title: "Newspapers & Magazines",
+
         paragraphs: [
           "Our library subscribes Newspapers in Hindi & English = 13 and Magazines = 15.",
         ],
@@ -154,6 +160,7 @@ const facilityData = {
 
       {
         title: "Audio-Visual Collection",
+
         paragraphs: [
           "We have separate Audio-video collection which includes Audio cassettes, VCDs on Education, CDs on Education, DVDs on Education, DVDs on Science and Lesson Plan VCDs from Class IV to XII for B.Ed. students.",
         ],
@@ -161,26 +168,34 @@ const facilityData = {
 
       {
         title: "Reference Section",
+
         paragraphs: [
           "Reference section is very rich. It has latest Encyclopedias, Dictionaries, Surveys both Research and Educational, Commission/Committee reports, Abstracts, Bibliographies, Biographies, Gazetteers, Yearbooks, Maps, Handbooks, Travel Guides, Foreign and rare books.",
+
           "Reference section of the library caters to the needs of brilliant students and teachers as it gives them sufficient intellectual stimuli.",
         ],
       },
 
       {
         title: "Computer Facility",
+
         paragraphs: [
           "Our library is computerized with SOUL software.",
+
           "A special E-learning Centre is formed to provide free internet access to all the students to check various educational websites.",
+
           "Students and teachers avail the facility to use CD-ROMs available in the library.",
+
           "Students can use Audio CDs, VCDs and DVDs in the library through computers and headphones.",
         ],
       },
 
       {
         title: "Service",
+
         paragraphs: [
           "Library has two reading rooms with seating capacity of 70 students.",
+
           "We have separate Periodical section, Reference section, Newspaper section, Text Book section etc.",
         ],
       },
@@ -197,7 +212,6 @@ const facilityData = {
       "Photocopier facility",
     ],
   },
-
 
   /* =========================================================
      LABORATORY
@@ -222,7 +236,6 @@ const facilityData = {
     ],
 
     labs: {
-
       "ICT Centre": {
         image: "ict.jpg",
         icon: FiMonitor,
@@ -252,7 +265,6 @@ const facilityData = {
         ],
       },
 
-
       "Home Science Lab": {
         image: "home-science.jpg",
         icon: FiHome,
@@ -272,13 +284,16 @@ const facilityData = {
 
         points: [
           "To develop practical skills of pupil-teachers to organize various activities related to teaching of Home Science.",
+
           "To develop practical skills and competencies required for preparing teaching aids in teaching of Home Science.",
+
           "To develop understanding of the various methods and procedures required for teaching of Home Science.",
+
           "To develop basic skills and competencies required for teaching of Home Science.",
+
           "To demonstrate activities like cooking, stitching, embroidery, knitting and home management and provide facilities to do them independently.",
         ],
       },
-
 
       "Language Lab": {
         image: "language-lab.jpg",
@@ -292,8 +307,11 @@ const facilityData = {
 
         paragraphs: [
           "Digital language lab has teaching-learning software. This digital lab makes use of intelligible English that both native and non-native speakers of English can apprehend quite easily.",
+
           "Our language lab has twenty five computer PCs and seating capacity of 25 students at a time.",
+
           "Various linguistic skills like speaking and listening are developed. Students can effortlessly communicate with the teacher. They can listen to the native speaker's voice, record their voices and compare.",
+
           "Students can assess their own capabilities and abilities. Teachers have the provision to provide group discussions to the students on a given topic and ascertain the performance of the students.",
         ],
 
@@ -308,7 +326,6 @@ const facilityData = {
           "Teacher-guided language practice",
         ],
       },
-
 
       "Psychology Lab": {
         image: "psychology-lab.jpg",
@@ -336,7 +353,6 @@ const facilityData = {
         ],
       },
 
-
       "Science & Mathematics Lab": {
         image: "science-mathematics-lab.jpg",
         icon: FiCpu,
@@ -363,10 +379,8 @@ const facilityData = {
           "Hands-on learning",
         ],
       },
-
     },
   },
-
 
   /* =========================================================
      SPORTS
@@ -384,6 +398,7 @@ const facilityData = {
 
     paragraphs: [
       "The college encourages students to participate in different sporting activities. Sports help students develop physical fitness, teamwork, discipline and a healthy competitive spirit.",
+
       "The college organizes sports events every year for the students. We believe in healthy hearts and strong minds.",
     ],
 
@@ -398,7 +413,6 @@ const facilityData = {
       "Teamwork and discipline",
     ],
   },
-
 
   /* =========================================================
      WOMEN CELL
@@ -417,6 +431,7 @@ const facilityData = {
     sections: [
       {
         title: "Co-ordinator",
+
         paragraphs: [
           "Dr. (Mrs.) Sushila Sangwan",
         ],
@@ -425,7 +440,9 @@ const facilityData = {
 
     paragraphs: [
       "In order to create awareness amongst girl students, they are given illuminating talks about their right to property, anti-dowry law and protection of women against crimes committed against them.",
+
       "Seminars on women empowerment are organised. Students are given valuable suggestions to get rid of social evils.",
+
       "In addition to this, competitions in essay writing, poster making, poetic competition and symposia are arranged by the college from time to time through the untiring efforts of the programme coordinator Dr. Sushila Sangwan.",
     ],
 
@@ -443,7 +460,6 @@ const facilityData = {
     ],
   },
 
-
   /* =========================================================
      OTHER FACILITIES
   ========================================================= */
@@ -459,10 +475,10 @@ const facilityData = {
       "The college provides additional facilities to support academic activities, student life and a comfortable campus environment.",
 
     otherFacilities: [
-
       {
         title: "Seminar Hall",
         icon: FiMonitor,
+
         text:
           "We have Seminar Hall with all electronic gadgets including Computer, Projector, Tablet Monitor, Sound System and Online UPS.",
       },
@@ -470,6 +486,7 @@ const facilityData = {
       {
         title: "Multipurpose Hall",
         icon: FiUsers,
+
         text:
           "We have a Multipurpose Hall at the first floor of the building with electronic gadgets including Wall Mount Screen, Projector, Computer, Tablet Monitor, LED TVs, Sound System and Online UPS. It has seating capacity of 150 students.",
       },
@@ -477,6 +494,7 @@ const facilityData = {
       {
         title: "Canteen",
         icon: FiHome,
+
         text:
           "We have a canteen in the college campus. Good quality hygienic food is ensured in the college canteens by checking the quality by the students and faculty on a regular basis.",
       },
@@ -484,6 +502,7 @@ const facilityData = {
       {
         title: "Transport Facilities",
         icon: FiActivity,
+
         text:
           "Transport facilities are shared with the Sister Concern.",
       },
@@ -500,18 +519,13 @@ const facilityData = {
 
 
 export default function Facilities() {
-
   const [active, setActive] = useState("Classroom");
-
   const [activeLab, setActiveLab] = useState("ICT Centre");
 
   const current = facilityData[active];
-
   const Icon = current.icon;
 
-
   const changeFacility = (name) => {
-
     setActive(name);
 
     if (name === "Laboratory") {
@@ -525,7 +539,6 @@ export default function Facilities() {
       });
     }, 50);
   };
-
 
   return (
     <>
@@ -581,8 +594,13 @@ export default function Facilities() {
               <FiBookOpen />
 
               <div>
-                <strong>Learning Beyond Classrooms</strong>
-                <span>Infrastructure • Resources • Development</span>
+                <strong>
+                  Learning Beyond Classrooms
+                </strong>
+
+                <span>
+                  Infrastructure • Resources • Development
+                </span>
               </div>
 
             </div>
@@ -615,11 +633,11 @@ export default function Facilities() {
                     changeFacility(name)
                   }
                 >
-
                   <TabIcon />
 
-                  <span>{name}</span>
-
+                  <span>
+                    {name}
+                  </span>
                 </button>
               );
             }
@@ -632,16 +650,38 @@ export default function Facilities() {
             MAIN FACILITY DETAIL
         ===================================================== */}
 
-        <section className="facility-detail">
+        <section
+          className={`
+            facility-detail
+            ${active === "Laboratory"
+              ? "facility-detail-laboratory"
+              : ""}
+            ${active === "Library"
+              ? "facility-detail-library"
+              : ""}
+          `}
+        >
 
-          <div className="facility-copy">
+          {/* ================= FACILITY COPY ================= */}
+
+          <div
+            className={`
+              facility-copy
+              ${active === "Library"
+                ? "library-copy"
+                : ""}
+            `}
+          >
 
             <div className="facility-title">
 
               <Icon />
 
               <div>
-                <small>College Facility</small>
+
+                <small>
+                  College Facility
+                </small>
 
                 <h2>
                   {active}
@@ -650,6 +690,7 @@ export default function Facilities() {
                 <h3>
                   {current.subtitle}
                 </h3>
+
               </div>
 
             </div>
@@ -688,9 +729,11 @@ export default function Facilities() {
 
                   {section.paragraphs?.map(
                     (paragraph, pIndex) => (
+
                       <p key={pIndex}>
                         {paragraph}
                       </p>
+
                     )
                   )}
 
@@ -712,6 +755,7 @@ export default function Facilities() {
                     const ItemIcon = item.icon;
 
                     return (
+
                       <article
                         key={item.title}
                         className="other-facility-card"
@@ -730,6 +774,7 @@ export default function Facilities() {
                         </p>
 
                       </article>
+
                     );
                   }
                 )}
@@ -746,6 +791,7 @@ export default function Facilities() {
               <div className="facility-points">
 
                 <h3>
+
                   {active === "Classroom"
                     ? "Class Room Ethics"
                     : active === "ICT Center"
@@ -757,6 +803,7 @@ export default function Facilities() {
                     : active === "Women Cell"
                     ? "Women Cell Activities"
                     : "Facilities & Services"}
+
                 </h3>
 
 
@@ -787,256 +834,322 @@ export default function Facilities() {
 
             )}
 
+          </div>
 
-            {/* =================================================
-                LABORATORY SUB SECTIONS
-            ================================================= */}
 
-            {active === "Laboratory" &&
-              current.labs && (
+          {/* =================================================
+              LABORATORY SUB SECTIONS
+          ================================================= */}
 
-                <div className="laboratory-subsection">
+          {active === "Laboratory" &&
+            current.labs && (
 
-                  <div className="laboratory-heading">
+              <div className="laboratory-subsection">
 
-                    <div>
-                      <small>
-                        RESOURCE CENTRES
-                      </small>
+                <div className="laboratory-heading">
 
-                      <h3>
-                        Explore Our{" "}
-                        <strong>
-                          Laboratories
-                        </strong>
-                      </h3>
-                    </div>
+                  <div>
 
-                    <FiSettings />
+                    <small>
+                      RESOURCE CENTRES
+                    </small>
+
+                    <h3>
+                      Explore Our{" "}
+                      <strong>
+                        Laboratories
+                      </strong>
+                    </h3>
 
                   </div>
 
+                  <FiSettings />
 
-                  <div className="lab-selector">
+                </div>
 
-                    {Object.entries(
-                      current.labs
-                    ).map(
-                      ([labName, lab]) => {
 
-                        const LabIcon = lab.icon;
+                <div className="lab-selector">
 
-                        return (
-                          <button
-                            key={labName}
-                            className={
-                              activeLab === labName
-                                ? "active"
-                                : ""
-                            }
-                            onClick={() =>
-                              setActiveLab(
-                                labName
-                              )
-                            }
-                          >
+                  {Object.entries(
+                    current.labs
+                  ).map(
+                    ([labName, lab]) => {
 
-                            <span className="lab-arrow">
-                              ›
-                            </span>
+                      const LabIcon = lab.icon;
 
+                      return (
+
+                        <button
+                          key={labName}
+                          className={
+                            activeLab === labName
+                              ? "active"
+                              : ""
+                          }
+                          onClick={() =>
+                            setActiveLab(
+                              labName
+                            )
+                          }
+                        >
+
+                          {/* <span className="lab-arrow">
+                            ›
+                          </span> */}
+
+                          <LabIcon />
+
+                          <span>
+                            {labName}
+                          </span>
+
+                        </button>
+
+                      );
+
+                    }
+                  )}
+
+                </div>
+
+
+                {/* Selected Lab */}
+
+                {(() => {
+
+                  const selectedLab =
+                    current.labs[activeLab];
+
+                  const LabIcon =
+                    selectedLab.icon;
+
+                  return (
+
+                    <article className="selected-lab">
+
+                      <div className="selected-lab-content">
+
+                        <div className="selected-lab-heading">
+
+                          <div className="selected-lab-icon">
                             <LabIcon />
+                          </div>
+
+                          <div>
+
+                            <small>
+                              RESOURCE CENTRE
+                            </small>
+
+                            <h3>
+                              {activeLab}
+                            </h3>
 
                             <span>
-                              {labName}
+                              {selectedLab.subtitle}
                             </span>
-
-                          </button>
-                        );
-
-                      }
-                    )}
-
-                  </div>
-
-
-                  {/* Selected Lab */}
-
-                  {(() => {
-
-                    const selectedLab =
-                      current.labs[activeLab];
-
-                    const LabIcon =
-                      selectedLab.icon;
-
-                    return (
-
-                      <article className="selected-lab">
-
-                        <div className="selected-lab-content">
-
-                          <div className="selected-lab-heading">
-
-                            <div className="selected-lab-icon">
-                              <LabIcon />
-                            </div>
-
-                            <div>
-
-                              <small>
-                                RESOURCE CENTRE
-                              </small>
-
-                              <h3>
-                                {activeLab}
-                              </h3>
-
-                              <span>
-                                {selectedLab.subtitle}
-                              </span>
-
-                            </div>
 
                           </div>
 
-
-                          <p>
-                            {selectedLab.text}
-                          </p>
+                        </div>
 
 
-                          {selectedLab.paragraphs?.map(
-                            (paragraph, index) => (
-                              <p key={index}>
-                                {paragraph}
-                              </p>
+                        <p>
+                          {selectedLab.text}
+                        </p>
+
+
+                        {selectedLab.paragraphs?.map(
+                          (paragraph, index) => (
+
+                            <p key={index}>
+                              {paragraph}
+                            </p>
+
+                          )
+                        )}
+
+
+                        {selectedLab.objectiveTitle && (
+
+                          <div className="lab-objective-title">
+
+                            <h4>
+                              {selectedLab.objectiveTitle}
+                            </h4>
+
+                          </div>
+
+                        )}
+
+
+                        <div className="selected-lab-points">
+
+                          {selectedLab.points.map(
+                            (point, index) => (
+
+                              <div key={index}>
+
+                                <FiCheckCircle />
+
+                                <span>
+                                  {point}
+                                </span>
+
+                              </div>
+
                             )
                           )}
 
+                        </div>
 
-                          {selectedLab.objectiveTitle && (
-
-                            <div className="lab-objective-title">
-
-                              <h4>
-                                {selectedLab.objectiveTitle}
-                              </h4>
-
-                            </div>
-
-                          )}
+                      </div>
 
 
-                          <div className="selected-lab-points">
+                      <div className="selected-lab-image">
 
-                            {selectedLab.points.map(
-                              (point, index) => (
+                        <img
+                          src={`/images/${selectedLab.image}`}
+                          alt={activeLab}
+                        />
 
-                                <div
-                                  key={index}
-                                >
+                        <div className="lab-image-caption">
 
-                                  <FiCheckCircle />
+                          <LabIcon />
 
-                                  <span>
-                                    {point}
-                                  </span>
-
-                                </div>
-
-                              )
-                            )}
-
-                          </div>
+                          <span>
+                            {activeLab}
+                          </span>
 
                         </div>
 
+                      </div>
 
-                        <div className="selected-lab-image">
+                    </article>
 
-                          <img
-                            src={`/images/${selectedLab.image}`}
-                            alt={activeLab}
-                          />
+                  );
 
-                          <div className="lab-image-caption">
+                })()}
 
-                            <LabIcon />
+              </div>
 
-                            <span>
-                              {activeLab}
-                            </span>
-
-                          </div>
-
-                        </div>
-
-                      </article>
-
-                    );
-
-                  })()}
-
-                </div>
-              )}
-
-
-          </div>
+            )}
 
 
           {/* =================================================
               MAIN IMAGE
           ================================================= */}
 
-          <div className="facility-gallery">
+          <div
+            className={`
+              facility-gallery
+              ${active === "Library"
+                ? "library-gallery"
+                : ""}
+            `}
+          >
 
-            <div className="gallery-main">
+            {active === "Library" ? (
 
-              <img
-                src={`/images/${current.image}`}
-                alt={active}
-              />
+              <div className="library-image-grid">
 
-              <div className="gallery-overlay">
+                <div className="gallery-main">
 
-                <Icon />
+                  <img
+                    src={`/images/${current.image}`}
+                    alt={active}
+                  />
 
-                <span>
-                  {active}
-                </span>
+                  <div className="gallery-overlay">
+
+                    <Icon />
+
+                    <span>
+                      {active}
+                    </span>
+
+                  </div>
+
+                </div>
+
+
+                <div className="gallery-main">
+
+                  <img
+                    src="/images/campus-about.jpg"
+                    alt="College Campus"
+                  />
+
+                  <div className="gallery-overlay">
+
+                    <FiBookOpen />
+
+                    <span>
+                      College Learning Environment
+                    </span>
+
+                  </div>
+
+                </div>
 
               </div>
 
-            </div>
+            ) : (
+
+              <>
+
+                <div className="gallery-main">
+
+                  <img
+                    src={`/images/${current.image}`}
+                    alt={active}
+                  />
+
+                  <div className="gallery-overlay">
+
+                    <Icon />
+
+                    <span>
+                      {active}
+                    </span>
+
+                  </div>
+
+                </div>
 
 
-            <div className="thumb-row">
+                <div className="thumb-row">
 
-              <button
-                onClick={() =>
-                  setActive(active)
-                }
-              >
+                  <button
+                    onClick={() =>
+                      setActive(active)
+                    }
+                  >
 
-                <img
-                  src={`/images/${current.image}`}
-                  alt={active}
-                />
+                    <img
+                      src={`/images/${current.image}`}
+                      alt={active}
+                    />
 
-              </button>
+                  </button>
 
-              <img
-                src="/images/campus-home.jpg"
-                alt="Campus"
-              />
 
-              <img
-                src="/images/campus-about.jpg"
-                alt="College Campus"
-              />
+                  <img
+                    src="/images/campus-home.jpg"
+                    alt="Campus"
+                  />
 
-            </div>
+
+                  <img
+                    src="/images/campus-about.jpg"
+                    alt="College Campus"
+                  />
+
+                </div>
+
+              </>
+
+            )}
 
           </div>
 
@@ -1059,7 +1172,9 @@ export default function Facilities() {
 
               <h2>
                 Explore Our{" "}
-                <strong>Facilities</strong>
+                <strong>
+                  Facilities
+                </strong>
               </h2>
 
               <span></span>
@@ -1070,8 +1185,10 @@ export default function Facilities() {
 
 
           <p className="explore-description">
+
             Select any facility to instantly view its detailed
             information, facilities, resources and images.
+
           </p>
 
 
@@ -1130,7 +1247,9 @@ export default function Facilities() {
                     </div>
 
 
-                    <FiArrowRight className="facility-card-arrow" />
+                    <FiArrowRight
+                      className="facility-card-arrow"
+                    />
 
                   </button>
 
