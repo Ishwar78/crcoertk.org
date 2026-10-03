@@ -20,127 +20,127 @@ const documents = [
   {
     id: 1,
     name: "Affidavit",
-    file: "n67ceaf8422452.pdf",
+    file: "/Document/Affidavit.pdf",
   },
   {
     id: 2,
     name: "Audit Report",
-    file: "n67ceaf597147c.pdf",
+    file: "/Document/Audit Report.pdf",
   },
   {
     id: 3,
     name: "Balance Sheet for Financial Year",
-    file: "n67ceaf4c37a0a.pdf",
+    file: "/Document/BalanceSheetforFinancialYear.pdf",
   },
   {
     id: 4,
     name: "Income and Expenditure Account for Financial Year",
-    file: "n67ceaf4151aa7.pdf",
+    file: "/Document/Income and Expenditure Account for Financial Year.pdf",
   },
   {
     id: 5,
     name: "Infrastructure Detail",
-    file: "n67ceaf34228e0.pdf",
+    file: "/Document/Infrastructure Detail.pdf",
   },
   {
     id: 6,
     name: "Land Document",
-    file: "n67ceaf1a448ce.pdf",
+    file: "/Document/Land Document.pdf",
   },
   {
     id: 7,
     name: "List of B.Ed. Student of session 2018-19",
-    file: "n67ceaefc24d09.pdf",
+    file: "/Document/List of B.Ed. Student of session 2018-19.pdf",
   },
   {
     id: 8,
     name: "List of Instructional Facilities during last quarter",
-    file: "n67ceaef2779e6.pdf",
+    file: "/Document/List of Instructional Facilities during last quarter.pdf",
   },
   {
     id: 9,
     name: "List of Journals",
-    file: "n67ceaee9db091.pdf",
+    file: "/Document/List of Journals.pdf",
   },
   {
     id: 10,
     name: "List of M.Ed. Student of session 2017-19",
-    file: "n67ceaed8e4910.pdf",
+    file: "/Document/List of M.Ed. Student of session 2017-19.pdf",
   },
   {
     id: 11,
     name: "List of M.Ed. Student of session 2018-20",
-    file: "n67ceaece8eb19.pdf",
+    file: "/Document/List of M.Ed. Student of session 2018-20.pdf",
   },
   {
     id: 12,
     name: "List of M.Ed. Student of session 2019-21",
-    file: "n67ceaec488429.pdf",
+    file: "/Document/List of M.Ed. Student of session 2019-21.pdf",
   },
   {
     id: 13,
     name: "List of M.Ed. Student of session 2020-22",
-    file: "n67ceaebc5d778.pdf",
+    file: "/Document/List of M.Ed. Student of session 2020-22.pdf",
   },
   {
     id: 14,
     name: "Mandatory Disclosure",
-    file: "n67ceaeab4eba0.pdf",
+    file: "/Document/Mandatory Disclosure.pdf",
   },
   {
     id: 15,
     name: "NCTE Order",
-    file: "n67ceaea382395.pdf",
+    file: "/Document/NCTE Order.pdf",
   },
   {
     id: 16,
     name: "Receipt & Payment Account for Financial Year",
-    file: "n67ceae92719c9.pdf",
+    file: "/Document/Receipt & Payment Account for Financial Year.pdf",
   },
   {
     id: 17,
     name: "Revised Recognition Order of B.Ed by NCTE",
-    file: "n67ceae85995b1.pdf",
+    file: "/Document/Revised Recognition Order of B.Ed by NCTE.pdf",
   },
   {
     id: 18,
     name: "Revised Recognition Order of M.Ed by NCTE",
-    file: "n67ceae767a7da.pdf",
+    file: "/Document/Revised Recognition Order of M.Ed by NCTE.pdf",
   },
   {
     id: 19,
     name: "Society Registration",
-    file: "n67ceae6a78f5c.pdf",
+    file: "/Document/Society Registration.pdf",
   },
   {
     id: 20,
     name: "Student List of B.Ed. IInd Year 2018-20",
-    file: "n67ceae5892548.pdf",
+    file: "/Document/Student List of B.Ed. IInd Year 2018-20.pdf",
   },
   {
     id: 21,
     name: "Student List of B.Ed. Ist year 2019-21",
-    file: "n67ceae4e2b833.pdf",
+    file: "/Document/Student List of B.Ed. Ist year 2019-21.pdf",
   },
   {
     id: 22,
     name: "Student List of M.Ed. I Semester",
-    file: "n67ceae323452d.pdf",
+    file: "/Document/Student List of M.Ed. I Semester.pdf",
   },
   {
     id: 23,
     name: "Student List of M.Ed. III Semester",
-    file: "n67ceae2438f94.pdf",
+    file: "/Document/Student List of M.Ed. III Semester.pdf",
   },
   {
     id: 24,
     name: "Students List of B.Ed Ist year 2020-2022",
-    file: "n67ceae163f102.pdf",
+    file: "/Document/Students List of B.Ed Ist year 2020-2022.pdf",
   },
   {
     id: 25,
     name: "Teaching Staff",
-    file: "n67ceae0872a1e.pdf",
+    file: "/Document/Teaching Staff.pdf",
   },
 ];
 
@@ -158,6 +158,31 @@ export default function MandatoryDocuments() {
       document.name.toLowerCase().includes(value)
     );
   }, [searchTerm]);
+
+  const handleDownload = async (e, fileUrl, fileName) => {
+    e.preventDefault();
+    try {
+      const response = await fetch(fileUrl);
+      if (!response.ok) throw new Error("Network response was not ok");
+      const blob = await response.blob();
+      const blobUrl = window.URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = blobUrl;
+      link.download = fileName.endsWith(".pdf") ? fileName : `${fileName}.pdf`;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      window.URL.revokeObjectURL(blobUrl);
+    } catch (err) {
+      const link = document.createElement("a");
+      link.href = fileUrl;
+      link.download = fileName.endsWith(".pdf") ? fileName : `${fileName}.pdf`;
+      link.target = "_blank";
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+  };
 
   return (
     <>
@@ -337,32 +362,26 @@ export default function MandatoryDocuments() {
           <div className="document-list">
 
             {filteredDocuments.map((document) => {
-
-              const pdfUrl = `/pdf/${document.file}`;
+              const pdfUrl = encodeURI(document.file);
 
               return (
                 <article
                   className="document-card"
                   key={document.id}
                 >
-
                   {/* Number */}
                   <div className="document-number">
                     {String(document.id).padStart(2, "0")}
                   </div>
-
 
                   {/* Icon */}
                   <div className="document-icon">
                     <FiFileText />
                   </div>
 
-
                   {/* Content */}
                   <div className="document-content">
-
                     <div className="document-title-row">
-
                       <span className="document-label">
                         NCTE DOCUMENT
                       </span>
@@ -370,25 +389,22 @@ export default function MandatoryDocuments() {
                       <h3>
                         {document.name}
                       </h3>
-
                     </div>
 
                     <p>
                       Official document available in PDF format
                       for viewing and downloading.
                     </p>
-
                   </div>
-
 
                   {/* Actions */}
                   <div className="document-actions">
-
                     <a
                       href={pdfUrl}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="view-pdf-btn"
+                      title={`View ${document.name} in new tab`}
                     >
                       <FiEye />
                       <span>View PDF</span>
@@ -396,15 +412,15 @@ export default function MandatoryDocuments() {
 
                     <a
                       href={pdfUrl}
-                      download
+                      download={`${document.name}.pdf`}
+                      onClick={(e) => handleDownload(e, pdfUrl, document.name)}
                       className="download-pdf-btn"
+                      title={`Download ${document.name}`}
                     >
                       <FiDownload />
                       <span>Download</span>
                     </a>
-
                   </div>
-
                 </article>
               );
             })}

@@ -23,9 +23,9 @@
 }
 
 .downloads-page p {
-  font-size: 15px;
+  font-size: 16px;
   line-height: 1.7;
-  color: var(--download-muted);
+  color: black;
 }
 
 
@@ -339,7 +339,7 @@
 }
 
 .sidebar-menu button span {
-  font-size: 11px;
+  font-size: 14px;
 
   font-weight: 600;
 
@@ -443,7 +443,7 @@
 .content-heading p {
   margin: 9px 0 0;
 
-  font-size: 12px;
+  font-size: 14px;
 
   line-height: 1.6;
 }
@@ -528,7 +528,7 @@
 
   color: var(--download-navy);
 
-  font-size: 14px;
+  font-size: 15px;
 
   line-height: 1.45;
 }
@@ -536,7 +536,7 @@
 .download-document-content p {
   margin: 0 0 10px;
 
-  font-size: 10px;
+  font-size: 15px;
 
   line-height: 1.5;
 }
@@ -563,7 +563,7 @@
 
   text-decoration: none;
 
-  font-size: 9px;
+  font-size: 13px;
 
   font-weight: 700;
 }
@@ -627,7 +627,7 @@
   display: grid;
 
   grid-template-columns:
-    repeat(2, 1fr);
+     repeat(3, 1fr) !important;
 
   gap: 11px;
 }
@@ -737,7 +737,7 @@
 
   color: var(--download-pink) !important;
 
-  font-size: 10px !important;
+  font-size: 13px !important;
 
   font-weight: 700;
 }
@@ -751,11 +751,11 @@
 
   margin-top: 5px;
 
-  color: #5f6a7e;
+  color: #0f1013;
 
   text-decoration: none;
 
-  font-size: 10px;
+  font-size: 15px;
 }
 
 .club-contact:hover {
@@ -847,7 +847,7 @@
 
   color: var(--download-navy);
 
-  font-size: 11px;
+  font-size: 13px;
 }
 
 .pdf-mini-actions {
@@ -872,7 +872,7 @@
 
   text-decoration: none;
 
-  font-size: 8px;
+  font-size: 12px;
 
   font-weight: 700;
 }
@@ -960,7 +960,7 @@
 }
 
 .publication-card p {
-  font-size: 12px;
+  font-size: 14px;
 }
 
 .publication-details {
@@ -990,9 +990,9 @@
 }
 
 .publication-details span {
-  color: var(--download-muted);
+  color: black;
 
-  font-size: 8px;
+  font-size: 12px;
 
   text-transform: uppercase;
 }
@@ -1002,7 +1002,7 @@
 
   color: var(--download-navy);
 
-  font-size: 11px;
+  font-size: 14px;
 }
 
 .editor-box {
@@ -1038,7 +1038,7 @@
 .editor-box small {
   color: var(--download-pink);
 
-  font-size: 7px;
+  font-size: 12px;
 
   font-weight: 800;
 }
@@ -1050,9 +1050,9 @@
 }
 
 .editor-box span {
-  color: var(--download-muted);
+  color: black;
 
-  font-size: 9px;
+  font-size: 13px;
 }
 
 .editor-box a {
@@ -1062,11 +1062,11 @@
 
   gap: 5px;
 
-  color: #58657b;
+  color: #0d0f12;
 
   text-decoration: none;
 
-  font-size: 9px;
+  font-size: 14px;
 }
 
 .editor-box a svg {
@@ -1157,8 +1157,8 @@
 
 .function-card p {
   margin: 0;
-
-  font-size: 10px;
+color: black;
+  font-size: 15px;
 }
 
 
@@ -1240,7 +1240,7 @@
 
   background: var(--download-navy);
 
-  font-size: 9px;
+  font-size: 15px;
 
   text-align: left;
 
@@ -1254,7 +1254,7 @@
 
   color: #657084;
 
-  font-size: 9px;
+  font-size: 14px;
 }
 
 .honour-table tbody tr:nth-child(even) {
@@ -1323,7 +1323,7 @@
 .panchayat-card p {
   margin: 0 0 9px;
 
-  font-size: 12px;
+  font-size: 15px;
 }
 
 .panchayat-values {
@@ -1360,7 +1360,7 @@
 .value-card > span {
   color: #dba5bd;
 
-  font-size: 8px;
+  font-size: 13px;
 
   font-weight: 800;
 }
@@ -1368,13 +1368,13 @@
 .value-card > svg {
   color: var(--download-pink);
 
-  font-size: 13px;
+  font-size: 15px;
 }
 
 .value-card strong {
   color: var(--download-navy);
 
-  font-size: 9px;
+  font-size: 14px;
 
   line-height: 1.35;
 }
@@ -1468,9 +1468,9 @@
 }
 
 .harassment-points span {
-  color: #5c687c;
+  color: #08090a;
 
-  font-size: 9px;
+  font-size: 15px;
 
   font-weight: 600;
 }
@@ -1502,7 +1502,7 @@
 .harassment-note p {
   margin: 0;
 
-  font-size: 9px;
+  font-size: 15px;
 }
 
 
@@ -1571,7 +1571,7 @@
 .downloads-bottom-cta p {
   margin: 0;
 
-  font-size: 10px;
+  font-size: 14px;
 }
 
 .downloads-bottom-cta > a {
@@ -1694,7 +1694,7 @@
   }
 
   .downloads-hero-content > p {
-    font-size: 12px;
+    font-size: 14px;
   }
 
   .downloads-hero-card {
@@ -1717,7 +1717,7 @@
   }
 
   .content-heading p {
-    font-size: 10px;
+    font-size: 15px;
   }
 
   .support-grid,
@@ -1796,7 +1796,7 @@
   }
 
   .sidebar-menu button span {
-    font-size: 10px;
+    font-size: 13px;
   }
 
   .download-document-card {
@@ -1815,18 +1815,18 @@
   }
 
   .download-document-content h3 {
-    font-size: 12px;
+    font-size: 14px;
   }
 
   .download-document-content p {
-    font-size: 9px;
+    font-size: 13px;
   }
 
   .download-view-btn,
   .download-file-btn {
     padding: 6px 8px;
 
-    font-size: 8px;
+    font-size: 13px;
   }
 
   .content-heading-icon {

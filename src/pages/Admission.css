@@ -25,9 +25,9 @@
 }
 
 .admission-page p {
-  font-size: 15px;
+  font-size: 16px;
   line-height: 1.75;
-  color: var(--admission-muted);
+  color: black;
 }
 
 .admission-page a {
@@ -433,7 +433,7 @@
 .programme-card > p {
   min-height: 105px;
   margin: 0;
-  font-size: 14px;
+  font-size: 16px;
 }
 
 .programme-info {
@@ -522,8 +522,8 @@
 }
 
 .notice-box span {
-  color: #6f788b;
-  font-size: 11px;
+  color: #191b1e;
+  font-size: 13px;
   line-height: 1.6;
 }
 
@@ -610,7 +610,7 @@
 
 .procedure-card p {
   margin: 0;
-  font-size: 12px;
+  font-size: 14px;
   line-height: 1.65;
 }
 
@@ -812,9 +812,9 @@
 }
 
 .university-points span {
-  font-size: 12px;
+  font-size: 14px;
   line-height: 1.5;
-  color: #626d81;
+  color: #08090a;
 }
 
 .university-card {
@@ -975,7 +975,7 @@
 
 .guidance-item p {
   margin: 0;
-  font-size: 13px;
+  font-size: 15px;
   line-height: 1.6;
 }
 
@@ -1041,7 +1041,7 @@
 
 .checklist-card p {
   margin: 0;
-  font-size: 12px;
+  font-size: 15px;
   line-height: 1.6;
 }
 
@@ -1108,7 +1108,7 @@
 .help-content p {
   margin: 0;
   color: rgba(255,255,255,0.68);
-  font-size: 12px;
+  font-size: 15px;
   max-width: 700px;
   line-height: 1.6;
 }

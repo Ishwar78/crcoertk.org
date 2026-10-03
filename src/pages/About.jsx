@@ -1,5 +1,10 @@
-import React from "react";
+import React, {
+  useEffect,
+  useState,
+} from "react";
+
 import { Link } from "react-router-dom";
+
 import {
   FiArrowRight,
   FiEye,
@@ -12,10 +17,7 @@ import {
   FiClock,
   FiHome,
   FiStar,
-  FiFlag,
-  FiShield,
   FiGlobe,
-  FiMonitor,
   FiUserCheck,
   FiLayers,
   FiActivity,
@@ -26,63 +28,463 @@ import Footer from "../components/Footer";
 
 import "./About.css";
 
+
+const API_URL =
+  import.meta.env.VITE_API_URL ||
+  "http://localhost:5025";
+
+
+const defaultData = {
+  hero: {
+    title: "About",
+    titleAccent: "Us",
+    subtitle:
+      "Nurturing Educators for a Better Tomorrow",
+
+    description:
+      "Chhotu Ram College of Education, Rohtak is dedicated to excellence in teacher education and committed to shaping responsible, skilled and value-based educators for a progressive and inclusive society.",
+
+    image:
+      "/images/campus-about.jpg",
+
+    captionSmall:
+      "Education",
+
+    captionStrong:
+      "Empowers Nation",
+  },
+
+
+  history: {
+    paragraphs: [
+      "Chhotu Ram College of Education is one of the premier institutions of Haryana. Catering to the growing concern of our leaders to impart quality education to the students, it was felt that the objective can only be achieved if we have a sizable class of well trained teachers.",
+
+      "Hence B.T. class was started in 1951 and B.Ed. in 1955 under the patronage of Ch. Uday Mann, worthy president of Jat Society and Sh. S.S. Gill, Principal. The institution scaled another height when M.Ed. was introduced in the college.",
+
+      "The institution has contributed a lot in spreading higher education in North India. The institution has the pride privilege of having Dr. Rajender Prasad, Hon’ble President of India as the Guest of honor to award degrees to the students in 1958.",
+
+      "The college has an attractive building with latest infrastructure and well stocked library.",
+
+      "The college has also been successfully managing IGNOU study Centre since 1987. We know that the goals of higher education are always expanding. The college is committed to the noble task of trying to follow the ever expanding horizon of education.",
+    ],
+
+    highlights: [
+      {
+        value: "1951",
+        label: "B.T. Class Started",
+      },
+
+      {
+        value: "1955",
+        label: "B.Ed. Introduced",
+      },
+
+      {
+        value: "M.Ed.",
+        label: "Higher Education Expanded",
+      },
+
+      {
+        value: "1987",
+        label: "IGNOU Study Centre",
+      },
+    ],
+  },
+
+
+  inspiration: {
+    image:
+      "/images/chhotu-ram.jpg",
+
+    badge:
+      "1881 – 1945",
+
+    name:
+      "Deenbandhu Sir Chhotu Ram",
+
+    designation:
+      "Educationist • Reformer • Visionary Leader",
+
+    paragraphs: [
+      "Deenbandhu Sir Chhotu Ram was born on 24th Nov. 1881 in Garhi Sampla, a village in the old Rohtak District, in the family of Ch. Sukh Ram and Mrs. Sirya Devi.",
+
+      "He was a renowned educationist and was named as the father of reform for farmers. He established Jat Anglo Sansthan on 26th March, 1913 after completion of his Graduation in Law.",
+
+      "In 1916, he became president of Congress Party and continued till 1919. He formed Unionist Party in 1923 and became Agriculture Minister in 1924, continuing till 1926.",
+
+      "He remained as Development Minister from 1937-45 after his party came into power. He was awarded various honours including Rai Bahadur, Deenbandhu and Rehbar-e-Azam.",
+
+      "Besides being a luminary figure in agricultural and educational reforms, he was involved in various developmental policies for joint Punjab including Bhakra's Project.",
+    ],
+
+    quote:
+      "His vision of an educated, self-reliant and socially responsible society continues to inspire generations and strengthens our commitment to meaningful education.",
+
+    quoteLabel:
+      "Our Guiding Inspiration",
+  },
+
+
+  society: {
+    paragraphs: [
+      "Jat Education Society, Rohtak is an educational society registered under Societies Regulation Act XXI of 1860. The society was formed in 1914 under the name of Jat Anglo Sanskrit High School, Rohtak with the prime object to serve the cause of education.",
+
+      "In the year 1927 it changed its name as Jat Heroes Memorial Anglo Sanskrit High School, Rohtak. The name of the society was changed to Jat Education Society, Rohtak in 1977.",
+
+      "The society is presently running nine prestigious institutions dedicated to education and development.",
+    ],
+
+    buttonText:
+      "Contact Us",
+
+    buttonLink:
+      "/contact",
+
+    cards: [
+      {
+        title: "Quality",
+        subtitle: "Education",
+      },
+
+      {
+        title: "Social",
+        subtitle: "Development",
+      },
+
+      {
+        title: "Community",
+        subtitle: "Empowerment",
+      },
+
+      {
+        title: "Inclusive",
+        subtitle: "Growth",
+      },
+    ],
+  },
+
+
+  institutions: {
+    items: [
+      "Chhotu Ram College of Education, Rohtak",
+      "Jat HAMS High School, Rohtak",
+      "Jat Senior Secondary Schools, Rohtak",
+      "Chhotu Ram Memorial Public School, Rohtak",
+      "All India Jat Heroes Memorial Degree College, Rohtak",
+      "M.K.J.K. Degree College, Rohtak",
+      "Chhotu Ram Polytechnic College, Rohtak",
+      "Matu Ram Institute of Engineering and Management, Rohtak",
+      "C.R. Institute of Law, Rohtak",
+    ],
+  },
+
+
+  objectives: {
+    intro:
+      "The institution is committed to preparing professionally competent, reflective, socially sensitive and value-based teachers who can contribute meaningfully to education, society and nation building.",
+
+    items: [
+      "To ensure that the youth gets adequate opportunities to identify and develop their skills and potentials.",
+
+      "To produce intellectual capital in term of research output, transfer of knowledge and technology oriented attitude to land in the field of education.",
+
+      "To enable prospective teachers to understand the inter-disciplinary nature of educational theory and practice and its incorporation in teacher education.",
+
+      "To prepare individual for independent learning to develop reference skills, critical thinking, conceptualization and self evaluation of their own progress.",
+
+      "To enable prospective teacher to realize diverse need of students and give respect to equity.",
+
+      "To prepare the prospective teachers for self development and advancement in their field.",
+
+      "To mould individuals into integrated personalities who are competent, spiritually mature, physically strong and socially sensitive.",
+
+      "To help them build happy and healthy school and community relationship and promote interest in life long learning.",
+
+      "To develop feeling of love for Indian culture and strengthen a sense of national pride and identity among the prospective teachers.",
+
+      "To create among them the awareness of environmental protection and need to maintain ecological balance.",
+
+      "To prepare them for inculcation of values and develop sense of citizenship.",
+
+      "To enable the prospective teachers to inculcate dignity and morality in work and produce work culture among their students.",
+
+      "To empower them to prepare fully professionally competent, committed and reflective teachers for secondary and senior secondary school education.",
+
+      "To enable them to develop the teaching competencies and performance skill for the subjects they have to teach, using appropriate aids including ICT.",
+
+      "To provide among them the capacity to think, problem solving attitude, capacity to undertake action research and research.",
+    ],
+  },
+
+
+  panchayat: {
+    paragraphs: [
+      "The three days orientation programme for the newly inducted B.Ed. and M.Ed. students are organised. This orientation enables them to become familiar with the activities and programmes of the college.",
+
+      "In the beginning of the session Chhatra Panchayat and Clubs are formed. Chhatra Panchayat and clubs are actively involved in planning, organizing and executing various activities of the institution along with the faculty.",
+
+      "In Chhatra Panchayat and method clubs students develop various characteristics including cooperation, leadership, creativity, advancement of knowledge, decision making, self disclosure, sharing, self-confidence, social values and dignity towards manual works.",
+    ],
+
+    points: [
+      "Student Representation",
+      "Leadership Development",
+      "Cooperation & Teamwork",
+      "Creative Thinking",
+      "Decision Making",
+      "Self Confidence",
+      "Social Values",
+      "Sharing & Self Disclosure",
+      "Dignity of Manual Work",
+      "Participation in College Activities",
+    ],
+
+    image:
+      "/images/panchayat.jpg",
+
+    overlayTitle:
+      "Student Leadership",
+
+    overlayText:
+      "Cooperation • Responsibility • Participation",
+  },
+
+
+  visionMission: {
+    vision:
+      "To provide intellectual and moral leadership by igniting the mind of student teachers to realize their potential and make positive contribution leading to prosperity of education, society and nation at large.",
+
+    mission:
+      "To provide educational opportunities to release the inherent capabilities of all student teachers to make them professionally competent, morally mature, socially sensitive, cooperative, ICT enabled, research oriented and globally awakened in a dynamic environment.",
+
+    missionPoints: [
+      "Professional Competence",
+      "Moral & Social Responsibility",
+      "ICT Enabled Learning",
+      "Research Orientation",
+    ],
+  },
+
+
+  principal: {
+    image:
+      "/images/principal.jpg",
+
+    label:
+      "Principal",
+
+    quote:
+      "Our aim is to develop enlightened, responsible and skilled teachers who can bring positive changes in society.",
+
+    paragraph:
+      "We focus on holistic development, discipline and the pursuit of excellence in teacher education.",
+
+    signature:
+      "Principal, CRCOE",
+  },
+
+
+  strength: {
+    items: [
+      {
+        value: "500+",
+        label: "Students",
+      },
+
+      {
+        value: "50+",
+        label: "Faculty",
+      },
+
+      {
+        value: "2+",
+        label: "Programmes",
+      },
+
+      {
+        value: "100%",
+        label: "Commitment",
+      },
+    ],
+  },
+
+
+  cta: {
+    title:
+      "Education for a Better Tomorrow",
+
+    description:
+      "Empowering future educators with knowledge, values, skills and responsibility.",
+
+    buttonText:
+      "Explore Academics",
+
+    buttonLink:
+      "/academics",
+  },
+};
+
+
+const imageUrl = (image) => {
+  if (!image) {
+    return "";
+  }
+
+  if (
+    image.startsWith("http://") ||
+    image.startsWith("https://") ||
+    image.startsWith("data:")
+  ) {
+    return image;
+  }
+
+  if (image.startsWith("/uploads")) {
+    return `${API_URL}${image}`;
+  }
+
+  return image;
+};
+
+
+const mergeData = (saved = {}) => {
+  return {
+    ...defaultData,
+    ...saved,
+
+    hero: {
+      ...defaultData.hero,
+      ...(saved.hero || {}),
+    },
+
+    history: {
+      ...defaultData.history,
+      ...(saved.history || {}),
+    },
+
+    inspiration: {
+      ...defaultData.inspiration,
+      ...(saved.inspiration || {}),
+    },
+
+    society: {
+      ...defaultData.society,
+      ...(saved.society || {}),
+    },
+
+    institutions: {
+      ...defaultData.institutions,
+      ...(saved.institutions || {}),
+    },
+
+    objectives: {
+      ...defaultData.objectives,
+      ...(saved.objectives || {}),
+    },
+
+    panchayat: {
+      ...defaultData.panchayat,
+      ...(saved.panchayat || {}),
+    },
+
+    visionMission: {
+      ...defaultData.visionMission,
+      ...(saved.visionMission || {}),
+    },
+
+    principal: {
+      ...defaultData.principal,
+      ...(saved.principal || {}),
+    },
+
+    strength: {
+      ...defaultData.strength,
+      ...(saved.strength || {}),
+    },
+
+    cta: {
+      ...defaultData.cta,
+      ...(saved.cta || {}),
+    },
+  };
+};
+
+
 export default function About() {
-  const objectives = [
-    "To ensure that the youth gets adequate opportunities to identify and develop their skills and potentials.",
 
-    "To produce intellectual capital in term of research output, transfer of knowledge and technology oriented attitude to land in the field of education.",
+  const [data, setData] =
+    useState(defaultData);
 
-    "To enable prospective teachers to understand the inter-disciplinary nature of educational theory and practice and its incorporation in teacher education.",
+  const [loading, setLoading] =
+    useState(true);
 
-    "To prepare individual for independent learning to develop reference skills, critical thinking, conceptualization and self evaluation of their own progress.",
 
-    "To enable prospective teacher to realize diverse need of students and give respect to equity.",
+  useEffect(() => {
 
-    "To prepare the prospective teachers for self development and advancement in their field.",
+    const loadAbout = async () => {
 
-    "To mould individuals into integrated personalities who are competent, spiritually mature, physically strong and socially sensitive.",
+      try {
 
-    "To help them build happy and healthy school and community relationship and promote interest in life long learning.",
+        const response =
+          await fetch(
+            `${API_URL}/api/about`
+          );
 
-    "To develop feeling of love for Indian culture and strengthen a sense of national pride and identity among the prospective teachers.",
+        const result =
+          await response.json();
 
-    "To create among them the awareness of environmental protection and need to maintain ecological balance.",
+        if (
+          response.ok &&
+          result.success &&
+          result.data
+        ) {
+          setData(
+            mergeData(
+              result.data
+            )
+          );
+        }
 
-    "To prepare them for inculcation of values and develop sense of citizenship.",
+      } catch (error) {
 
-    "To enable the prospective teachers to inculcate dignity and morality in work and produce work culture among their students.",
+        console.error(
+          "About API Error:",
+          error
+        );
 
-    "To empower them to prepare fully professionally competent, committed and reflective teachers for secondary and senior secondary school education.",
+      } finally {
 
-    "To enable them to develop the teaching competencies and performance skill for the subjects they have to teach, using appropriate aids including ICT.",
+        setLoading(false);
 
-    "To provide among them the capacity to think, problem solving attitude, capacity to undertake action research and research.",
-  ];
+      }
+    };
 
-  const societyInstitutions = [
-    "Chhotu Ram College of Education, Rohtak",
-    "Jat HAMS High School, Rohtak",
-    "Jat Senior Secondary Schools, Rohtak",
-    "Chhotu Ram Memorial Public School, Rohtak",
-    "All India Jat Heroes Memorial Degree College, Rohtak",
-    "M.K.J.K. Degree College, Rohtak",
-    "Chhotu Ram Polytechnic College, Rohtak",
-    "Matu Ram Institute of Engineering and Management, Rohtak",
-    "C.R. Institute of Law, Rohtak",
-  ];
 
-  const panchayatPoints = [
-    "Student Representation",
-    "Leadership Development",
-    "Cooperation & Teamwork",
-    "Creative Thinking",
-    "Decision Making",
-    "Self Confidence",
-    "Social Values",
-    "Sharing & Self Disclosure",
-    "Dignity of Manual Work",
-    "Participation in College Activities",
-  ];
+    loadAbout();
+
+  }, []);
+
+
+  if (loading) {
+
+    return (
+      <>
+        <Navbar />
+
+        <div className="about-loading">
+
+          <div className="about-loading-spinner"></div>
+
+          <p>
+            Loading About...
+          </p>
+
+        </div>
+
+        <Footer />
+      </>
+    );
+  }
+
 
   return (
     <>
@@ -90,48 +492,74 @@ export default function About() {
 
       <main className="about-page">
 
+
         {/* =====================================================
             HERO
         ====================================================== */}
+
         <section className="inner-hero">
 
           <div className="inner-hero-content">
 
             <div className="breadcrumb">
-              <Link to="/">Home</Link>
+
+              <Link to="/">
+                Home
+              </Link>
+
               <span>›</span>
-              <span>About Us</span>
+
+              <span>
+                About Us
+              </span>
+
             </div>
 
+
             <h1>
-              About <strong>Us</strong>
+              {data.hero.title}{" "}
+
+              <strong>
+                {data.hero.titleAccent}
+              </strong>
             </h1>
 
+
             <h3>
-              Nurturing Educators for a Better Tomorrow
+              {data.hero.subtitle}
             </h3>
+
 
             <div className="hero-line"></div>
 
+
             <p>
-              Chhotu Ram College of Education, Rohtak is dedicated to
-              excellence in teacher education and committed to shaping
-              responsible, skilled and value-based educators for a
-              progressive and inclusive society.
+              {data.hero.description}
             </p>
 
           </div>
 
+
           <div className="inner-hero-image">
 
             <img
-              src="/images/campus-about.jpg"
+              src={imageUrl(
+                data.hero.image
+              )}
               alt="Chhotu Ram College of Education Rohtak"
             />
 
+
             <div className="hero-image-caption">
-              <span>Education</span>
-              <strong>Empowers Nation</strong>
+
+              <span>
+                {data.hero.captionSmall}
+              </span>
+
+              <strong>
+                {data.hero.captionStrong}
+              </strong>
+
             </div>
 
           </div>
@@ -140,100 +568,88 @@ export default function About() {
 
 
         {/* =====================================================
-            BRIEF HISTORY
+            HISTORY
         ====================================================== */}
+
         <section className="about-section history-section">
 
           <div className="section-title">
+
             <div className="title-icon">
               <FiClock />
             </div>
 
             <div>
+
               <h2>
-                Brief <strong>History</strong>
+                Brief{" "}
+                <strong>
+                  History
+                </strong>
               </h2>
 
               <span></span>
+
             </div>
+
           </div>
+
 
           <div className="history-layout">
 
             <div className="history-content">
 
-              <p>
-                Chhotu Ram College of Education is one of the premier
-                institutions of Haryana. Catering to the growing concern
-                of our leaders to impart quality education to the students,
-                it was felt that the objective can only be achieved if we
-                have a sizable class of well trained teachers.
-              </p>
-
-              <p>
-                Hence B.T. class was started in 1951 and B.Ed. in 1955
-                under the patronage of Ch. Uday Mann, worthy president of
-                Jat Society and Sh. S.S. Gill, Principal. The institution
-                scaled another height when M.Ed. was introduced in the
-                college.
-              </p>
-
-              <p>
-                The institution has contributed a lot in spreading higher
-                education in North India. The institution has the pride
-                privilege of having Dr. Rajender Prasad, Hon’ble President
-                of India as the Guest of honor to award degrees to the
-                students in 1958.
-              </p>
-
-              <p>
-                The college has an attractive building with latest
-                infrastructure and well stocked library.
-              </p>
-
-              <p>
-                The college has also been successfully managing IGNOU
-                study Centre since 1987. We know that the goals of higher
-                education are always expanding. The college is committed
-                to the noble task of trying to follow the ever expanding
-                horizon of education.
-              </p>
+              {data.history.paragraphs.map(
+                (paragraph, index) => (
+                  <p key={index}>
+                    {paragraph}
+                  </p>
+                )
+              )}
 
             </div>
 
+
             <aside className="history-highlights">
 
-              <div className="history-highlight">
-                <FiBookOpen />
-                <div>
-                  <strong>1951</strong>
-                  <span>B.T. Class Started</span>
-                </div>
-              </div>
+              {data.history.highlights.map(
+                (item, index) => {
 
-              <div className="history-highlight">
-                <FiAward />
-                <div>
-                  <strong>1955</strong>
-                  <span>B.Ed. Introduced</span>
-                </div>
-              </div>
+                  const icons = [
+                    FiBookOpen,
+                    FiAward,
+                    FiStar,
+                    FiHome,
+                  ];
 
-              <div className="history-highlight">
-                <FiStar />
-                <div>
-                  <strong>M.Ed.</strong>
-                  <span>Higher Education Expanded</span>
-                </div>
-              </div>
+                  const Icon =
+                    icons[index] ||
+                    FiStar;
 
-              <div className="history-highlight">
-                <FiHome />
-                <div>
-                  <strong>1987</strong>
-                  <span>IGNOU Study Centre</span>
-                </div>
-              </div>
+                  return (
+                    <div
+                      className="history-highlight"
+                      key={index}
+                    >
+
+                      <Icon />
+
+                      <div>
+
+                        <strong>
+                          {item.value}
+                        </strong>
+
+                        <span>
+                          {item.label}
+                        </span>
+
+                      </div>
+
+                    </div>
+                  );
+                }
+              )}
 
             </aside>
 
@@ -245,6 +661,7 @@ export default function About() {
         {/* =====================================================
             INSPIRATION
         ====================================================== */}
+
         <section className="about-section inspiration">
 
           <div className="section-title">
@@ -254,87 +671,73 @@ export default function About() {
             </div>
 
             <div>
+
               <h2>
-                Our <strong>Inspiration</strong>
+                Our{" "}
+                <strong>
+                  Inspiration
+                </strong>
               </h2>
 
               <span></span>
+
             </div>
 
           </div>
+
 
           <div className="inspiration-grid">
 
             <div className="inspiration-image">
 
               <img
-                src="/images/chhotu-ram.jpg"
-                alt="Deenbandhu Sir Chhotu Ram"
+                src={imageUrl(
+                  data.inspiration.image
+                )}
+                alt={
+                  data.inspiration.name
+                }
               />
 
               <div className="inspiration-badge">
-                1881 – 1945
+                {data.inspiration.badge}
               </div>
 
             </div>
 
+
             <div className="inspiration-content">
 
               <h3>
-                Deenbandhu Sir Chhotu Ram
+                {data.inspiration.name}
               </h3>
 
               <small>
-                Educationist • Reformer • Visionary Leader
+                {data.inspiration.designation}
               </small>
 
-              <p>
-                Deenbandhu Sir Chhotu Ram was born on 24th Nov. 1881 in
-                Garhi Sampla, a village in the old Rohtak District, in
-                the family of Ch. Sukh Ram and Mrs. Sirya Devi.
-              </p>
 
-              <p>
-                He was a renowned educationist and was named as the father
-                of reform for farmers. He established Jat Anglo Sansthan
-                on 26th March, 1913 after completion of his Graduation in
-                Law.
-              </p>
-
-              <p>
-                In 1916, he became president of Congress Party and
-                continued till 1919. He formed Unionist Party in 1923
-                and became Agriculture Minister in 1924, continuing
-                till 1926.
-              </p>
-
-              <p>
-                He remained as Development Minister from 1937-45 after
-                his party came into power. He was awarded various honours
-                including Rai Bahadur, Deenbandhu and Rehbar-e-Azam.
-              </p>
-
-              <p>
-                Besides being a luminary figure in agricultural and
-                educational reforms, he was involved in various
-                developmental policies for joint Punjab including
-                Bhakra's Project.
-              </p>
+              {data.inspiration.paragraphs.map(
+                (paragraph, index) => (
+                  <p key={index}>
+                    {paragraph}
+                  </p>
+                )
+              )}
 
             </div>
+
 
             <blockquote className="inspiration-quote">
 
               <FiHeart />
 
               <p>
-                His vision of an educated, self-reliant and socially
-                responsible society continues to inspire generations
-                and strengthens our commitment to meaningful education.
+                {data.inspiration.quote}
               </p>
 
               <span>
-                Our Guiding Inspiration
+                {data.inspiration.quoteLabel}
               </span>
 
             </blockquote>
@@ -347,6 +750,7 @@ export default function About() {
         {/* =====================================================
             SOCIETY
         ====================================================== */}
+
         <section className="about-section society">
 
           <div className="society-copy">
@@ -358,40 +762,42 @@ export default function About() {
               </div>
 
               <div>
+
                 <h2>
-                  About the <strong>Society</strong>
+                  About the{" "}
+                  <strong>
+                    Society
+                  </strong>
                 </h2>
 
                 <span></span>
+
               </div>
 
             </div>
 
-            <p>
-              Jat Education Society, Rohtak is an educational society
-              registered under Societies Regulation Act XXI of 1860.
-              The society was formed in 1914 under the name of Jat Anglo
-              Sanskrit High School, Rohtak with the prime object to serve
-              the cause of education.
-            </p>
 
-            <p>
-              In the year 1927 it changed its name as Jat Heroes Memorial
-              Anglo Sanskrit High School, Rohtak. The name of the society
-              was changed to Jat Education Society, Rohtak in 1977.
-            </p>
+            {data.society.paragraphs.map(
+              (paragraph, index) => (
+                <p key={index}>
+                  {paragraph}
+                </p>
+              )
+            )}
 
-            <p>
-              The society is presently running nine prestigious
-              institutions dedicated to education and development.
-            </p>
 
             <Link
-              to="/contact"
+              to={
+                data.society.buttonLink ||
+                "/contact"
+              }
               className="pink-btn"
             >
-              Contact Us
+
+              {data.society.buttonText}
+
               <FiArrowRight />
+
             </Link>
 
           </div>
@@ -399,29 +805,37 @@ export default function About() {
 
           <div className="society-cards">
 
-            <div>
-              <FiAward />
-              <strong>Quality</strong>
-              <span>Education</span>
-            </div>
+            {data.society.cards.map(
+              (card, index) => {
 
-            <div>
-              <FiHeart />
-              <strong>Social</strong>
-              <span>Development</span>
-            </div>
+                const icons = [
+                  FiAward,
+                  FiHeart,
+                  FiUsers,
+                  FiCheckCircle,
+                ];
 
-            <div>
-              <FiUsers />
-              <strong>Community</strong>
-              <span>Empowerment</span>
-            </div>
+                const Icon =
+                  icons[index] ||
+                  FiCheckCircle;
 
-            <div>
-              <FiCheckCircle />
-              <strong>Inclusive</strong>
-              <span>Growth</span>
-            </div>
+                return (
+                  <div key={index}>
+
+                    <Icon />
+
+                    <strong>
+                      {card.title}
+                    </strong>
+
+                    <span>
+                      {card.subtitle}
+                    </span>
+
+                  </div>
+                );
+              }
+            )}
 
           </div>
 
@@ -429,8 +843,9 @@ export default function About() {
 
 
         {/* =====================================================
-            SOCIETY INSTITUTIONS
+            INSTITUTIONS
         ====================================================== */}
+
         <section className="about-section institutions-section">
 
           <div className="section-title">
@@ -440,37 +855,49 @@ export default function About() {
             </div>
 
             <div>
+
               <h2>
-                Institutions under <strong>Jat Education Society</strong>
+                Institutions under{" "}
+                <strong>
+                  Jat Education Society
+                </strong>
               </h2>
 
               <span></span>
+
             </div>
 
           </div>
 
+
           <div className="institution-grid">
 
-            {societyInstitutions.map((institution, index) => (
-              <div
-                className="institution-card"
-                key={institution}
-              >
+            {data.institutions.items.map(
+              (institution, index) => (
 
-                <span className="institution-number">
-                  {String(index + 1).padStart(2, "0")}
-                </span>
+                <div
+                  className="institution-card"
+                  key={index}
+                >
 
-                <FiBookOpen />
+                  <span className="institution-number">
+                    {String(
+                      index + 1
+                    ).padStart(2, "0")}
+                  </span>
 
-                <p>
-                  {institution}
-                </p>
+                  <FiBookOpen />
 
-                <FiArrowRight className="institution-arrow" />
+                  <p>
+                    {institution}
+                  </p>
 
-              </div>
-            ))}
+                  <FiArrowRight className="institution-arrow" />
+
+                </div>
+
+              )
+            )}
 
           </div>
 
@@ -480,6 +907,7 @@ export default function About() {
         {/* =====================================================
             OBJECTIVES
         ====================================================== */}
+
         <section className="about-section objectives-section">
 
           <div className="section-title">
@@ -489,46 +917,56 @@ export default function About() {
             </div>
 
             <div>
+
               <h2>
-                Objectives of <strong>C.R. College of Education</strong>
+                Objectives of{" "}
+                <strong>
+                  C.R. College of Education
+                </strong>
               </h2>
 
               <span></span>
+
             </div>
 
           </div>
 
+
           <div className="objectives-intro">
 
             <p>
-              The institution is committed to preparing professionally
-              competent, reflective, socially sensitive and value-based
-              teachers who can contribute meaningfully to education,
-              society and nation building.
+              {data.objectives.intro}
             </p>
 
           </div>
 
+
           <div className="objectives-grid">
 
-            {objectives.map((objective, index) => (
-              <div
-                className="objective-card"
-                key={index}
-              >
+            {data.objectives.items.map(
+              (objective, index) => (
 
-                <span>
-                  {String(index + 1).padStart(2, "0")}
-                </span>
+                <div
+                  className="objective-card"
+                  key={index}
+                >
 
-                <FiCheckCircle />
+                  <span>
+                    {String(
+                      index + 1
+                    ).padStart(2, "0")}
+                  </span>
 
-                <p>
-                  {objective}
-                </p>
+                  <FiCheckCircle />
 
-              </div>
-            ))}
+                  <p>
+                    {objective}
+                  </p>
+
+                </div>
+
+              )
+            )}
 
           </div>
 
@@ -536,8 +974,9 @@ export default function About() {
 
 
         {/* =====================================================
-            PANCHAYAT SYSTEM
+            PANCHAYAT
         ====================================================== */}
+
         <section className="about-section panchayat">
 
           <div className="panchayat-content">
@@ -549,45 +988,47 @@ export default function About() {
               </div>
 
               <div>
+
                 <h2>
-                  Chhatra <strong>Panchayat System</strong>
+                  Chhatra{" "}
+                  <strong>
+                    Panchayat System
+                  </strong>
                 </h2>
 
                 <span></span>
+
               </div>
 
             </div>
 
-            <p>
-              The three days orientation programme for the newly inducted
-              B.Ed. and M.Ed. students are organised. This orientation
-              enables them to become familiar with the activities and
-              programmes of the college.
-            </p>
 
-            <p>
-              In the beginning of the session Chhatra Panchayat and Clubs
-              are formed. Chhatra Panchayat and clubs are actively involved
-              in planning, organizing and executing various activities of
-              the institution along with the faculty.
-            </p>
+            {data.panchayat.paragraphs.map(
+              (paragraph, index) => (
+                <p key={index}>
+                  {paragraph}
+                </p>
+              )
+            )}
 
-            <p>
-              In Chhatra Panchayat and method clubs students develop
-              various characteristics including cooperation, leadership,
-              creativity, advancement of knowledge, decision making,
-              self disclosure, sharing, self-confidence, social values
-              and dignity towards manual works.
-            </p>
 
             <div className="panchayat-points">
 
-              {panchayatPoints.map((point) => (
-                <div key={point}>
-                  <FiCheckCircle />
-                  <span>{point}</span>
-                </div>
-              ))}
+              {data.panchayat.points.map(
+                (point, index) => (
+
+                  <div key={index}>
+
+                    <FiCheckCircle />
+
+                    <span>
+                      {point}
+                    </span>
+
+                  </div>
+
+                )
+              )}
 
             </div>
 
@@ -597,20 +1038,25 @@ export default function About() {
           <div className="panchayat-image">
 
             <img
-              src="/images/panchayat.jpg"
+              src={imageUrl(
+                data.panchayat.image
+              )}
               alt="Chhatra Panchayat and student activities"
             />
 
+
             <div className="panchayat-image-overlay">
+
               <FiUsers />
 
               <strong>
-                Student Leadership
+                {data.panchayat.overlayTitle}
               </strong>
 
               <span>
-                Cooperation • Responsibility • Participation
+                {data.panchayat.overlayText}
               </span>
+
             </div>
 
           </div>
@@ -621,7 +1067,9 @@ export default function About() {
         {/* =====================================================
             VISION MISSION
         ====================================================== */}
+
         <section className="about-section vision-mission">
+
 
           <article className="vision-card">
 
@@ -629,19 +1077,20 @@ export default function About() {
               <FiEye />
             </div>
 
+
             <div>
 
               <h3>
-                Our <strong>Vision</strong>
+                Our{" "}
+                <strong>
+                  Vision
+                </strong>
               </h3>
 
               <div className="mini-line"></div>
 
               <p>
-                To provide intellectual and moral leadership by igniting
-                the mind of student teachers to realize their potential
-                and make positive contribution leading to prosperity of
-                education, society and nation at large.
+                {data.visionMission.vision}
               </p>
 
             </div>
@@ -655,43 +1104,39 @@ export default function About() {
               <FiTarget />
             </div>
 
+
             <div>
 
               <h3>
-                Our <strong>Mission</strong>
+                Our{" "}
+                <strong>
+                  Mission
+                </strong>
               </h3>
 
               <div className="mini-line"></div>
 
+
               <p>
-                To provide educational opportunities to release the
-                inherent capabilities of all student teachers to make
-                them professionally competent, morally mature, socially
-                sensitive, cooperative, ICT enabled, research oriented
-                and globally awakened in a dynamic environment.
+                {data.visionMission.mission}
               </p>
+
 
               <ul>
 
-                <li>
-                  <FiCheckCircle />
-                  Professional Competence
-                </li>
+                {data.visionMission.missionPoints.map(
+                  (point, index) => (
 
-                <li>
-                  <FiCheckCircle />
-                  Moral & Social Responsibility
-                </li>
+                    <li key={index}>
 
-                <li>
-                  <FiCheckCircle />
-                  ICT Enabled Learning
-                </li>
+                      <FiCheckCircle />
 
-                <li>
-                  <FiCheckCircle />
-                  Research Orientation
-                </li>
+                      {point}
+
+                    </li>
+
+                  )
+                )}
 
               </ul>
 
@@ -705,7 +1150,9 @@ export default function About() {
         {/* =====================================================
             PRINCIPAL + STRENGTH
         ====================================================== */}
+
         <section className="about-section principal-about">
+
 
           <div className="principal-box">
 
@@ -716,11 +1163,16 @@ export default function About() {
               </div>
 
               <div>
+
                 <h2>
-                  Principal’s <strong>Message</strong>
+                  Principal’s{" "}
+                  <strong>
+                    Message
+                  </strong>
                 </h2>
 
                 <span></span>
+
               </div>
 
             </div>
@@ -728,15 +1180,18 @@ export default function About() {
 
             <div className="principal-message">
 
+
               <div className="principal-image">
 
                 <img
-                  src="/images/principal.jpg"
+                  src={imageUrl(
+                    data.principal.image
+                  )}
                   alt="Principal of CRCOE"
                 />
 
                 <strong>
-                  Principal
+                  {data.principal.label}
                 </strong>
 
               </div>
@@ -748,19 +1203,19 @@ export default function About() {
                   “
                 </div>
 
+
                 <blockquote>
-                  Our aim is to develop enlightened, responsible and
-                  skilled teachers who can bring positive changes in
-                  society.
+                  {data.principal.quote}
                 </blockquote>
 
+
                 <p>
-                  We focus on holistic development, discipline and the
-                  pursuit of excellence in teacher education.
+                  {data.principal.paragraph}
                 </p>
 
+
                 <b>
-                  Principal, CRCOE
+                  {data.principal.signature}
                 </b>
 
               </div>
@@ -779,11 +1234,16 @@ export default function About() {
               </div>
 
               <div>
+
                 <h2>
-                  Our <strong>Strength</strong>
+                  Our{" "}
+                  <strong>
+                    Strength
+                  </strong>
                 </h2>
 
                 <span></span>
+
               </div>
 
             </div>
@@ -791,29 +1251,37 @@ export default function About() {
 
             <div className="strength-grid">
 
-              <div>
-                <FiUsers />
-                <b>500+</b>
-                <span>Students</span>
-              </div>
+              {data.strength.items.map(
+                (item, index) => {
 
-              <div>
-                <FiUserCheck />
-                <b>50+</b>
-                <span>Faculty</span>
-              </div>
+                  const icons = [
+                    FiUsers,
+                    FiUserCheck,
+                    FiBookOpen,
+                    FiHeart,
+                  ];
 
-              <div>
-                <FiBookOpen />
-                <b>2+</b>
-                <span>Programmes</span>
-              </div>
+                  const Icon =
+                    icons[index] ||
+                    FiHeart;
 
-              <div>
-                <FiHeart />
-                <b>100%</b>
-                <span>Commitment</span>
-              </div>
+                  return (
+                    <div key={index}>
+
+                      <Icon />
+
+                      <b>
+                        {item.value}
+                      </b>
+
+                      <span>
+                        {item.label}
+                      </span>
+
+                    </div>
+                  );
+                }
+              )}
 
             </div>
 
@@ -823,31 +1291,41 @@ export default function About() {
 
 
         {/* =====================================================
-            CLOSING CTA
+            CTA
         ====================================================== */}
+
         <section className="about-cta">
 
           <div className="cta-icon">
             <FiGlobe />
           </div>
 
+
           <div>
+
             <h2>
-              Education for a <strong>Better Tomorrow</strong>
+              {data.cta.title}
             </h2>
 
             <p>
-              Empowering future educators with knowledge, values,
-              skills and responsibility.
+              {data.cta.description}
             </p>
+
           </div>
 
+
           <Link
-            to="/academics"
+            to={
+              data.cta.buttonLink ||
+              "/academics"
+            }
             className="cta-btn"
           >
-            Explore Academics
+
+            {data.cta.buttonText}
+
             <FiArrowRight />
+
           </Link>
 
         </section>

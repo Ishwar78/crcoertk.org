@@ -1,6 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap");
 
-
 /* =========================================================
    BASE
 ========================================================= */
@@ -38,7 +37,6 @@
   align-items: center;
   position: relative;
   overflow: hidden;
-
   background:
     radial-gradient(
       circle at 85% 15%,
@@ -421,7 +419,7 @@
 
 .highlight-card p {
   margin: 0;
-  font-size: 13px;
+  font-size: 15px;
   line-height: 1.55;
 }
 
@@ -490,7 +488,7 @@
 
 .infrastructure-list p {
   margin: 0;
-  font-size: 12px;
+  font-size: 16px;
   line-height: 1.5;
 }
 
@@ -600,7 +598,7 @@
 
 .course-content p {
   margin-bottom: 10px;
-  font-size: 14px;
+  font-size: 16px;
   line-height: 1.55;
 }
 
@@ -620,7 +618,7 @@
   background: #ffffff;
   border: 1px solid #f1d4e1;
   border-radius: 15px;
-  font-size: 10px;
+  font-size: 15px;
   font-weight: 600;
 }
 
@@ -777,7 +775,7 @@
 
 .exam-process-card p {
   margin: 0;
-  font-size: 13px;
+  font-size: 15px;
   line-height: 1.55;
 }
 
@@ -900,7 +898,7 @@
   background: #ffffff;
   border: 1px solid #f2d5e1;
   border-radius: 15px;
-  font-size: 10px;
+  font-size: 13px;
   font-weight: 700;
 }
 
@@ -910,27 +908,311 @@
 
 
 /* =========================================================
-   UTILITY CARDS
+   PDF RESOURCE SECTIONS
 ========================================================= */
 
-.utility-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 15px;
+.resource-section {
   background: #fff7fb;
 }
 
-.info-card {
-  display: grid;
-  grid-template-columns: 58px 1fr;
-  gap: 14px;
-  padding: 20px;
+.calendar-section {
   background: #ffffff;
-  border: 1px solid #f1ccdc;
-  border-radius: 17px;
 }
 
-.info-icon {
+.resource-card {
+  padding: 24px;
+  background: #ffffff;
+  border: 1px solid #f1ccdc;
+  border-radius: 19px;
+  box-shadow: 0 8px 22px rgba(16, 42, 99, 0.05);
+}
+
+.calendar-section .resource-card {
+  background: #fffafd;
+}
+
+.resource-card > p {
+  margin-bottom: 18px;
+  color: #4b5670;
+  font-size: 15px;
+}
+
+.pdf-resource-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 11px;
+}
+
+.pdf-resource-btn {
+  min-height: 53px;
+  padding: 10px 13px;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  color: #102a63;
+  background: #fff7fb;
+  border: 1px solid #f0c9db;
+  border-radius: 11px;
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.35;
+  transition: 0.25s ease;
+}
+
+.pdf-resource-btn span {
+  flex: 1;
+}
+
+.pdf-resource-btn svg:first-child {
+  flex: 0 0 auto;
+  color: #ed0b70;
+  font-size: 18px;
+}
+
+.pdf-resource-btn svg:last-child {
+  flex: 0 0 auto;
+  color: #ed0b70;
+  font-size: 16px;
+}
+
+.pdf-resource-btn:hover {
+  color: #ffffff;
+  background: #ed0b70;
+  border-color: #ed0b70;
+  transform: translateY(-2px);
+  box-shadow: 0 9px 18px rgba(237, 11, 112, 0.16);
+}
+
+.pdf-resource-btn:hover svg {
+  color: #ffffff;
+}
+
+/* =========================================================
+   EXAMINATION FACILITY
+========================================================= */
+
+.examination-facility-section {
+  background: #fff7fb;
+}
+
+
+/* Main Examination Content */
+
+.examination-facility-card {
+  width: 100%;
+  padding: 26px;
+
+  background: linear-gradient(
+    135deg,
+    #ffffff,
+    #fff1f7
+  );
+
+  border: 1px solid #f1ccdc;
+  border-radius: 20px;
+
+  box-shadow:
+    0 9px 24px rgba(16, 42, 99, 0.05);
+}
+
+
+.examination-facility-content {
+  width: 100%;
+  max-width: 1250px;
+}
+
+
+.examination-facility-content p {
+  margin: 0 0 14px;
+
+  color: #29334d;
+
+  font-size: 15px;
+  line-height: 1.75;
+}
+
+
+.examination-facility-content p:last-child {
+  margin-bottom: 0;
+}
+
+
+.examination-facility-content strong {
+  color: #102a63;
+}
+
+
+/* =========================================================
+   SEPARATE PDF BUTTON SECTION
+========================================================= */
+
+.examination-pdf-section {
+  width: 100%;
+
+  margin-top: 24px;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+  gap: 16px;
+}
+
+
+/* PDF BUTTON */
+
+.exam-pdf-btn {
+  min-height: 90px;
+
+  padding: 14px 18px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 14px;
+
+  color: #102a63;
+
+  background: #ffffff;
+
+  border: 1px solid #f0c7da;
+
+  border-radius: 15px;
+
+  text-decoration: none;
+
+  box-shadow:
+    0 6px 18px rgba(16, 42, 99, 0.04);
+
+  transition: all 0.25s ease;
+}
+
+
+/* Icon */
+
+.exam-pdf-icon {
+  width: 55px;
+  height: 55px;
+
+  flex: 0 0 55px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #ed0b70;
+
+  background: #ffe2ef;
+
+  border-radius: 13px;
+}
+
+
+.exam-pdf-icon svg {
+  font-size: 24px;
+}
+
+
+/* Text */
+
+.exam-pdf-text {
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 4px;
+}
+
+
+.exam-pdf-text small {
+  color: #ed0b70;
+
+  font-size: 9px;
+
+  font-weight: 800;
+
+  letter-spacing: 0.8px;
+}
+
+
+.exam-pdf-text strong {
+  color: #102a63;
+
+  font-size: 15px;
+
+  font-weight: 800;
+}
+
+
+/* Arrow */
+
+.exam-pdf-btn > svg {
+  margin-left: auto;
+
+  flex: 0 0 auto;
+
+  color: #ed0b70;
+
+  font-size: 20px;
+
+  transition: transform 0.25s ease;
+}
+
+
+/* Hover */
+
+.exam-pdf-btn:hover {
+  color: #ffffff;
+
+  background: #ed0b70;
+
+  border-color: #ed0b70;
+
+  transform: translateY(-3px);
+
+  box-shadow:
+    0 10px 22px rgba(237, 11, 112, 0.17);
+}
+
+
+.exam-pdf-btn:hover .exam-pdf-icon {
+  color: #ed0b70;
+
+  background: #ffffff;
+}
+
+
+.exam-pdf-btn:hover .exam-pdf-text small,
+.exam-pdf-btn:hover .exam-pdf-text strong,
+.exam-pdf-btn:hover > svg {
+  color: #ffffff;
+}
+
+
+.exam-pdf-btn:hover > svg {
+  transform: translateX(4px);
+}
+/* =========================================================
+   STUDENT SUPPORT
+========================================================= */
+
+.student-support-section {
+  background: #ffffff;
+}
+
+.student-support-card {
+  padding: 22px;
+  display: grid;
+  grid-template-columns: 58px 1fr;
+  gap: 16px;
+  align-items: center;
+  background: linear-gradient(135deg, #ffffff, #fff0f7);
+  border: 1px solid #f1ccdc;
+  border-radius: 18px;
+}
+
+.student-support-icon {
   width: 58px;
   height: 58px;
   display: flex;
@@ -939,38 +1221,20 @@
   color: #ed0b70;
   background: #ffe2ef;
   border-radius: 13px;
+}
+
+.student-support-icon svg {
   font-size: 27px;
 }
 
-.info-card h3 {
-  margin: 0 0 5px;
-  color: #102a63;
-  font-size: 21px;
+.student-support-card .section-title {
+  margin-bottom: 8px;
 }
 
-.info-card h3 strong {
-  color: #ed0b70;
-}
-
-.info-card p {
-  margin: 0 0 10px;
-  font-size: 13px;
-  line-height: 1.55;
-}
-
-.info-card button {
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  border: 0;
-  padding: 9px 15px;
-  color: #ffffff;
-  background: #ed0b70;
-  border-radius: 21px;
-  cursor: pointer;
-  font-family: inherit;
-  font-size: 12px;
-  font-weight: 700;
+.student-support-card p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.6;
 }
 
 
@@ -1035,7 +1299,7 @@
 
 .result-content p {
   margin-bottom: 10px;
-  font-size: 13px;
+  font-size: 15px;
 }
 
 .result-card img {
@@ -1386,17 +1650,28 @@
   }
 
 
-  /* UTILITY */
+  /* PDF RESOURCE SECTIONS */
 
-  .utility-grid {
+  .pdf-resource-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .examination-pdf-buttons {
     grid-template-columns: 1fr;
   }
 
-  .info-card {
-    grid-template-columns: 48px 1fr;
+  .resource-card,
+  .examination-facility-card {
+    padding: 20px;
   }
 
-  .info-icon {
+  .student-support-card {
+    grid-template-columns: 48px 1fr;
+    gap: 12px;
+    padding: 18px;
+  }
+
+  .student-support-icon {
     width: 48px;
     height: 48px;
   }
@@ -1448,6 +1723,14 @@
 
 @media (max-width: 400px) {
 
+  .pdf-resource-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .exam-pdf-btn {
+    min-height: 66px;
+  }
+
   .academic-highlights {
     grid-template-columns: 1fr;
   }
@@ -1471,6 +1754,40 @@
 
   .course-info span {
     justify-content: flex-start;
+  }
+
+}
+
+
+
+@media (max-width: 650px) {
+
+  .examination-pdf-section {
+    grid-template-columns: 1fr;
+
+    gap: 12px;
+
+    margin-top: 18px;
+  }
+
+  .examination-facility-card {
+    padding: 20px;
+  }
+
+  .exam-pdf-btn {
+    min-height: 75px;
+
+    padding: 12px 14px;
+  }
+
+  .exam-pdf-icon {
+    width: 47px;
+    height: 47px;
+    flex-basis: 47px;
+  }
+
+  .exam-pdf-text strong {
+    font-size: 13px;
   }
 
 }

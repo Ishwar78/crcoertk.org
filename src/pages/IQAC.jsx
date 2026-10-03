@@ -107,23 +107,23 @@ const majorActivities = [
 const meetingMinutes = [
   {
     title: "IQAC 2019-2020",
-    file: "/iqac/IQAC-2019-2020.pdf",
+    file: "/MeetingMinutes/IQAC 2019-2020.pdf",
   },
   {
     title: "IQAC 2020-2021",
-    file: "/iqac/IQAC-2020-2021.pdf",
+    file: "/MeetingMinutes/IQAC 2020-2021.pdf",
   },
   {
     title: "IQAC 2021-2022",
-    file: "/iqac/IQAC-2021-2022.pdf",
+    file: "/MeetingMinutes/IQAC 2021-2022.pdf",
   },
   {
     title: "IQAC 2022-2023",
-    file: "/iqac/IQAC-2022-2023.pdf",
+    file: "/MeetingMinutes/IQAC 2022-2023.pdf",
   },
   {
     title: "IQAC 2023-2024",
-    file: "/iqac/IQAC-2023-2024.pdf",
+    file: "/MeetingMinutes/IQAC 2023-2024.pdf",
   },
 ];
 
@@ -131,23 +131,23 @@ const meetingMinutes = [
 const aqarReports = [
   {
     title: "AQAR 2023-2024",
-    file: "/iqac/AQAR-2023-2024.pdf",
+    file: "/AQARReports/AQAR 2023-2024.pdf",
   },
   {
     title: "AQAR 2022-2023",
-    file: "/iqac/AQAR-2022-2023.pdf",
+    file: "/AQARReports/AQAR 2022-2023.pdf",
   },
   {
     title: "AQAR 2021-2022",
-    file: "/iqac/AQAR-2021-2022.pdf",
+    file: "/AQARReports/AQAR 2021-2022.pdf",
   },
   {
     title: "AQAR 2020-2021",
-    file: "/iqac/AQAR-2020-2021.pdf",
+    file: "/AQARReports/AQAR 2020-2021.pdf",
   },
   {
     title: "AQAR 2019-2020",
-    file: "/iqac/AQAR-2019-2020.pdf",
+    file: "/AQARReports/AQAR 2019-2020.pdf",
   },
 ];
 
@@ -155,27 +155,27 @@ const aqarReports = [
 const aqarList = [
   {
     title: "AQAR 2018-19",
-    file: "/iqac/AQAR-2018-19.pdf",
+    file: "/AQARList/AQAR 2018-19.pdf",
   },
   {
     title: "AQAR 2019-20",
-    file: "/iqac/AQAR-2019-20.pdf",
+    file: "/AQARList/AQAR 2019-20.pdf",
   },
   {
     title: "AQAR 2020-21",
-    file: "/iqac/AQAR-2020-21.pdf",
+    file: "/AQARList/AQAR 2020-21.pdf",
   },
   {
     title: "AQAR 2021-22",
-    file: "/iqac/AQAR-2021-22.pdf",
+    file: "/AQARList/AQAR 2021-22.pdf",
   },
   {
     title: "AQAR 2022-23",
-    file: "/iqac/AQAR-2022-23.pdf",
+    file: "/AQARList/AQAR 2022-23.pdf",
   },
   {
     title: "AQAR 2023-24",
-    file: "/iqac/AQAR-2023-24.pdf",
+    file: "/AQARList/AQAR 2023-24.pdf",
   },
 ];
 

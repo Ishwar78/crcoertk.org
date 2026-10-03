@@ -34,18 +34,18 @@ const downloadFiles = [
     id: 1,
     title:
       "Seminar Brochure and Registration Form for One Day Interdisciplinary DGHE Sponsored National Seminar to be held on 14th October 2018",
-    file: "/downloads/seminar-brochure-registration-form.pdf",
+    file: "/Downloads/Seminar Brochure.pdf",
   },
   {
     id: 2,
     title: "Application Form of Head Clerk",
-    file: "/downloads/application-form-head-clerk.pdf",
+    file: "/Downloads/Application Form of Head Clerk.pdf",
   },
   {
     id: 3,
     title:
       "Application are invited for Regular Grant-in-aid Post of Head Clerk-1, Sweeper-1 (Gen) on the prescribed Proforma",
-    file: "/downloads/head-clerk-sweeper-application.pdf",
+    file: "/Downloads/Application are invited for Regular.pdf",
   },
 ];
 
@@ -145,19 +145,19 @@ const cocurricular = [
 const cocurricularFiles = [
   {
     title: "Cultural Activities",
-    file: "/downloads/cultural-activities.pdf",
+    file: "/Downloads/Cultural Activities.pdf",
   },
   {
     title: "Legal Literacy Cell Activities",
-    file: "/downloads/legal-literacy-cell-activities.pdf",
+    file: "/Downloads/Legal Literacy Cell Activities.pdf",
   },
   {
     title: "Placement Cell Activities",
-    file: "/downloads/placement-cell-activities.pdf",
+    file: "/Downloads/Placement Cell Activities.pdf",
   },
   {
     title: "Red Ribbon Club Activities",
-    file: "/downloads/red-ribbon-club-activities.pdf",
+    file: "/Downloads/Red Ribbon Club Activities.pdf",
   },
 ];
 

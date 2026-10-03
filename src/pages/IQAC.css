@@ -25,9 +25,9 @@
 }
 
 .iqac-page p {
-  font-size: 15px;
+  font-size: 16px;
   line-height: 1.75;
-  color: var(--iqac-muted);
+  color: black;
 }
 
 
@@ -454,7 +454,7 @@
 
   color: var(--iqac-navy);
 
-  font-size: 12px;
+  font-size: 14px;
 
   line-height: 1.55;
 
@@ -524,7 +524,7 @@
 .member-highlight small {
   color: var(--iqac-pink);
 
-  font-size: 8px;
+  font-size: 11px;
   font-weight: 800;
 
   letter-spacing: 0.5px;
@@ -541,7 +541,7 @@
 .member-highlight p {
   margin: 0;
 
-  font-size: 11px;
+  font-size: 13px;
 }
 
 .members-block {
@@ -620,22 +620,22 @@
 .member-item > span {
   color: #dca2bd;
 
-  font-size: 9px;
+  font-size: 13px;
   font-weight: 800;
 }
 
 .member-item > svg {
   color: var(--iqac-pink);
 
-  font-size: 13px;
+  font-size: 15px;
 }
 
 .member-item p {
   margin: 0;
 
-  color: #5d687b;
+  color: #090a0b;
 
-  font-size: 10px;
+  font-size: 15px;
 
   line-height: 1.5;
 }
@@ -719,9 +719,9 @@
 }
 
 .working-item span {
-  color: #5d687b;
+  color: #0a0b0c;
 
-  font-size: 11px;
+  font-size: 15px;
 
   line-height: 1.5;
 }
@@ -868,9 +868,9 @@
 .activity-card p {
   margin: 0;
 
-  color: #59667a;
+  color: #0d0f11;
 
-  font-size: 10px;
+  font-size: 15px;
 
   line-height: 1.55;
 }
@@ -1095,7 +1095,7 @@
 .iqac-pdf-info p {
   margin: 0 0 8px;
 
-  font-size: 10px;
+  font-size: 14px;
 
   line-height: 1.5;
 }
@@ -1122,7 +1122,7 @@
 
   text-decoration: none;
 
-  font-size: 9px;
+  font-size: 12px;
 
   font-weight: 700;
 

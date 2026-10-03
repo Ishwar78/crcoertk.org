@@ -87,7 +87,7 @@
 }
 
 .contact-card p {
-    font-size: 13px;
+    font-size: 15px;
     margin: 0;
     line-height: 1.55
 }
@@ -271,7 +271,7 @@
     padding: 13px;
     border-radius: 9px;
     margin: 7px 0;
-    font-size: 13px;
+    font-size: 15px;
     font-weight: 600
 }
 
@@ -322,4 +322,31 @@
     .section-title h2 {
         font-size: 24px
     }
+}
+
+
+
+.contact-form-message {
+    margin: 10px 0 14px;
+    padding: 12px 14px;
+    border-radius: 8px;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.contact-form-message.success {
+    background: #ecfdf5;
+    border: 1px solid #b7efd3;
+    color: #16734a;
+}
+
+.contact-form-message.error {
+    background: #fff1f1;
+    border: 1px solid #ffd0d0;
+    color: #c53030;
+}
+
+.message-box button:disabled {
+    opacity: .6;
+    cursor: not-allowed;
 }

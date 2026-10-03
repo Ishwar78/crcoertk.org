@@ -89,6 +89,7 @@ export default function Academics() {
         {/* =====================================================
             HERO
         ====================================================== */}
+
         <section className="academic-hero">
 
           <div className="academic-hero-content">
@@ -138,6 +139,7 @@ export default function Academics() {
         {/* =====================================================
             INTRODUCTION / QUOTE
         ====================================================== */}
+
         <section className="academic-section education-intro">
 
           <div className="education-quote">
@@ -147,6 +149,7 @@ export default function Academics() {
             </div>
 
             <div>
+
               <h2>
                 Education is the sovereign remedy for{" "}
                 <strong>all economic ills</strong>
@@ -179,6 +182,7 @@ export default function Academics() {
         {/* =====================================================
             ACADEMIC APPROACH
         ====================================================== */}
+
         <section className="academic-section institution-overview">
 
           <div className="section-title">
@@ -188,10 +192,13 @@ export default function Academics() {
             </div>
 
             <div>
+
               <h2>
                 Academic <strong>Overview</strong>
               </h2>
+
               <span></span>
+
             </div>
 
           </div>
@@ -257,6 +264,7 @@ export default function Academics() {
         {/* =====================================================
             ACADEMIC HIGHLIGHTS
         ====================================================== */}
+
         <section className="academic-section highlights-section">
 
           <div className="section-title">
@@ -266,10 +274,13 @@ export default function Academics() {
             </div>
 
             <div>
+
               <h2>
                 Academic <strong>Highlights</strong>
               </h2>
+
               <span></span>
+
             </div>
 
           </div>
@@ -278,6 +289,7 @@ export default function Academics() {
           <div className="academic-highlights">
 
             {academicHighlights.map((item) => (
+
               <article
                 className="highlight-card"
                 key={item.title}
@@ -296,6 +308,7 @@ export default function Academics() {
                 </p>
 
               </article>
+
             ))}
 
           </div>
@@ -306,6 +319,7 @@ export default function Academics() {
         {/* =====================================================
             INFRASTRUCTURE
         ====================================================== */}
+
         <section className="academic-section infrastructure-section">
 
           <div className="section-title">
@@ -315,10 +329,13 @@ export default function Academics() {
             </div>
 
             <div>
+
               <h2>
                 Learning & <strong>Infrastructure</strong>
               </h2>
+
               <span></span>
+
             </div>
 
           </div>
@@ -341,9 +358,11 @@ export default function Academics() {
                 professional personality.
               </p>
 
+
               <div className="infrastructure-list">
 
                 {academicFeatures.map((feature) => (
+
                   <article key={feature.title}>
 
                     <div className="feature-icon">
@@ -351,6 +370,7 @@ export default function Academics() {
                     </div>
 
                     <div>
+
                       <h3>
                         {feature.title}
                       </h3>
@@ -358,9 +378,11 @@ export default function Academics() {
                       <p>
                         {feature.text}
                       </p>
+
                     </div>
 
                   </article>
+
                 ))}
 
               </div>
@@ -376,6 +398,7 @@ export default function Academics() {
               />
 
               <div className="infra-overlay">
+
                 <strong>
                   Modern Learning Environment
                 </strong>
@@ -384,6 +407,7 @@ export default function Academics() {
                   Infrastructure designed to support quality teacher
                   education.
                 </span>
+
               </div>
 
             </div>
@@ -396,6 +420,7 @@ export default function Academics() {
         {/* =====================================================
             COURSES
         ====================================================== */}
+
         <section className="academic-section courses-section">
 
           <div className="section-title">
@@ -405,10 +430,13 @@ export default function Academics() {
             </div>
 
             <div>
+
               <h2>
                 Courses <strong>Offered</strong>
               </h2>
+
               <span></span>
+
             </div>
 
           </div>
@@ -417,6 +445,7 @@ export default function Academics() {
           <div className="course-grid">
 
             {/* B.Ed */}
+
             <article className="course-card">
 
               <div className="course-image">
@@ -450,6 +479,7 @@ export default function Academics() {
                   professional skills.
                 </p>
 
+
                 <div className="course-info">
 
                   <span>
@@ -469,6 +499,7 @@ export default function Academics() {
 
                 </div>
 
+
                 <Link
                   className="pink-btn"
                   to="/admission"
@@ -483,6 +514,7 @@ export default function Academics() {
 
 
             {/* M.Ed */}
+
             <article className="course-card">
 
               <div className="course-image">
@@ -515,6 +547,7 @@ export default function Academics() {
                   leadership and professional development.
                 </p>
 
+
                 <div className="course-info">
 
                   <span>
@@ -534,6 +567,7 @@ export default function Academics() {
 
                 </div>
 
+
                 <Link
                   className="pink-btn"
                   to="/admission"
@@ -552,494 +586,373 @@ export default function Academics() {
 
 
         {/* =====================================================
-            ADMISSION & FEES
+            TIME TABLE
         ====================================================== */}
-        <section className="academic-section admission-section">
+
+        <section className="academic-section resource-section timetable-section">
 
           <div className="section-title">
 
             <div className="title-icon">
-              <FiDollarSign />
+              <FiCalendar />
             </div>
 
             <div>
+
               <h2>
-                Admission & <strong>Fee Structure</strong>
-              </h2>
-              <span></span>
-            </div>
-
-          </div>
-
-
-          <div className="admission-grid">
-
-            <article className="admission-card">
-
-              <div className="admission-top">
-
-                <div className="admission-icon">
-                  <FiBookOpen />
-                </div>
-
-                <div>
-                  <small>
-                    Bachelor of Education
-                  </small>
-
-                  <h3>
-                    B.Ed.
-                  </h3>
-                </div>
-
-              </div>
-
-              <div className="admission-row">
-                <span>Seats</span>
-                <strong>100</strong>
-              </div>
-
-              <div className="admission-row">
-                <span>Admission</span>
-                <strong>Centralized</strong>
-              </div>
-
-              <div className="admission-row">
-                <span>Selection</span>
-                <strong>Merit Based</strong>
-              </div>
-
-              <div className="admission-row">
-                <span>Fee / Year</span>
-                <strong>₹19,200/-</strong>
-              </div>
-
-              <div className="admission-note">
-                Counseling conducted by M.D. University.
-              </div>
-
-            </article>
-
-
-            <article className="admission-card">
-
-              <div className="admission-top">
-
-                <div className="admission-icon">
-                  <FiAward />
-                </div>
-
-                <div>
-                  <small>
-                    Master of Education
-                  </small>
-
-                  <h3>
-                    M.Ed.
-                  </h3>
-                </div>
-
-              </div>
-
-              <div className="admission-row">
-                <span>Seats</span>
-                <strong>50</strong>
-              </div>
-
-              <div className="admission-row">
-                <span>Admission</span>
-                <strong>Centralized</strong>
-              </div>
-
-              <div className="admission-row">
-                <span>Selection</span>
-                <strong>B.Ed. Merit</strong>
-              </div>
-
-              <div className="admission-row">
-                <span>Fee / Year</span>
-                <strong>₹43,500/-</strong>
-              </div>
-
-              <div className="admission-note">
-                Admission is based on B.Ed. merit.
-              </div>
-
-            </article>
-
-          </div>
-
-        </section>
-
-
-        {/* =====================================================
-            ACADEMIC / EXAMINATION SYSTEM
-        ====================================================== */}
-        <section className="academic-section examination-section">
-
-          <div className="section-title">
-
-            <div className="title-icon">
-              <FiClipboard />
-            </div>
-
-            <div>
-              <h2>
-                Academic & <strong>Examination System</strong>
-              </h2>
-              <span></span>
-            </div>
-
-          </div>
-
-
-          <div className="examination-intro">
-
-            <p>
-              The institution is well-equipped with infrastructural
-              facilities and various competitive examinations have
-              also been conducted in the college campus.
-            </p>
-
-            <p>
-              The examinations, both theory and practical, are
-              conducted as per the guidelines issued by M.D. University,
-              Rohtak.
-            </p>
-
-            <p>
-              House examinations for both M.Ed. and B.Ed. courses are
-              also conducted by the college after completion of the
-              syllabus and remedial teaching sessions.
-            </p>
-
-          </div>
-
-
-          <div className="exam-process">
-
-            <div className="exam-process-card">
-
-              <div className="process-number">
-                01
-              </div>
-
-              <FiBookOpen />
-
-              <h3>
-                Theory Examination
-              </h3>
-
-              <p>
-                Theory examinations are conducted according to the
-                guidelines and schedule issued by the affiliating
-                university.
-              </p>
-
-            </div>
-
-
-            <div className="exam-process-card">
-
-              <div className="process-number">
-                02
-              </div>
-
-              <FiActivityIcon />
-
-              <h3>
-                Practical Examination
-              </h3>
-
-              <p>
-                Practical examinations are conducted according to
-                the schedule prescribed by M.D. University, Rohtak.
-              </p>
-
-            </div>
-
-
-            <div className="exam-process-card">
-
-              <div className="process-number">
-                03
-              </div>
-
-              <FiClipboard />
-
-              <h3>
-                House Examination
-              </h3>
-
-              <p>
-                College-level house examinations are conducted after
-                completion of the syllabus.
-              </p>
-
-            </div>
-
-
-            <div className="exam-process-card">
-
-              <div className="process-number">
-                04
-              </div>
-
-              <FiUserCheck />
-
-              <h3>
-                Remedial Teaching
-              </h3>
-
-              <p>
-                Remedial teaching sessions support students in
-                strengthening their academic preparation.
-              </p>
-
-            </div>
-
-          </div>
-
-        </section>
-
-
-        {/* =====================================================
-            INTERNAL ASSESSMENT
-        ====================================================== */}
-        <section className="academic-section assessment-section">
-
-          <div className="assessment-layout">
-
-            <div>
-
-              <div className="section-title">
-
-                <div className="title-icon">
-                  <FiCheckCircle />
-                </div>
-
-                <div>
-                  <h2>
-                    Internal <strong>Assessment</strong>
-                  </h2>
-                  <span></span>
-                </div>
-
-              </div>
-
-              <p>
-                The internal assessment of the students is done through
-                various modes to evaluate their academic understanding,
-                practical abilities, participation and overall
-                development.
-              </p>
-
-              <p>
-                Students are encouraged to participate actively in
-                academic activities and demonstrate their learning
-                through different assessment methods.
-              </p>
-
-            </div>
-
-
-            <div className="assessment-grid">
-
-              {assessmentModes.map((mode, index) => (
-                <div
-                  key={mode}
-                  className="assessment-item"
-                >
-
-                  <span>
-                    {String(index + 1).padStart(2, "0")}
-                  </span>
-
-                  <FiCheckCircle />
-
-                  <strong>
-                    {mode}
-                  </strong>
-
-                </div>
-              ))}
-
-            </div>
-
-          </div>
-
-        </section>
-
-
-        {/* =====================================================
-            M.ED DETAILS
-        ====================================================== */}
-        <section className="academic-section exam-details">
-
-          <article className="exam-detail-card">
-
-            <div className="exam-detail-icon">
-              <FiAward />
-            </div>
-
-            <div>
-
-              <div className="section-title left">
-
-                <div>
-                  <h2>
-                    M.Ed. <strong>Examination</strong>
-                  </h2>
-                  <span></span>
-                </div>
-
-              </div>
-
-              <p>
-                The M.Ed course has a Semester System and the final
-                theory examinations are conducted during the months
-                April/May and Dec/Jan tentatively.
-              </p>
-
-              <p>
-                The Practical examinations are conducted as per the
-                schedule given by M.D. University, Rohtak.
-              </p>
-
-              <div className="exam-tags">
-
-                <span>
-                  <FiCalendar />
-                  Semester System
-                </span>
-
-                <span>
-                  <FiFileText />
-                  Theory Examination
-                </span>
-
-                <span>
-                  <FiCheckCircle />
-                  Practical Examination
-                </span>
-
-              </div>
-
-            </div>
-
-          </article>
-
-
-          <article className="exam-detail-card">
-
-            <div className="exam-detail-icon">
-              <FiBookOpen />
-            </div>
-
-            <div>
-
-              <div className="section-title left">
-
-                <div>
-                  <h2>
-                    B.Ed. <strong>Examination</strong>
-                  </h2>
-                  <span></span>
-                </div>
-
-              </div>
-
-              <p>
-                The final theory examinations are conducted annually
-                in the month of May/June.
-              </p>
-
-              <p>
-                The Practical Examinations are conducted as per the
-                schedule given by the affiliating University.
-              </p>
-
-              <div className="exam-tags">
-
-                <span>
-                  <FiCalendar />
-                  Annual Examination
-                </span>
-
-                <span>
-                  <FiFileText />
-                  May / June
-                </span>
-
-                <span>
-                  <FiCheckCircle />
-                  Practical Examination
-                </span>
-
-              </div>
-
-            </div>
-
-          </article>
-
-        </section>
-
-
-        {/* =====================================================
-            UTILITY CARDS
-        ====================================================== */}
-        <section className="academic-section utility-grid">
-
-          <InfoCard
-            icon={<FiCalendar />}
-            title={
-              <>
                 Time <strong>Table</strong>
-              </>
-            }
-            text="View the class time table for B.Ed. and M.Ed. including theory and practical sessions."
-            action="View Time Table"
-          />
+              </h2>
 
-          <InfoCard
-            icon={<FiCalendar />}
-            title={
-              <>
-                Academic <strong>Calendar</strong>
-              </>
-            }
-            text="Stay updated with important academic events, holidays, examinations and institutional activities."
-            action="View Calendar"
-          />
+              <span></span>
 
-          <InfoCard
-            icon={<FiFileText />}
-            title={
-              <>
-                Examination <strong>Facility</strong>
-              </>
-            }
-            text="Student-friendly examination support with transparent processes and academic guidance."
-            action="Know More"
-          />
+            </div>
 
-          <InfoCard
-            icon={<FiUsers />}
-            title={
-              <>
-                Student <strong>Support</strong>
-              </>
-            }
-            text="Academic guidance and support to help students progress confidently throughout their programme."
-            action="Know More"
-          />
+          </div>
+
+
+          <div className="resource-card">
+
+            <p>
+              View the available B.Ed. time tables. Select any button below
+              to open the corresponding PDF in a new tab.
+            </p>
+
+
+            <div className="pdf-resource-grid">
+
+              <a
+                className="pdf-resource-btn"
+                href="/pdfs/time-table-bed-1st-year.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FiFileText />
+                <span>
+                  Time Table B.Ed 1st Year
+                </span>
+                <FiArrowRight />
+              </a>
+
+
+              <a
+                className="pdf-resource-btn"
+                href="/pdfs/time-table-bed-2nd-year.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FiFileText />
+                <span>
+                  Time Table B.Ed 2nd Year
+                </span>
+                <FiArrowRight />
+              </a>
+
+
+              <a
+                className="pdf-resource-btn"
+                href="/pdfs/time-table-bed-1st-and-2nd-year.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FiFileText />
+                <span>
+                  Time Table B.Ed 1st and 2nd Year
+                </span>
+                <FiArrowRight />
+              </a>
+
+            </div>
+
+          </div>
 
         </section>
+
+
+        {/* =====================================================
+            ACADEMIC CALENDAR
+        ====================================================== */}
+
+        <section className="academic-section resource-section calendar-section">
+
+          <div className="section-title">
+
+            <div className="title-icon">
+              <FiCalendar />
+            </div>
+
+            <div>
+
+              <h2>
+                Academic <strong>Calendar</strong>
+              </h2>
+
+              <span></span>
+
+            </div>
+
+          </div>
+
+
+          <div className="resource-card">
+
+            <p>
+              Academic calendars for different sessions are available below.
+              Select any button to open the PDF in a new tab.
+            </p>
+
+
+            <div className="pdf-resource-grid calendar-grid">
+
+              <a
+                className="pdf-resource-btn"
+                href="/pdfs/academic-calendar-2023-24.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FiFileText />
+                <span>
+                  Academic Calendar 2023-24
+                </span>
+                <FiArrowRight />
+              </a>
+
+
+              <a
+                className="pdf-resource-btn"
+                href="/pdfs/academic-calendar-2023-24-bed-med.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FiFileText />
+                <span>
+                  Academic Calender for Session 2023-2024 for B.Ed and M.Ed Course
+                </span>
+                <FiArrowRight />
+              </a>
+
+
+              <a
+                className="pdf-resource-btn"
+                href="/pdfs/academic-calendar-2022-23.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FiFileText />
+                <span>
+                  Academic Calendar 2022-23
+                </span>
+                <FiArrowRight />
+              </a>
+
+
+              <a
+                className="pdf-resource-btn"
+                href="/pdfs/academic-calendar-2021-22.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FiFileText />
+                <span>
+                  Academic Calendar 2021-22
+                </span>
+                <FiArrowRight />
+              </a>
+
+
+              <a
+                className="pdf-resource-btn"
+                href="/pdfs/academic-calendar-2020-21.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FiFileText />
+                <span>
+                  Academic Calendar 2020-21
+                </span>
+                <FiArrowRight />
+              </a>
+
+
+              <a
+                className="pdf-resource-btn"
+                href="/pdfs/academic-calendar-2019-20.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FiFileText />
+                <span>
+                  Academic Calendar 2019-20
+                </span>
+                <FiArrowRight />
+              </a>
+
+
+              <a
+                className="pdf-resource-btn"
+                href="/pdfs/academic-calendar-2018-19.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FiFileText />
+                <span>
+                  Academic Calendar 2018-19
+                </span>
+                <FiArrowRight />
+              </a>
+
+            </div>
+
+          </div>
+
+        </section>
+
+
+        {/* =====================================================
+            EXAMINATION FACILITY
+        ====================================================== */}
+
+    {/* =====================================================
+    EXAMINATION FACILITY
+====================================================== */}
+
+<section className="academic-section examination-facility-section">
+
+  <div className="section-title">
+
+    <div className="title-icon">
+      <FiClipboard />
+    </div>
+
+    <div>
+
+      <h2>
+        Examination <strong>Facility</strong>
+      </h2>
+
+      <span></span>
+
+    </div>
+
+  </div>
+
+
+  {/* Examination Content */}
+
+  <div className="examination-facility-card">
+
+    <div className="examination-facility-content">
+
+      <p>
+        The institution is well-equipped with the infrastructural
+        facilities and various competitive examinations have also
+        been conducted in the college campus. The examinations
+        (theory &amp; practical) are conducted as per the guidelines
+        issued by M.D. University, Rohtak. The House examinations
+        for both M. Ed and B. Ed courses are also conducted by the
+        college after the completion of the syllabus and remedial
+        teaching sessions. The internal assessment of the students
+        is done through various modes like seminars, assignments,
+        presentations, home assignments, situational tests etc.
+      </p>
+
+
+      <p>
+        <strong>M.Ed:</strong> The M.Ed course has a Semester System
+        and the final theory examinations are conducted during the
+        months April/May and Dec/Jan tentatively. The Practical
+        examinations are conducted per the schedule given by
+        M.D. University, Rohtak.
+      </p>
+
+
+      <p>
+        <strong>B.Ed:</strong> The final theory examinations are
+        conducted annually in the month of May/June and the
+        Practical Examinations are conducted as per the schedule
+        given by the affiliating University.
+      </p>
+
+    </div>
+
+  </div>
+
+
+  {/* PDF BUTTONS - SEPARATE SECTION */}
+
+  <div className="examination-pdf-section">
+
+    <a
+      className="exam-pdf-btn"
+      href="/pdfs/student-satisfaction-survey.pdf"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+
+      <span className="exam-pdf-icon">
+        <FiFileText />
+      </span>
+
+      <span className="exam-pdf-text">
+
+        <small>
+          PDF DOCUMENT
+        </small>
+
+        <strong>
+          Student Satisfaction Survey
+        </strong>
+
+      </span>
+
+      <FiArrowRight />
+
+    </a>
+
+
+    <a
+      className="exam-pdf-btn"
+      href="/pdfs/result.pdf"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+
+      <span className="exam-pdf-icon">
+        <FiBarChart2 />
+      </span>
+
+      <span className="exam-pdf-text">
+
+        <small>
+          PDF DOCUMENT
+        </small>
+
+        <strong>
+          Result
+        </strong>
+
+      </span>
+
+      <FiArrowRight />
+
+    </a>
+
+  </div>
+
+</section>
+
+
+      
+
+
+      
+
+       
 
 
         {/* =====================================================
             RESULT
         ====================================================== */}
+
         <section className="academic-section result-section">
 
           <article className="result-card">
@@ -1047,6 +960,7 @@ export default function Academics() {
             <div className="result-icon">
               <FiBarChart2 />
             </div>
+
 
             <div className="result-content">
 
@@ -1070,6 +984,7 @@ export default function Academics() {
               </Link>
 
             </div>
+
 
             <img
               src="/images/exam.jpg"
@@ -1101,6 +1016,7 @@ export default function Academics() {
         {/* =====================================================
             FINAL CTA
         ====================================================== */}
+
         <section className="academic-cta">
 
           <div className="academic-cta-icon">
@@ -1120,6 +1036,7 @@ export default function Academics() {
 
           </div>
 
+
           <Link
             to="/admission"
             className="cta-btn"
@@ -1133,6 +1050,7 @@ export default function Academics() {
       </main>
 
       <Footer />
+
     </>
   );
 }
@@ -1148,43 +1066,4 @@ function FiStarIcon() {
 
 function FiActivityIcon() {
   return <FiBarChart2 />;
-}
-
-
-/* =========================================================
-   INFO CARD
-========================================================= */
-
-function InfoCard({
-  icon,
-  title,
-  text,
-  action,
-}) {
-  return (
-    <article className="info-card">
-
-      <div className="info-icon">
-        {icon}
-      </div>
-
-      <div>
-
-        <h3>
-          {title}
-        </h3>
-
-        <p>
-          {text}
-        </p>
-
-        <button type="button">
-          {action}
-          <FiArrowRight />
-        </button>
-
-      </div>
-
-    </article>
-  );
 }
