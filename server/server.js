@@ -80,6 +80,8 @@ const contactRoutes = require("./routes/contact.routes");
 const facultyRoutes = require("./routes/faculty.routes");
 const aboutRoutes = require("./routes/about.routes");
 const homeRoutes = require("./routes/home.routes");
+const facilitiesRoutes = require("./routes/facilities.routes");
+
 
 app.use(
   "/api/admin",
@@ -110,6 +112,10 @@ app.use(
   homeRoutes
 );
 
+app.use(
+  "/api/facilities",
+  facilitiesRoutes
+);
 
 
 /*

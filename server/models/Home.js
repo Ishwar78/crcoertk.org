@@ -97,7 +97,9 @@ const homeSchema = new mongoose.Schema(
             title: String,
             date: String,
             type: { type: String, default: "Notice" },
+            linkType: { type: String, default: "link" }, // 'link' | 'pdf' | 'image' | 'external'
             link: { type: String, default: "/news" },
+            fileUrl: { type: String, default: "" },
           },
         ],
         default: [

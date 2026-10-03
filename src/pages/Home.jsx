@@ -201,6 +201,59 @@ const renderIcon = (name) => {
   }
 };
 
+const resolveNewsAction = (item) => {
+  if (!item) return { url: "/news", isExternal: false, label: "View Details" };
+
+  // 1. Explicit PDF upload
+  if (item.linkType === "pdf" && item.fileUrl) {
+    return {
+      url: getImageUrl(item.fileUrl),
+      isExternal: true,
+      label: "View PDF",
+    };
+  }
+
+  // 2. Explicit Image upload
+  if (item.linkType === "image" && item.fileUrl) {
+    return {
+      url: getImageUrl(item.fileUrl),
+      isExternal: true,
+      label: "View Notice",
+    };
+  }
+
+  // 3. Auto-detect if fileUrl exists
+  if (item.fileUrl) {
+    const isPdf = item.fileUrl.toLowerCase().endsWith(".pdf");
+    return {
+      url: getImageUrl(item.fileUrl),
+      isExternal: true,
+      label: isPdf ? "View PDF" : "View Notice",
+    };
+  }
+
+  // 4. External URL
+  const link = (item.link || "").trim();
+  if (
+    item.linkType === "external" ||
+    link.startsWith("http://") ||
+    link.startsWith("https://")
+  ) {
+    return {
+      url: link || "#",
+      isExternal: true,
+      label: "Open Link",
+    };
+  }
+
+  // 5. Internal route
+  return {
+    url: link || "/news",
+    isExternal: false,
+    label: "View Details",
+  };
+};
+
 export default function Home() {
   const [data, setData] = useState(defaultHomeData);
 
@@ -343,36 +396,68 @@ export default function Home() {
               {/* NEWS TICKER */}
               <div className="news-ticker">
                 <div className="news-ticker-track">
-                  {tickerItems.map((item, index) => (
-                    <article
-                      className="news-item"
-                      key={`${item.title}-${index}`}
-                    >
-                      <div className="news-date-box">
-                        <FiCalendar />
-                      </div>
+                  {tickerItems.map((item, index) => {
+                    const action = resolveNewsAction(item);
 
-                      <div className="news-item-content">
-                        <div className="news-item-meta">
-                          <span>{item.date}</span>
-
-                          <small>
-                            <FiBell />
-                            {item.type || "Notice"}
-                          </small>
+                    return (
+                      <article
+                        className="news-item"
+                        key={`${item.title}-${index}`}
+                      >
+                        <div className="news-date-box">
+                          <FiCalendar />
                         </div>
 
-                        <h3>{item.title}</h3>
+                        <div className="news-item-content">
+                          <div className="news-item-meta">
+                            <span>{item.date}</span>
 
-                        <Link to={item.link || "/news"}>
-                          View Details
-                          <FiChevronRight />
-                        </Link>
-                      </div>
+                            <small>
+                              <FiBell />
+                              {item.type || "Notice"}
+                            </small>
+                          </div>
 
-                      <span className="new-badge">NEW</span>
-                    </article>
-                  ))}
+                          {action.isExternal ? (
+                            <a
+                              href={action.url}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="news-title-link"
+                            >
+                              <h3>{item.title}</h3>
+                            </a>
+                          ) : (
+                            <Link
+                              to={action.url}
+                              className="news-title-link"
+                            >
+                              <h3>{item.title}</h3>
+                            </Link>
+                          )}
+
+                          {action.isExternal ? (
+                            <a
+                              href={action.url}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="news-action-link"
+                            >
+                              {action.label}
+                              <FiChevronRight />
+                            </a>
+                          ) : (
+                            <Link to={action.url} className="news-action-link">
+                              {action.label}
+                              <FiChevronRight />
+                            </Link>
+                          )}
+                        </div>
+
+                        <span className="new-badge">NEW</span>
+                      </article>
+                    );
+                  })}
                 </div>
               </div>
 

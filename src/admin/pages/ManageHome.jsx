@@ -58,37 +58,49 @@ const initialData = {
         title: "Reschedule of Election",
         date: "Latest Update",
         type: "Notice",
+        linkType: "link",
         link: "/news",
+        fileUrl: "",
       },
       {
         title: "List of 105 Collegium Members",
         date: "Important Notice",
         type: "Notice",
+        linkType: "link",
         link: "/news",
+        fileUrl: "",
       },
       {
         title: "Election of the Governing Body of the College",
         date: "College Update",
         type: "Event",
+        linkType: "link",
         link: "/news",
+        fileUrl: "",
       },
       {
         title: "Admission Open for B.Ed. & M.Ed.",
         date: "Admissions",
         type: "Admission",
+        linkType: "link",
         link: "/admission",
+        fileUrl: "",
       },
       {
         title: "Important Notice for All Students",
         date: "Student Notice",
         type: "Notice",
+        linkType: "link",
         link: "/news",
+        fileUrl: "",
       },
       {
         title: "M.D. University Examination Updates",
         date: "Examination",
         type: "Academic",
+        linkType: "link",
         link: "/news",
+        fileUrl: "",
       },
     ],
   },
@@ -375,7 +387,7 @@ const ManageHome = () => {
         </div>
 
         <div className="home-header-actions">
-          <button
+          {/* <button
             type="button"
             className="home-reset-btn"
             onClick={handleResetDefaults}
@@ -383,7 +395,7 @@ const ManageHome = () => {
           >
             <FiRotateCcw />
             Reset Defaults
-          </button>
+          </button> */}
 
           <button
             type="button"
@@ -730,7 +742,9 @@ const ManageHome = () => {
                             title: "New College Notice",
                             date: "Latest Update",
                             type: "Notice",
+                            linkType: "link",
                             link: "/news",
+                            fileUrl: "",
                           },
                         ];
                         updateSection("newsEvents", "items", updated);
@@ -764,6 +778,7 @@ const ManageHome = () => {
                           <span>Notice Title</span>
                           <input
                             type="text"
+                            placeholder="Enter notice headline"
                             value={item.title || ""}
                             onChange={(e) => {
                               const updated = [...data.newsEvents.items];
@@ -777,6 +792,7 @@ const ManageHome = () => {
                           <span>Date / Sub-text</span>
                           <input
                             type="text"
+                            placeholder="e.g. Latest Update or 15 Oct 2026"
                             value={item.date || ""}
                             onChange={(e) => {
                               const updated = [...data.newsEvents.items];
@@ -804,17 +820,142 @@ const ManageHome = () => {
                         </label>
 
                         <label className="home-field full">
-                          <span>Link Destination</span>
-                          <input
-                            type="text"
-                            value={item.link || "/news"}
+                          <span>Click Action / Content Type</span>
+                          <select
+                            value={item.linkType || "link"}
                             onChange={(e) => {
                               const updated = [...data.newsEvents.items];
-                              updated[idx] = { ...updated[idx], link: e.target.value };
+                              updated[idx] = { ...updated[idx], linkType: e.target.value };
                               updateSection("newsEvents", "items", updated);
                             }}
-                          />
+                          >
+                            <option value="link">Website Page Link (Internal)</option>
+                            <option value="pdf">Upload &amp; Attach PDF Document</option>
+                            <option value="image">Upload &amp; Attach Notice Image</option>
+                            <option value="external">External Website URL (Opens in New Tab)</option>
+                          </select>
                         </label>
+
+                        {/* Internal Website Route */}
+                        {(!item.linkType || item.linkType === "link") && (
+                          <label className="home-field full">
+                            <span>Website Page Route</span>
+                            <input
+                              type="text"
+                              placeholder="e.g. /admission or /news or /academics"
+                              value={item.link || "/news"}
+                              onChange={(e) => {
+                                const updated = [...data.newsEvents.items];
+                                updated[idx] = { ...updated[idx], link: e.target.value };
+                                updateSection("newsEvents", "items", updated);
+                              }}
+                            />
+                          </label>
+                        )}
+
+                        {/* External Link */}
+                        {item.linkType === "external" && (
+                          <label className="home-field full">
+                            <span>External Website URL</span>
+                            <input
+                              type="url"
+                              placeholder="https://example.com"
+                              value={item.link || ""}
+                              onChange={(e) => {
+                                const updated = [...data.newsEvents.items];
+                                updated[idx] = { ...updated[idx], link: e.target.value };
+                                updateSection("newsEvents", "items", updated);
+                              }}
+                            />
+                          </label>
+                        )}
+
+                        {/* PDF Upload */}
+                        {item.linkType === "pdf" && (
+                          <div className="notice-attachment-box">
+                            <span style={{ fontSize: "12px", fontWeight: 700, color: "#102d68", display: "block", marginBottom: "8px" }}>
+                              Attach PDF Document (Will open in new tab when clicked)
+                            </span>
+                            <div className="notice-attachment-inner">
+                              <label className="home-image-btn">
+                                <FiUpload /> Choose PDF File
+                                <input
+                                  type="file"
+                                  accept="application/pdf"
+                                  onChange={(e) => handleFileChange(`newsItemFile_${idx}`, e)}
+                                />
+                              </label>
+
+                              <div className="notice-file-info">
+                                {imageFiles[`newsItemFile_${idx}`] ? (
+                                  <span className="notice-file-badge">
+                                    ✓ New PDF: {imageFiles[`newsItemFile_${idx}`].name} (Save to publish)
+                                  </span>
+                                ) : item.fileUrl ? (
+                                  <span>
+                                    Attached PDF:{" "}
+                                    <a
+                                      href={getImageUrl(item.fileUrl)}
+                                      target="_blank"
+                                      rel="noopener noreferrer"
+                                    >
+                                      View Current PDF ↗
+                                    </a>
+                                  </span>
+                                ) : (
+                                  <span style={{ color: "#8a909c" }}>No PDF file attached yet.</span>
+                                )}
+                              </div>
+                            </div>
+                          </div>
+                        )}
+
+                        {/* Image Upload */}
+                        {item.linkType === "image" && (
+                          <div className="notice-attachment-box">
+                            <span style={{ fontSize: "12px", fontWeight: 700, color: "#102d68", display: "block", marginBottom: "8px" }}>
+                              Attach Notice Poster / Image (Will open in new tab when clicked)
+                            </span>
+                            <div className="notice-attachment-inner">
+                              <div className="notice-file-preview">
+                                {imagePreviews[`newsItemFile_${idx}`] ? (
+                                  <img src={imagePreviews[`newsItemFile_${idx}`]} alt="Notice Preview" />
+                                ) : item.fileUrl ? (
+                                  <img src={getImageUrl(item.fileUrl)} alt="Notice Preview" />
+                                ) : (
+                                  <FiImage />
+                                )}
+                              </div>
+
+                              <label className="home-image-btn">
+                                <FiUpload /> Choose Notice Image
+                                <input
+                                  type="file"
+                                  accept="image/*"
+                                  onChange={(e) => handleFileChange(`newsItemFile_${idx}`, e)}
+                                />
+                              </label>
+
+                              <div className="notice-file-info">
+                                {imageFiles[`newsItemFile_${idx}`] ? (
+                                  <span className="notice-file-badge">
+                                    ✓ New Image: {imageFiles[`newsItemFile_${idx}`].name}
+                                  </span>
+                                ) : item.fileUrl ? (
+                                  <a
+                                    href={getImageUrl(item.fileUrl)}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                  >
+                                    View Full Image ↗
+                                  </a>
+                                ) : (
+                                  <span style={{ color: "#8a909c" }}>No image file attached yet.</span>
+                                )}
+                              </div>
+                            </div>
+                          </div>
+                        )}
                       </div>
                     </div>
                   ))}

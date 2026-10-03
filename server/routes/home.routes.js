@@ -37,11 +37,12 @@ const fileFilter = (req, file, cb) => {
     "image/png",
     "image/webp",
     "image/svg+xml",
+    "application/pdf",
   ];
   if (allowed.includes(file.mimetype)) {
     cb(null, true);
   } else {
-    cb(new Error("Only JPG, PNG, WEBP and SVG images are allowed"));
+    cb(new Error("Only JPG, PNG, WEBP, SVG and PDF files are allowed"));
   }
 };
 
@@ -177,9 +178,33 @@ router.put("/", protectAdmin, upload.any(), async (req, res) => {
         } else if (file.fieldname === "newGalleryImage") {
           if (!home.gallery.images) home.gallery.images = [];
           home.gallery.images.push(filePath);
+        } else if (file.fieldname.startsWith("newsItemFile_")) {
+          const index = parseInt(file.fieldname.replace("newsItemFile_", ""), 10);
+          if (
+            home.newsEvents &&
+            home.newsEvents.items &&
+            home.newsEvents.items[index]
+          ) {
+            home.newsEvents.items[index].fileUrl = filePath;
+            if (
+              !home.newsEvents.items[index].linkType ||
+              home.newsEvents.items[index].linkType === "link"
+            ) {
+              home.newsEvents.items[index].linkType =
+                file.mimetype === "application/pdf" ? "pdf" : "image";
+            }
+          }
         }
       });
     }
+
+    home.markModified("hero");
+    home.markModified("newsEvents");
+    home.markModified("programmes");
+    home.markModified("about");
+    home.markModified("principal");
+    home.markModified("whyChoose");
+    home.markModified("gallery");
 
     await home.save();
 

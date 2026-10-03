@@ -622,7 +622,7 @@ export default function Academics() {
 
               <a
                 className="pdf-resource-btn"
-                href="/pdfs/time-table-bed-1st-year.pdf"
+                href="/TimeTable/Time Table B.Ed 1st Year.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -636,7 +636,7 @@ export default function Academics() {
 
               <a
                 className="pdf-resource-btn"
-                href="/pdfs/time-table-bed-2nd-year.pdf"
+                href="/TimeTable/Time Table B.Ed 2nd Year.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -650,7 +650,7 @@ export default function Academics() {
 
               <a
                 className="pdf-resource-btn"
-                href="/pdfs/time-table-bed-1st-and-2nd-year.pdf"
+                href="/TimeTable/Time Table B.Ed 1st and 2nd Year.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -705,7 +705,7 @@ export default function Academics() {
 
               <a
                 className="pdf-resource-btn"
-                href="/pdfs/academic-calendar-2023-24.pdf"
+                href="/AcademicCalendar/Academic Calendar 2023-24.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -719,7 +719,7 @@ export default function Academics() {
 
               <a
                 className="pdf-resource-btn"
-                href="/pdfs/academic-calendar-2023-24-bed-med.pdf"
+                href="/AcademicCalendar/Academic Calendar for Session 2023-2024 for B.Ed and M.Ed Course.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -733,7 +733,7 @@ export default function Academics() {
 
               <a
                 className="pdf-resource-btn"
-                href="/pdfs/academic-calendar-2022-23.pdf"
+                href="/AcademicCalendar/Academic Calendar 2022-23.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -747,7 +747,7 @@ export default function Academics() {
 
               <a
                 className="pdf-resource-btn"
-                href="/pdfs/academic-calendar-2021-22.pdf"
+                href="/AcademicCalendar/Academic Calendar 2021-22.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -761,7 +761,7 @@ export default function Academics() {
 
               <a
                 className="pdf-resource-btn"
-                href="/pdfs/academic-calendar-2020-21.pdf"
+                href="/AcademicCalendar/Academic Calendar 2020-21.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -775,7 +775,7 @@ export default function Academics() {
 
               <a
                 className="pdf-resource-btn"
-                href="/pdfs/academic-calendar-2019-20.pdf"
+                href="/AcademicCalendar/Academic Calendar 2019-20.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -789,7 +789,7 @@ export default function Academics() {
 
               <a
                 className="pdf-resource-btn"
-                href="/pdfs/academic-calendar-2018-19.pdf"
+                href="/AcademicCalendar/Academic Calendar 2018-19.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -883,7 +883,7 @@ export default function Academics() {
 
     <a
       className="exam-pdf-btn"
-      href="/pdfs/student-satisfaction-survey.pdf"
+      href="/studentsurvey.pdf"
       target="_blank"
       rel="noopener noreferrer"
     >
@@ -911,7 +911,7 @@ export default function Academics() {
 
     <a
       className="exam-pdf-btn"
-      href="/pdfs/result.pdf"
+      href="/Result.pdf"
       target="_blank"
       rel="noopener noreferrer"
     >
@@ -939,14 +939,6 @@ export default function Academics() {
   </div>
 
 </section>
-
-
-      
-
-
-      
-
-       
 
 
         {/* =====================================================

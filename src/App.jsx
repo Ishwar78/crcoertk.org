@@ -37,9 +37,16 @@ import ManageDownloads from "./admin/pages/ManageDownloads";
 import ManageStudentSupport from "./admin/pages/ManageStudentSupport";
 import ManageContact from "./admin/pages/ManageContact";
 
+
+
+import ScrollToTop from "./components/ScrollToTop";
 export default function App() {
   return (
+    <>
+    <ScrollToTop />
     <Routes>
+
+         
       <Route path="/" element={<Home />} />
       <Route path="/about" element={<About />} />
       <Route path="/academics" element={<Academics />} />
@@ -144,5 +151,6 @@ export default function App() {
 
 
     </Routes>
+    </>
   );
 }

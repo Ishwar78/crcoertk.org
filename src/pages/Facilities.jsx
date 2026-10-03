@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   FiMonitor,
   FiBookOpen,
@@ -22,7 +22,7 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import "./Facilities.css";
 
-const facilityData = {
+const defaultFacilityData = {
   /* =========================================================
      CLASSROOM
   ========================================================= */
@@ -518,12 +518,136 @@ const facilityData = {
 };
 
 
+const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5025";
+
+const iconMap = {
+  FiHome,
+  FiMonitor,
+  FiBookOpen,
+  FiSettings,
+  FiActivity,
+  FiHeart,
+  FiUsers,
+  FiAward,
+  FiChevronDown,
+  FiChevronUp,
+  FiWifi,
+  FiCamera,
+  FiPrinter,
+  FiMic,
+  FiCpu,
+};
+
+const resolveIcon = (icon) => {
+  if (!icon) return FiSettings;
+  if (typeof icon === "function" || typeof icon === "object") return icon;
+  return iconMap[icon] || FiSettings;
+};
+
+const getImageUrl = (src) => {
+  if (!src) return "";
+  if (
+    src.startsWith("blob:") ||
+    src.startsWith("http://") ||
+    src.startsWith("https://")
+  ) {
+    return src;
+  }
+  const clean = src.startsWith("/") ? src : `/${src}`;
+  if (clean.startsWith("/uploads/")) {
+    const apiBase = (import.meta.env.VITE_API_URL || "http://localhost:5025").replace(/\/api\/?$/, "");
+    return `${apiBase}${clean}`;
+  }
+  if (!clean.startsWith("/images/") && !clean.startsWith("/uploads/")) {
+    return `/images${clean}`;
+  }
+  return clean;
+};
+
+const formatFacilityData = (backendFacilities) => {
+  if (
+    !backendFacilities ||
+    !Array.isArray(backendFacilities) ||
+    backendFacilities.length === 0
+  ) {
+    return defaultFacilityData;
+  }
+  const formatted = {};
+  backendFacilities.forEach((item) => {
+    const key = item.key || item.name;
+    const itemCopy = {
+      ...item,
+      icon: resolveIcon(item.icon),
+      image: item.image,
+    };
+    if (item.otherFacilities && Array.isArray(item.otherFacilities)) {
+      itemCopy.otherFacilities = item.otherFacilities.map((of) => ({
+        ...of,
+        icon: resolveIcon(of.icon),
+      }));
+    }
+    if (item.labs && Array.isArray(item.labs)) {
+      const labsObj = {};
+      item.labs.forEach((lab) => {
+        labsObj[lab.name] = {
+          ...lab,
+          icon: resolveIcon(lab.icon),
+        };
+      });
+      itemCopy.labs = labsObj;
+    } else if (item.labs && typeof item.labs === "object") {
+      const labsObj = {};
+      Object.entries(item.labs).forEach(([labName, lab]) => {
+        labsObj[labName] = {
+          ...lab,
+          icon: resolveIcon(lab.icon),
+        };
+      });
+      itemCopy.labs = labsObj;
+    }
+    formatted[key] = itemCopy;
+  });
+  return formatted;
+};
+
 export default function Facilities() {
   const [active, setActive] = useState("Classroom");
   const [activeLab, setActiveLab] = useState("ICT Centre");
+  const [facilities, setFacilities] = useState(defaultFacilityData);
+  const [heroData, setHeroData] = useState({
+    badge: "Campus Infrastructure",
+    title: "Our Facilities",
+    titleHighlight: "Facilities",
+    subtitle: "Modern Infrastructure for Holistic Development",
+    description:
+      "We provide supportive, inclusive and enriching facilities to strengthen learning, practical exposure and student life.",
+    image: "/images/campus-about.jpg",
+    cardTitle: "Learning Beyond Classrooms",
+    cardSubtitle: "Infrastructure • Resources • Development",
+  });
 
-  const current = facilityData[active];
-  const Icon = current.icon;
+  useEffect(() => {
+    const fetchFacilities = async () => {
+      try {
+        const res = await fetch(`${API_URL}/api/facilities`);
+        const result = await res.json();
+        if (res.ok && result.success && result.data) {
+          if (result.data.hero) {
+            setHeroData((prev) => ({ ...prev, ...result.data.hero }));
+          }
+          if (result.data.facilities && result.data.facilities.length > 0) {
+            setFacilities(formatFacilityData(result.data.facilities));
+          }
+        }
+      } catch (err) {
+        console.error("Failed to load facilities data from API:", err);
+      }
+    };
+    fetchFacilities();
+  }, []);
+
+  const current = facilities[active] || facilities["Classroom"] || Object.values(facilities)[0];
+  const Icon = current?.icon || FiHome;
 
   const changeFacility = (name) => {
     setActive(name);
@@ -562,22 +686,31 @@ export default function Facilities() {
 
             <div className="facilities-badge">
               <FiAward />
-              <span>Campus Infrastructure</span>
+              <span>{heroData.badge || "Campus Infrastructure"}</span>
             </div>
 
             <h1>
-              Our <strong>Facilities</strong>
+              {heroData.title?.includes(heroData.titleHighlight || "Facilities") ? (
+                <>
+                  {heroData.title.replace(heroData.titleHighlight || "Facilities", "").trim()}{" "}
+                  <strong>{heroData.titleHighlight || "Facilities"}</strong>
+                </>
+              ) : (
+                <>
+                  Our <strong>Facilities</strong>
+                </>
+              )}
             </h1>
 
             <h3>
-              Modern Infrastructure for Holistic Development
+              {heroData.subtitle || "Modern Infrastructure for Holistic Development"}
             </h3>
 
             <div className="facilities-hero-line"></div>
 
             <p>
-              We provide supportive, inclusive and enriching facilities
-              to strengthen learning, practical exposure and student life.
+              {heroData.description ||
+                "We provide supportive, inclusive and enriching facilities to strengthen learning, practical exposure and student life."}
             </p>
 
           </div>
@@ -585,7 +718,7 @@ export default function Facilities() {
           <div className="facilities-hero-image">
 
             <img
-              src="/images/campus-about.jpg"
+              src={getImageUrl(heroData.image || "/images/campus-about.jpg")}
               alt="College Campus"
             />
 
@@ -595,11 +728,12 @@ export default function Facilities() {
 
               <div>
                 <strong>
-                  Learning Beyond Classrooms
+                  {heroData.cardTitle || "Learning Beyond Classrooms"}
                 </strong>
 
                 <span>
-                  Infrastructure • Resources • Development
+                  {heroData.cardSubtitle ||
+                    "Infrastructure • Resources • Development"}
                 </span>
               </div>
 
@@ -616,10 +750,10 @@ export default function Facilities() {
 
         <section className="facility-tabs">
 
-          {Object.entries(facilityData).map(
+          {Object.entries(facilities).map(
             ([name, data]) => {
 
-              const TabIcon = data.icon;
+              const TabIcon = data.icon || FiSettings;
 
               return (
                 <button
@@ -918,10 +1052,13 @@ export default function Facilities() {
                 {(() => {
 
                   const selectedLab =
-                    current.labs[activeLab];
+                    current.labs?.[activeLab] ||
+                    Object.values(current.labs || {})[0];
+
+                  if (!selectedLab) return null;
 
                   const LabIcon =
-                    selectedLab.icon;
+                    selectedLab.icon || FiSettings;
 
                   return (
 
@@ -985,7 +1122,7 @@ export default function Facilities() {
 
                         <div className="selected-lab-points">
 
-                          {selectedLab.points.map(
+                          {selectedLab.points?.map(
                             (point, index) => (
 
                               <div key={index}>
@@ -1009,7 +1146,7 @@ export default function Facilities() {
                       <div className="selected-lab-image">
 
                         <img
-                          src={`/images/${selectedLab.image}`}
+                          src={getImageUrl(selectedLab.image)}
                           alt={activeLab}
                         />
 
@@ -1056,7 +1193,7 @@ export default function Facilities() {
                 <div className="gallery-main">
 
                   <img
-                    src={`/images/${current.image}`}
+                    src={getImageUrl(current.image)}
                     alt={active}
                   />
 
@@ -1101,7 +1238,7 @@ export default function Facilities() {
                 <div className="gallery-main">
 
                   <img
-                    src={`/images/${current.image}`}
+                    src={getImageUrl(current.image)}
                     alt={active}
                   />
 
@@ -1127,7 +1264,7 @@ export default function Facilities() {
                   >
 
                     <img
-                      src={`/images/${current.image}`}
+                      src={getImageUrl(current.image)}
                       alt={active}
                     />
 
@@ -1195,12 +1332,12 @@ export default function Facilities() {
           <div className="facility-cards">
 
             {Object.entries(
-              facilityData
+              facilities
             ).map(
               ([name, data]) => {
 
                 const CardIcon =
-                  data.icon;
+                  data.icon || FiSettings;
 
                 return (
 
@@ -1219,7 +1356,7 @@ export default function Facilities() {
                     <div className="facility-card-image">
 
                       <img
-                        src={`/images/${data.image}`}
+                        src={getImageUrl(data.image)}
                         alt={name}
                       />
 
