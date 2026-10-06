@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+
 import {
   FiArrowRight,
   FiBookOpen,
@@ -9,16 +10,30 @@ import {
   FiCheckCircle,
   FiBell,
   FiCalendar,
+  FiChevronLeft,
   FiChevronRight,
+  FiChevronDown,
 } from "react-icons/fi";
+
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+
 import "./Home.css";
 
 const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5025";
 
+/* =========================================================
+   DEFAULT HOME DATA
+========================================================= */
+
 const defaultHomeData = {
   hero: {
+    sliderImages: [
+      "/images/student-hero.jpg",
+      "/images/campus-about.jpg",
+      "/images/campus-home.jpg",
+      "/images/academic-campus.jpg",
+    ],
     eyebrow: "Shaping Future Educators",
     titlePart1: "CHHOTU RAM",
     titlePart2: "COLLEGE OF EDUCATION",
@@ -31,10 +46,26 @@ const defaultHomeData = {
     secondaryBtnLink: "/admission",
     image: "/images/student-hero.jpg",
     points: [
-      { title1: "Quality", title2: "Education", icon: "book" },
-      { title1: "Experienced", title2: "Faculty", icon: "users" },
-      { title1: "Holistic", title2: "Development", icon: "award" },
-      { title1: "Bright", title2: "Future", icon: "heart" },
+      {
+        title1: "Quality",
+        title2: "Education",
+        icon: "book",
+      },
+      {
+        title1: "Experienced",
+        title2: "Faculty",
+        icon: "users",
+      },
+      {
+        title1: "Holistic",
+        title2: "Development",
+        icon: "award",
+      },
+      {
+        title1: "Bright",
+        title2: "Future",
+        icon: "heart",
+      },
     ],
   },
 
@@ -47,6 +78,7 @@ const defaultHomeData = {
     badge: "COLLEGE UPDATES",
     headingTitle: "News",
     headingAccent: "& Events",
+
     items: [
       {
         title: "Reschedule of Election",
@@ -90,6 +122,7 @@ const defaultHomeData = {
   programmes: {
     headingTitle: "Our",
     headingAccent: "Programmes",
+
     programs: [
       {
         badge: "Bachelor of Education",
@@ -99,6 +132,7 @@ const defaultHomeData = {
         image: "/images/docs-books.jpg",
         link: "/academics",
         btnText: "Know More",
+         
       },
       {
         badge: "Master of Education",
@@ -120,29 +154,59 @@ const defaultHomeData = {
     buttonText: "Read More",
     buttonLink: "/about",
     image: "/images/campus-about.jpg",
+
     features: [
-      { title1: "Experienced", title2: "Faculty", icon: "users" },
-      { title1: "Modern", title2: "Infrastructure", icon: "book" },
-      { title1: "Student", title2: "Centric Environment", icon: "heart" },
-      { title1: "Co-curricular", title2: "Activities", icon: "award" },
+      {
+        title1: "Experienced",
+        title2: "Faculty",
+        icon: "users",
+      },
+      {
+        title1: "Modern",
+        title2: "Infrastructure",
+        icon: "book",
+      },
+      {
+        title1: "Student",
+        title2: "Centric Environment",
+        icon: "heart",
+      },
+      {
+        title1: "Co-curricular",
+        title2: "Activities",
+        icon: "award",
+      },
     ],
   },
+
+  /* =========================================================
+     PRINCIPAL
+  ========================================================= */
 
   principal: {
     headingTitle: "Principal’s",
     headingAccent: "Message",
+
     quote:
       "Our aim is to develop enlightened, responsible and skilled teachers who can bring positive changes in society.",
+
     description:
       "We focus on holistic development, discipline and the pursuit of excellence in teacher education.",
+
     buttonText: "Read Full Message",
     buttonLink: "/about",
+
     image: "/images/principal.jpg",
   },
+
+  /* =========================================================
+     WHY CRCOE
+  ========================================================= */
 
   whyChoose: {
     headingTitle: "Why Choose",
     headingAccent: "CRCOE?",
+
     points: [
       "NAAC A Grade Accredited",
       "Experienced & Dedicated Faculty",
@@ -153,11 +217,17 @@ const defaultHomeData = {
     ],
   },
 
+  /* =========================================================
+     LIFE AT CRCOE
+  ========================================================= */
+
   gallery: {
     headingTitle: "Life at",
     headingAccent: "CRCOE",
+
     buttonText: "View Gallery",
     buttonLink: "/gallery",
+
     images: [
       "/images/gallery1.jpg",
       "/images/gallery2.jpg",
@@ -166,45 +236,133 @@ const defaultHomeData = {
       "/images/gallery5.jpg",
     ],
   },
+
+  /* =========================================================
+     FAQ
+  ========================================================= */
+
+  faq: {
+    headingTitle: "Frequently Asked",
+    headingAccent: "Questions",
+
+    items: [
+      {
+        question: "What courses are offered at CRCOE?",
+        answer:
+          "Chhotu Ram College of Education, Rohtak offers B.Ed. and M.Ed. teacher education programmes.",
+      },
+      {
+        question: "Where is Chhotu Ram College of Education located?",
+        answer:
+          "Chhotu Ram College of Education is located in Rohtak, Haryana.",
+      },
+      {
+        question: "How can I get admission information?",
+        answer:
+          "You can visit the Admission section of the website for programme details, eligibility, important information and admission updates.",
+      },
+      {
+        question: "Where can I find college notices and latest updates?",
+        answer:
+          "The latest notices, academic updates and important announcements are displayed in the News & Events section of the website.",
+      },
+      {
+        question: "Can I view the college campus and activities online?",
+        answer:
+          "Yes. The Life at CRCOE section provides a quick view of campus activities and college moments through the gallery.",
+      },
+      {
+        question: "How can I contact the college?",
+        answer:
+          "You can visit the Contact section of the website for the college contact details and enquiry information.",
+      },
+    ],
+  },
 };
+
+/* =========================================================
+   IMAGE URL HELPER
+========================================================= */
 
 const getImageUrl = (src) => {
   if (!src) return "";
-  if (src.startsWith("http://") || src.startsWith("https://")) return src;
-  if (src.startsWith("/uploads")) return `${API_URL}${src}`;
-  if (src.startsWith("uploads/")) return `${API_URL}/${src}`;
-  if (src.startsWith("/images/")) return src;
-  if (src.startsWith("gallery") || src.endsWith(".jpg") || src.endsWith(".png")) {
-    if (!src.startsWith("/")) return `/images/${src}`;
+
+  if (src.startsWith("http://") || src.startsWith("https://")) {
+    return src;
   }
+
+  if (src.startsWith("/uploads")) {
+    return `${API_URL}${src}`;
+  }
+
+  if (src.startsWith("uploads/")) {
+    return `${API_URL}/${src}`;
+  }
+
+  if (src.startsWith("/images/")) {
+    return src;
+  }
+
+  if (
+    src.startsWith("gallery") ||
+    src.endsWith(".jpg") ||
+    src.endsWith(".png") ||
+    src.endsWith(".jpeg") ||
+    src.endsWith(".webp")
+  ) {
+    if (!src.startsWith("/")) {
+      return `/images/${src}`;
+    }
+  }
+
   return src;
 };
+
+/* =========================================================
+   ICON HELPER
+========================================================= */
 
 const renderIcon = (name) => {
   switch (name?.toLowerCase()) {
     case "users":
     case "faculty":
       return <FiUsers />;
+
     case "award":
       return <FiAward />;
+
     case "heart":
       return <FiHeart />;
+
     case "bell":
       return <FiBell />;
+
     case "calendar":
       return <FiCalendar />;
+
     case "check":
       return <FiCheckCircle />;
+
     case "book":
     default:
       return <FiBookOpen />;
   }
 };
 
-const resolveNewsAction = (item) => {
-  if (!item) return { url: "/news", isExternal: false, label: "View Details" };
+/* =========================================================
+   NEWS ACTION
+========================================================= */
 
-  // 1. Explicit PDF upload
+const resolveNewsAction = (item) => {
+  if (!item) {
+    return {
+      url: "/news",
+      isExternal: false,
+      label: "View Details",
+    };
+  }
+
+  /* PDF */
   if (item.linkType === "pdf" && item.fileUrl) {
     return {
       url: getImageUrl(item.fileUrl),
@@ -213,7 +371,7 @@ const resolveNewsAction = (item) => {
     };
   }
 
-  // 2. Explicit Image upload
+  /* IMAGE */
   if (item.linkType === "image" && item.fileUrl) {
     return {
       url: getImageUrl(item.fileUrl),
@@ -222,9 +380,10 @@ const resolveNewsAction = (item) => {
     };
   }
 
-  // 3. Auto-detect if fileUrl exists
+  /* AUTO FILE */
   if (item.fileUrl) {
     const isPdf = item.fileUrl.toLowerCase().endsWith(".pdf");
+
     return {
       url: getImageUrl(item.fileUrl),
       isExternal: true,
@@ -232,8 +391,9 @@ const resolveNewsAction = (item) => {
     };
   }
 
-  // 4. External URL
+  /* EXTERNAL URL */
   const link = (item.link || "").trim();
+
   if (
     item.linkType === "external" ||
     link.startsWith("http://") ||
@@ -246,7 +406,7 @@ const resolveNewsAction = (item) => {
     };
   }
 
-  // 5. Internal route
+  /* INTERNAL ROUTE */
   return {
     url: link || "/news",
     isExternal: false,
@@ -254,161 +414,299 @@ const resolveNewsAction = (item) => {
   };
 };
 
+/* =========================================================
+   HOME
+========================================================= */
+
 export default function Home() {
   const [data, setData] = useState(defaultHomeData);
+
+  const [openFaq, setOpenFaq] = useState(null);
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+
+  /* =======================================================
+     FETCH HOME DATA
+  ======================================================= */
 
   useEffect(() => {
     const fetchHomeData = async () => {
       try {
         const response = await fetch(`${API_URL}/api/home`);
         const result = await response.json();
+
         if (response.ok && result.success && result.data) {
           setData((prev) => ({
             ...prev,
             ...result.data,
-            hero: { ...prev.hero, ...(result.data.hero || {}) },
-            newsEvents: { ...prev.newsEvents, ...(result.data.newsEvents || {}) },
-            programmes: { ...prev.programmes, ...(result.data.programmes || {}) },
-            about: { ...prev.about, ...(result.data.about || {}) },
-            principal: { ...prev.principal, ...(result.data.principal || {}) },
-            whyChoose: { ...prev.whyChoose, ...(result.data.whyChoose || {}) },
-            gallery: { ...prev.gallery, ...(result.data.gallery || {}) },
+
+            hero: {
+              ...prev.hero,
+              ...(result.data.hero || {}),
+            },
+
+            newsEvents: {
+              ...prev.newsEvents,
+              ...(result.data.newsEvents || {}),
+            },
+
+            programmes: {
+              ...prev.programmes,
+              ...(result.data.programmes || {}),
+            },
+
+            about: {
+              ...prev.about,
+              ...(result.data.about || {}),
+            },
+
+            principal: {
+              ...prev.principal,
+              ...(result.data.principal || {}),
+            },
+
+            whyChoose: {
+              ...prev.whyChoose,
+              ...(result.data.whyChoose || {}),
+            },
+
+            gallery: {
+              ...prev.gallery,
+              ...(result.data.gallery || {}),
+            },
+
+            faq: {
+              ...prev.faq,
+              ...(result.data.faq || {}),
+            },
           }));
         }
       } catch (error) {
-        console.error("Home API fetch error, using default data:", error);
+        console.error(
+          "Home API fetch error, using default data:",
+          error
+        );
       }
     };
 
     fetchHomeData();
   }, []);
 
-  const { hero, newsEvents, programmes, about, principal, whyChoose, gallery } = data;
+  /* =======================================================
+     DATA
+  ======================================================= */
 
-  const newsList = newsEvents?.items && newsEvents.items.length > 0
-    ? newsEvents.items
-    : defaultHomeData.newsEvents.items;
+  const {
+    hero,
+    newsEvents,
+    programmes,
+    about,
+    principal,
+    whyChoose,
+    gallery,
+    faq,
+  } = data;
 
-  // Duplicate for smooth infinite ticker
+  const heroSlides =
+    hero?.sliderImages && hero.sliderImages.length > 0
+      ? hero.sliderImages
+      : defaultHomeData.hero.sliderImages;
+
+  /* AUTO-PLAY SLIDER (4.5s Interval, Pauses on Hover) */
+  useEffect(() => {
+    if (heroSlides.length <= 1 || isPaused) return;
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
+    }, 4500);
+    return () => clearInterval(interval);
+  }, [heroSlides.length, isPaused]);
+
+  const [touchStartX, setTouchStartX] = useState(null);
+
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev === 0 ? heroSlides.length - 1 : prev - 1));
+  };
+
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
+  };
+
+  const handleTouchStart = (e) => {
+    if (e.touches && e.touches[0]) {
+      setTouchStartX(e.touches[0].clientX);
+    }
+  };
+
+  const handleTouchEnd = (e) => {
+    if (touchStartX === null) return;
+    if (e.changedTouches && e.changedTouches[0]) {
+      const touchEndX = e.changedTouches[0].clientX;
+      const diff = touchStartX - touchEndX;
+      if (diff > 40) {
+        nextSlide();
+      } else if (diff < -40) {
+        prevSlide();
+      }
+    }
+    setTouchStartX(null);
+  };
+
+  const newsList =
+    newsEvents?.items && newsEvents.items.length > 0
+      ? newsEvents.items
+      : defaultHomeData.newsEvents.items;
+
   const tickerItems = [...newsList, ...newsList];
+
+  /* =======================================================
+     FAQ TOGGLE
+  ======================================================= */
+
+  const toggleFaq = (index) => {
+    setOpenFaq((prev) => (prev === index ? null : index));
+  };
 
   return (
     <>
       <Navbar />
 
       <main className="home-page">
-        {/* ================= HERO ================= */}
-        <section className="home-hero">
-          <div className="hero-copy">
-            <span className="eyebrow">{hero.eyebrow}</span>
 
-            <h2>
-              {hero.titlePart1}
-              <br />
-              <strong>{hero.titlePart2}</strong>
-            </h2>
+        {/* =================================================
+            HERO BANNER SLIDER (FULL WIDTH CAROUSEL)
+        ================================================= */}
 
-            <h3>{hero.subtitle}</h3>
+        <section
+          className="home-hero-slider-section"
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
+          onTouchStart={handleTouchStart}
+          onTouchEnd={handleTouchEnd}
+          aria-label="Campus Banner Slider"
+        >
+          <div className="hero-slider-container">
+            {heroSlides.map((slideImg, sIdx) => (
+              <div
+                key={sIdx}
+                className={`hero-slide-item ${sIdx === currentSlide ? "active" : ""}`}
+                aria-hidden={sIdx !== currentSlide}
+              >
+                <img
+                  src={getImageUrl(slideImg)}
+                  alt={`Chhotu Ram College of Education Banner ${sIdx + 1}`}
+                  className="hero-slide-img"
+                  loading={sIdx === 0 ? "eager" : "lazy"}
+                />
+              </div>
+            ))}
 
-            <p>{hero.description}</p>
+            {heroSlides.length > 1 && (
+              <>
+                <button
+                  type="button"
+                  className="hero-slider-arrow prev"
+                  onClick={prevSlide}
+                  aria-label="Previous Slide"
+                >
+                  <FiChevronLeft />
+                </button>
 
-            <div className="hero-actions">
-              <Link to={hero.primaryBtnLink || "/academics"}>
-                {hero.primaryBtnText}
-                <FiArrowRight />
-              </Link>
+                <button
+                  type="button"
+                  className="hero-slider-arrow next"
+                  onClick={nextSlide}
+                  aria-label="Next Slide"
+                >
+                  <FiChevronRight />
+                </button>
 
-              <Link className="outline" to={hero.secondaryBtnLink || "/admission"}>
-                {hero.secondaryBtnText}
-                <FiArrowRight />
-              </Link>
-            </div>
-
-            <div className="hero-points">
-              {(hero.points || []).map((point, idx) => (
-                <span key={idx}>
-                  {renderIcon(point.icon)}
-                  <b>
-                    {point.title1}
-                    <br />
-                    {point.title2}
-                  </b>
-                </span>
-              ))}
-            </div>
-          </div>
-
-          <div className="hero-image">
-            <img
-              src={getImageUrl(hero.image)}
-              alt="Student at college campus"
-            />
+                <div className="hero-slider-dots">
+                  {heroSlides.map((_, dotIdx) => (
+                    <button
+                      key={dotIdx}
+                      type="button"
+                      className={`hero-dot ${dotIdx === currentSlide ? "active" : ""}`}
+                      onClick={() => setCurrentSlide(dotIdx)}
+                      aria-label={`Go to slide ${dotIdx + 1}`}
+                    />
+                  ))}
+                </div>
+              </>
+            )}
           </div>
         </section>
 
-        {/* ================= NEWS & EVENTS ================= */}
+        {/* =================================================
+            NEWS & EVENTS
+        ================================================= */}
+
         <section className="home-section news-events-section">
+
           <div className="news-events-wrapper">
-            {/* LEFT IMAGE */}
+
             <div className="news-intro-card">
+
               <img
                 src={getImageUrl(newsEvents.introImage)}
                 alt="CRCOE Campus"
               />
 
               <div className="news-intro-overlay">
+
                 <div className="news-intro-icon">
                   <FiBell />
                 </div>
 
-                <div>
-                  <span>{newsEvents.introSubtitle}</span>
-
-                  <h3 style={{ whiteSpace: "pre-line" }}>
-                    {newsEvents.introTitle}
-                  </h3>
-
-                  <p>{newsEvents.introDescription}</p>
-                </div>
               </div>
+
             </div>
 
-            {/* RIGHT NEWS */}
             <div className="news-panel">
+
               <div className="news-panel-heading">
+
                 <div>
                   <span className="news-small-title">
                     {newsEvents.badge}
                   </span>
 
                   <h2>
-                    {newsEvents.headingTitle} <strong>{newsEvents.headingAccent}</strong>
+                    {newsEvents.headingTitle}{" "}
+                    <strong>
+                      {newsEvents.headingAccent}
+                    </strong>
                   </h2>
                 </div>
 
                 <div className="news-heading-icon">
                   <FiBell />
                 </div>
+
               </div>
 
               <div className="news-line"></div>
 
-              {/* NEWS TICKER */}
               <div className="news-ticker">
+
                 <div className="news-ticker-track">
+
                   {tickerItems.map((item, index) => {
-                    const action = resolveNewsAction(item);
+
+                    const action =
+                      resolveNewsAction(item);
 
                     return (
                       <article
                         className="news-item"
                         key={`${item.title}-${index}`}
                       >
+
                         <div className="news-date-box">
                           <FiCalendar />
                         </div>
 
                         <div className="news-item-content">
+
                           <div className="news-item-meta">
                             <span>{item.date}</span>
 
@@ -447,85 +745,153 @@ export default function Home() {
                               <FiChevronRight />
                             </a>
                           ) : (
-                            <Link to={action.url} className="news-action-link">
+                            <Link
+                              to={action.url}
+                              className="news-action-link"
+                            >
                               {action.label}
                               <FiChevronRight />
                             </Link>
                           )}
+
                         </div>
 
-                        <span className="new-badge">NEW</span>
+                        <span className="new-badge">
+                          NEW
+                        </span>
+
                       </article>
                     );
                   })}
+
                 </div>
               </div>
 
-              <div className="all-news-link"></div>
+              <div className="all-news-link">
+                <Link to="/news">
+                  View All News
+                  <FiArrowRight />
+                </Link>
+              </div>
+
             </div>
+
           </div>
+
         </section>
 
-        {/* ================= PROGRAMMES ================= */}
+        {/* =================================================
+            PROGRAMMES
+        ================================================= */}
+
         <section className="home-section programs">
+
           <div className="section-heading">
+
             <h2>
-              {programmes.headingTitle} <strong>{programmes.headingAccent}</strong>
+              {programmes.headingTitle}{" "}
+              <strong>
+                {programmes.headingAccent}
+              </strong>
             </h2>
+
             <span></span>
+
           </div>
 
           <div className="program-grid">
-            {(programmes.programs || []).map((prog, idx) => (
-              <article className="program-card" key={idx}>
-                <img
-                  src={getImageUrl(prog.image)}
-                  alt={prog.title}
-                />
 
-                <div>
-                  <small>{prog.badge}</small>
-                  <h3>{prog.title}</h3>
-                  <p>{prog.description}</p>
-                  <Link to={prog.link || "/academics"}>
-                    {prog.btnText || "Know More"}
-                    <FiArrowRight />
-                  </Link>
-                </div>
-              </article>
-            ))}
+            {(programmes.programs || []).map(
+              (prog, idx) => (
+                <article
+                  className="program-card"
+                  key={idx}
+                >
+
+                  <img
+                    src={getImageUrl(prog.image)}
+                    alt={prog.title}
+                  />
+
+                  <div>
+
+                    <small>{prog.badge}</small>
+
+                    <h3>{prog.title}</h3>
+
+                    <p>{prog.description}</p>
+
+                    <Link
+                      to={
+                        prog.link ||
+                        "/academics"
+                      }
+                    >
+                      {prog.btnText ||
+                        "Know More"}
+
+                      <FiArrowRight />
+                    </Link>
+
+                  </div>
+
+                </article>
+              )
+            )}
+
           </div>
+
         </section>
 
-        {/* ================= ABOUT ================= */}
+        {/* =================================================
+            ABOUT
+        ================================================= */}
+
         <section className="home-section about-home">
+
           <div className="about-text">
+
             <div className="section-heading left">
+
               <h2>
-                {about.headingTitle} <strong>{about.headingAccent}</strong>
+                {about.headingTitle}{" "}
+                <strong>
+                  {about.headingAccent}
+                </strong>
               </h2>
+
               <span></span>
+
             </div>
 
             <p>{about.description}</p>
 
-            <Link className="pink-btn" to={about.buttonLink || "/about"}>
+            <Link
+              className="pink-btn"
+              to={about.buttonLink || "/about"}
+            >
               {about.buttonText || "Read More"}
               <FiArrowRight />
             </Link>
+
           </div>
 
           <div className="feature-mini">
-            {(about.features || []).map((feat, idx) => (
-              <div key={idx}>
-                {renderIcon(feat.icon)}
-                <span>
-                  {feat.title1}
-                  <br />
-                  {feat.title2}
-                </span>
-              </div>
-            ))}
+
+            {(about.features || []).map(
+              (feat, idx) => (
+                <div key={idx}>
+                  {renderIcon(feat.icon)}
+
+                  <span>
+                    {feat.title1}
+                    <br />
+                    {feat.title2}
+                  </span>
+                </div>
+              )
+            )}
+
           </div>
 
           <img
@@ -533,77 +899,272 @@ export default function Home() {
             src={getImageUrl(about.image)}
             alt="CRCOE campus"
           />
+
         </section>
 
-        {/* ================= PRINCIPAL + WHY ================= */}
-        <section className="home-section lower-grid">
+        {/* =================================================
+            PRINCIPAL MESSAGE
+            FULL WIDTH / PROMINENT
+        ================================================= */}
+
+        <section className="home-section principal-section">
+
           <div className="principal-card">
+
             <div className="section-heading left">
+
               <h2>
-                {principal.headingTitle} <strong>{principal.headingAccent}</strong>
+                {principal.headingTitle}{" "}
+                <strong>
+                  {principal.headingAccent}
+                </strong>
               </h2>
+
               <span></span>
+
             </div>
 
             <div className="principal-inner">
-              <img
-                src={getImageUrl(principal.image)}
-                alt="Principal"
-              />
 
-              <div>
-                <blockquote>{principal.quote}</blockquote>
-                <p>{principal.description}</p>
+              <div className="principal-image-wrap">
 
-                <Link className="pink-btn" to={principal.buttonLink || "/about"}>
-                  {principal.buttonText || "Read Full Message"}
+                <img
+                  src={getImageUrl(principal.image)}
+                  alt="Principal of Chhotu Ram College of Education"
+                />
+
+              </div>
+
+              <div className="principal-content">
+
+                <div className="principal-label">
+                  PRINCIPAL'S MESSAGE
+                </div>
+
+                <blockquote>
+                  {principal.quote}
+                </blockquote>
+
+                <p>
+                  {principal.description}
+                </p>
+
+                <Link
+                  className="pink-btn"
+                  to={
+                    principal.buttonLink ||
+                    "/about"
+                  }
+                >
+                  {principal.buttonText ||
+                    "Read Full Message"}
+
                   <FiArrowRight />
                 </Link>
+
               </div>
-            </div>
-          </div>
 
-          <div className="why-card">
-            <div className="section-heading left">
-              <h2>
-                {whyChoose.headingTitle} <strong>{whyChoose.headingAccent}</strong>
-              </h2>
-              <span></span>
             </div>
 
-            {(whyChoose.points || []).map((t, idx) => (
-              <p key={idx}>
-                <FiCheckCircle />
-                {t}
-              </p>
-            ))}
           </div>
+
         </section>
 
-        {/* ================= GALLERY ================= */}
+        {/* =================================================
+            WHY CHOOSE CRCOE
+            BELOW PRINCIPAL
+        ================================================= */}
+
+        <section className="home-section why-section">
+
+          <div className="why-card">
+
+            <div className="section-heading left">
+
+              <h2>
+                {whyChoose.headingTitle}{" "}
+                <strong>
+                  {whyChoose.headingAccent}
+                </strong>
+              </h2>
+
+              <span></span>
+
+            </div>
+
+            <div className="why-grid">
+
+              {(whyChoose.points || []).map(
+                (point, idx) => (
+                  <div
+                    className="why-point"
+                    key={idx}
+                  >
+                    <span className="why-point-icon">
+                      <FiCheckCircle />
+                    </span>
+
+                    <p>{point}</p>
+                  </div>
+                )
+              )}
+
+            </div>
+
+          </div>
+
+        </section>
+
+        {/* =================================================
+            LIFE AT CRCOE
+        ================================================= */}
+
         <section className="home-section gallery-home">
+
           <div className="section-heading left">
+
             <h2>
-              {gallery.headingTitle} <strong>{gallery.headingAccent}</strong>
+              {gallery.headingTitle}{" "}
+              <strong>
+                {gallery.headingAccent}
+              </strong>
             </h2>
+
             <span></span>
 
-            <Link to={gallery.buttonLink || "/gallery"}>
-              {gallery.buttonText || "View Gallery"}
+            <Link
+              to={
+                gallery.buttonLink ||
+                "/gallery"
+              }
+            >
+              {gallery.buttonText ||
+                "View Gallery"}
+
               <FiArrowRight />
             </Link>
+
           </div>
 
           <div className="home-gallery-grid">
-            {(gallery.images || []).map((x, i) => (
-              <img
-                key={i}
-                src={getImageUrl(x)}
-                alt={`Campus activity ${i + 1}`}
-              />
-            ))}
+
+            {(gallery.images || []).map(
+              (image, index) => (
+                <img
+                  key={index}
+                  src={getImageUrl(image)}
+                  alt={`Campus activity ${
+                    index + 1
+                  }`}
+                />
+              )
+            )}
+
           </div>
+
         </section>
+
+        {/* =================================================
+            FAQ
+        ================================================= */}
+
+        <section className="home-section faq-section">
+
+          <div className="faq-wrapper">
+
+            <div className="section-heading faq-heading">
+
+              <h2>
+                {faq.headingTitle}{" "}
+                <strong>
+                  {faq.headingAccent}
+                </strong>
+              </h2>
+
+              <span></span>
+
+            </div>
+
+            <p className="faq-intro">
+              Find quick answers to commonly asked
+              questions about CRCOE, programmes,
+              admissions and college information.
+            </p>
+
+            <div className="faq-list">
+
+              {(faq.items || []).map(
+                (item, index) => {
+
+                  const isOpen =
+                    openFaq === index;
+
+                  return (
+                    <div
+                      className={`faq-item ${
+                        isOpen
+                          ? "faq-item-open"
+                          : ""
+                      }`}
+                      key={index}
+                    >
+
+                      <button
+                        type="button"
+                        className="faq-question"
+                        onClick={() =>
+                          toggleFaq(index)
+                        }
+                        aria-expanded={isOpen}
+                      >
+
+                        <span>
+                          {item.question}
+                        </span>
+
+                        <span className="faq-icon">
+                          <FiChevronDown />
+                        </span>
+
+                      </button>
+
+                      <div
+                        className={`faq-answer ${
+                          isOpen
+                            ? "faq-answer-open"
+                            : ""
+                        }`}
+                      >
+                        <div>
+                          <p>
+                            {item.answer}
+                          </p>
+                        </div>
+                      </div>
+
+                    </div>
+                  );
+                }
+              )}
+
+            </div>
+
+            <div className="faq-bottom">
+
+              <Link
+                className="pink-btn"
+                to="/contact"
+              >
+                Have More Questions?
+                <FiArrowRight />
+              </Link>
+
+            </div>
+
+          </div>
+
+        </section>
+
       </main>
 
       <Footer />

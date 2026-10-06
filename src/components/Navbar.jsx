@@ -89,7 +89,7 @@ export default function Navbar() {
           </div>
 
           <div className="brand-campus">
-            <img src="/images/campus-home.jpg" alt="College campus" />
+            <img src="/images/naac-logo.png" alt="NAAC Logo" />
           </div>
 
           {/* Mobile hamburger menu button inside brand row on mobile */}

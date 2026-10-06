@@ -26,6 +26,12 @@ const tabs = [
 
 const initialData = {
   hero: {
+    sliderImages: [
+      "/images/student-hero.jpg",
+      "/images/campus-about.jpg",
+      "/images/campus-home.jpg",
+      "/images/academic-campus.jpg",
+    ],
     eyebrow: "Shaping Future Educators",
     titlePart1: "CHHOTU RAM",
     titlePart2: "COLLEGE OF EDUCATION",
@@ -224,7 +230,14 @@ const ManageHome = () => {
         setData((prev) => ({
           ...prev,
           ...result.data,
-          hero: { ...prev.hero, ...(result.data.hero || {}) },
+          hero: {
+            ...prev.hero,
+            ...(result.data.hero || {}),
+            sliderImages:
+              result.data.hero?.sliderImages && result.data.hero.sliderImages.length > 0
+                ? result.data.hero.sliderImages
+                : prev.hero.sliderImages,
+          },
           newsEvents: { ...prev.newsEvents, ...(result.data.newsEvents || {}) },
           programmes: { ...prev.programmes, ...(result.data.programmes || {}) },
           about: { ...prev.about, ...(result.data.about || {}) },
@@ -246,6 +259,34 @@ const ManageHome = () => {
       setImageFiles((prev) => ({ ...prev, [fieldKey]: file }));
       const previewUrl = URL.createObjectURL(file);
       setImagePreviews((prev) => ({ ...prev, [fieldKey]: previewUrl }));
+    }
+  };
+
+  const handleRemoveSliderImage = (indexToRemove) => {
+    const current = data.hero.sliderImages || [];
+    const updated = current.filter((_, i) => i !== indexToRemove);
+    updateSection("hero", "sliderImages", updated);
+  };
+
+  const handleRemoveNoticeFile = (noticeIdx) => {
+    setImageFiles((prev) => {
+      const updated = { ...prev };
+      delete updated[`newsItemFile_${noticeIdx}`];
+      return updated;
+    });
+    setImagePreviews((prev) => {
+      const updated = { ...prev };
+      delete updated[`newsItemFile_${noticeIdx}`];
+      return updated;
+    });
+
+    const updatedItems = [...(data.newsEvents.items || [])];
+    if (updatedItems[noticeIdx]) {
+      updatedItems[noticeIdx] = {
+        ...updatedItems[noticeIdx],
+        fileUrl: "",
+      };
+      updateSection("newsEvents", "items", updatedItems);
     }
   };
 
@@ -438,188 +479,209 @@ const ManageHome = () => {
           {activeTab === 0 && (
             <div>
               <div className="home-step-title">
-                <h3>Hero Banner &amp; Highlights</h3>
-                <p>Edit the main hero banner headline, description and buttons.</p>
+                <h3>Hero Banner Slider Manager</h3>
+                <p>
+                  Manage the full-width carousel banner images displayed on the
+                  home page hero section. The slider automatically rotates through
+                  these banners with no text overlay.
+                </p>
               </div>
 
-              <div className="home-fields">
-                <label className="home-field full">
-                  <span>Eyebrow Tagline</span>
-                  <input
-                    type="text"
-                    value={data.hero.eyebrow || ""}
-                    onChange={(e) =>
-                      updateSection("hero", "eyebrow", e.target.value)
-                    }
-                  />
-                </label>
+              {/* Slider Images Section */}
+              <div className="home-slider-manager">
+                <div className="home-sub-header">
+                  <h4>
+                    Current Hero Slider Banners (
+                    {(data.hero.sliderImages || []).length})
+                  </h4>
+                </div>
 
-                <label className="home-field">
-                  <span>Main Heading Part 1</span>
-                  <input
-                    type="text"
-                    value={data.hero.titlePart1 || ""}
-                    onChange={(e) =>
-                      updateSection("hero", "titlePart1", e.target.value)
-                    }
-                  />
-                </label>
-
-                <label className="home-field">
-                  <span>Main Heading Part 2 (Bold)</span>
-                  <input
-                    type="text"
-                    value={data.hero.titlePart2 || ""}
-                    onChange={(e) =>
-                      updateSection("hero", "titlePart2", e.target.value)
-                    }
-                  />
-                </label>
-
-                <label className="home-field">
-                  <span>Subtitle / Location</span>
-                  <input
-                    type="text"
-                    value={data.hero.subtitle || ""}
-                    onChange={(e) =>
-                      updateSection("hero", "subtitle", e.target.value)
-                    }
-                  />
-                </label>
-
-                <label className="home-field full">
-                  <span>Description</span>
-                  <textarea
-                    value={data.hero.description || ""}
-                    onChange={(e) =>
-                      updateSection("hero", "description", e.target.value)
-                    }
-                  />
-                </label>
-
-                <label className="home-field">
-                  <span>Primary Button Text</span>
-                  <input
-                    type="text"
-                    value={data.hero.primaryBtnText || ""}
-                    onChange={(e) =>
-                      updateSection("hero", "primaryBtnText", e.target.value)
-                    }
-                  />
-                </label>
-
-                <label className="home-field">
-                  <span>Primary Button Link</span>
-                  <input
-                    type="text"
-                    value={data.hero.primaryBtnLink || ""}
-                    onChange={(e) =>
-                      updateSection("hero", "primaryBtnLink", e.target.value)
-                    }
-                  />
-                </label>
-
-                <label className="home-field">
-                  <span>Secondary Button Text</span>
-                  <input
-                    type="text"
-                    value={data.hero.secondaryBtnText || ""}
-                    onChange={(e) =>
-                      updateSection("hero", "secondaryBtnText", e.target.value)
-                    }
-                  />
-                </label>
-
-                <label className="home-field">
-                  <span>Secondary Button Link</span>
-                  <input
-                    type="text"
-                    value={data.hero.secondaryBtnLink || ""}
-                    onChange={(e) =>
-                      updateSection("hero", "secondaryBtnLink", e.target.value)
-                    }
-                  />
-                </label>
-
-                {/* Hero Image */}
-                <div className="home-image-box">
-                  <span>Hero Banner Image</span>
-                  <div className="home-image-inner">
-                    <div className="home-image-preview">
-                      <img
-                        src={
-                          imagePreviews.heroImage ||
-                          getImageUrl(data.hero.image)
-                        }
-                        alt="Hero Preview"
-                      />
+                <div className="home-slider-grid">
+                  {(data.hero.sliderImages || []).map((imgUrl, sIdx) => (
+                    <div className="home-slider-card" key={sIdx}>
+                      <div className="home-slider-card-img">
+                        <img
+                          src={getImageUrl(imgUrl)}
+                          alt={`Slide ${sIdx + 1}`}
+                        />
+                        <span className="home-slide-badge">Slide #{sIdx + 1}</span>
+                      </div>
+                      <div className="home-slider-card-actions">
+                        <button
+                          type="button"
+                          className="home-slide-del-btn"
+                          title="Remove this slide"
+                          onClick={() => handleRemoveSliderImage(sIdx)}
+                        >
+                          <FiTrash2 /> Remove Slide
+                        </button>
+                      </div>
                     </div>
+                  ))}
+                </div>
 
+                {/* Add New Slider Image Box */}
+                <div className="home-image-box" style={{ marginTop: "20px" }}>
+                  <span>Upload &amp; Add New Slider Banner</span>
+                  <p style={{ fontSize: "12px", color: "#64748b", margin: "4px 0 12px" }}>
+                    Recommended size: 1920x720 px (standard landscape banner format).
+                  </p>
+
+                  <div className="home-image-inner">
                     <label className="home-image-btn">
-                      <FiUpload /> Choose New Image
+                      <FiUpload /> Choose Slider Image
                       <input
                         type="file"
                         accept="image/*"
-                        onChange={(e) => handleFileChange("heroImage", e)}
+                        onChange={(e) => handleFileChange("newHeroSliderImage", e)}
                       />
                     </label>
+
+                    {imagePreviews.newHeroSliderImage ? (
+                      <div style={{ display: "flex", alignItems: "center", gap: "12px", flexWrap: "wrap" }}>
+                        <div style={{ width: "100px", height: "50px", borderRadius: "6px", overflow: "hidden", border: "1px solid #e2e8f0" }}>
+                          <img
+                            src={imagePreviews.newHeroSliderImage}
+                            alt="New Slide Preview"
+                            style={{ width: "100%", height: "100%", objectFit: "cover" }}
+                          />
+                        </div>
+                        <span style={{ fontSize: "12px", color: "#10b981", fontWeight: 600 }}>
+                          ✓ New slide ready to upload on save!
+                        </span>
+                        <button
+                          type="button"
+                          className="home-del-btn"
+                          title="Cancel upload"
+                          onClick={() => {
+                            setImageFiles((prev) => {
+                              const u = { ...prev };
+                              delete u.newHeroSliderImage;
+                              return u;
+                            });
+                            setImagePreviews((prev) => {
+                              const u = { ...prev };
+                              delete u.newHeroSliderImage;
+                              return u;
+                            });
+                          }}
+                        >
+                          <FiTrash2 />
+                        </button>
+                      </div>
+                    ) : (
+                      <span style={{ fontSize: "12px", color: "#8a909c" }}>
+                        Select an image file and click <strong>Save Changes</strong> to publish.
+                      </span>
+                    )}
                   </div>
                 </div>
+              </div>
 
-                {/* 4 Feature Points */}
-                <div className="home-sub-section">
-                  <div className="home-sub-header">
-                    <h4>Hero Feature Badges (4 Points)</h4>
-                  </div>
+              {/* Advanced / Fallback Hero Text Settings */}
+              <div className="home-sub-section" style={{ marginTop: "35px" }}>
+                <div className="home-sub-header">
+                  <h4 style={{ color: "#64748b" }}>Fallback Hero Information &amp; Badges (Optional)</h4>
+                </div>
 
-                  <div className="home-grid-cards">
-                    {(data.hero.points || []).map((pt, idx) => (
-                      <div className="home-grid-card" key={idx}>
-                        <label className="home-field" style={{ marginBottom: "8px" }}>
-                          <span>Line 1</span>
-                          <input
-                            type="text"
-                            value={pt.title1 || ""}
-                            onChange={(e) => {
-                              const updated = [...data.hero.points];
-                              updated[idx] = { ...updated[idx], title1: e.target.value };
-                              updateSection("hero", "points", updated);
-                            }}
-                          />
-                        </label>
+                <div className="home-fields">
+                  <label className="home-field full">
+                    <span>Eyebrow Tagline</span>
+                    <input
+                      type="text"
+                      value={data.hero.eyebrow || ""}
+                      onChange={(e) =>
+                        updateSection("hero", "eyebrow", e.target.value)
+                      }
+                    />
+                  </label>
 
-                        <label className="home-field" style={{ marginBottom: "8px" }}>
-                          <span>Line 2</span>
-                          <input
-                            type="text"
-                            value={pt.title2 || ""}
-                            onChange={(e) => {
-                              const updated = [...data.hero.points];
-                              updated[idx] = { ...updated[idx], title2: e.target.value };
-                              updateSection("hero", "points", updated);
-                            }}
-                          />
-                        </label>
+                  <label className="home-field">
+                    <span>Main Heading Part 1</span>
+                    <input
+                      type="text"
+                      value={data.hero.titlePart1 || ""}
+                      onChange={(e) =>
+                        updateSection("hero", "titlePart1", e.target.value)
+                      }
+                    />
+                  </label>
 
-                        <label className="home-field">
-                          <span>Icon</span>
-                          <select
-                            value={pt.icon || "book"}
-                            onChange={(e) => {
-                              const updated = [...data.hero.points];
-                              updated[idx] = { ...updated[idx], icon: e.target.value };
-                              updateSection("hero", "points", updated);
-                            }}
-                          >
-                            <option value="book">Book (Quality)</option>
-                            <option value="users">Users (Faculty)</option>
-                            <option value="award">Award (Holistic)</option>
-                            <option value="heart">Heart (Bright Future)</option>
-                          </select>
-                        </label>
-                      </div>
-                    ))}
-                  </div>
+                  <label className="home-field">
+                    <span>Main Heading Part 2 (Bold)</span>
+                    <input
+                      type="text"
+                      value={data.hero.titlePart2 || ""}
+                      onChange={(e) =>
+                        updateSection("hero", "titlePart2", e.target.value)
+                      }
+                    />
+                  </label>
+
+                  <label className="home-field">
+                    <span>Subtitle / Location</span>
+                    <input
+                      type="text"
+                      value={data.hero.subtitle || ""}
+                      onChange={(e) =>
+                        updateSection("hero", "subtitle", e.target.value)
+                      }
+                    />
+                  </label>
+
+                  <label className="home-field full">
+                    <span>Description</span>
+                    <textarea
+                      value={data.hero.description || ""}
+                      onChange={(e) =>
+                        updateSection("hero", "description", e.target.value)
+                      }
+                    />
+                  </label>
+
+                  <label className="home-field">
+                    <span>Primary Button Text</span>
+                    <input
+                      type="text"
+                      value={data.hero.primaryBtnText || ""}
+                      onChange={(e) =>
+                        updateSection("hero", "primaryBtnText", e.target.value)
+                      }
+                    />
+                  </label>
+
+                  <label className="home-field">
+                    <span>Primary Button Link</span>
+                    <input
+                      type="text"
+                      value={data.hero.primaryBtnLink || ""}
+                      onChange={(e) =>
+                        updateSection("hero", "primaryBtnLink", e.target.value)
+                      }
+                    />
+                  </label>
+
+                  <label className="home-field">
+                    <span>Secondary Button Text</span>
+                    <input
+                      type="text"
+                      value={data.hero.secondaryBtnText || ""}
+                      onChange={(e) =>
+                        updateSection("hero", "secondaryBtnText", e.target.value)
+                      }
+                    />
+                  </label>
+
+                  <label className="home-field">
+                    <span>Secondary Button Link</span>
+                    <input
+                      type="text"
+                      value={data.hero.secondaryBtnLink || ""}
+                      onChange={(e) =>
+                        updateSection("hero", "secondaryBtnLink", e.target.value)
+                      }
+                    />
+                  </label>
                 </div>
               </div>
             </div>
@@ -888,20 +950,40 @@ const ManageHome = () => {
 
                               <div className="notice-file-info">
                                 {imageFiles[`newsItemFile_${idx}`] ? (
-                                  <span className="notice-file-badge">
-                                    ✓ New PDF: {imageFiles[`newsItemFile_${idx}`].name} (Save to publish)
-                                  </span>
-                                ) : item.fileUrl ? (
-                                  <span>
-                                    Attached PDF:{" "}
-                                    <a
-                                      href={getImageUrl(item.fileUrl)}
-                                      target="_blank"
-                                      rel="noopener noreferrer"
+                                  <div style={{ display: "flex", alignItems: "center", gap: "8px", flexWrap: "wrap" }}>
+                                    <span className="notice-file-badge">
+                                      ✓ New PDF: {imageFiles[`newsItemFile_${idx}`].name} (Save to publish)
+                                    </span>
+                                    <button
+                                      type="button"
+                                      className="home-remove-file-btn"
+                                      onClick={() => handleRemoveNoticeFile(idx)}
+                                      title="Remove PDF attachment"
                                     >
-                                      View Current PDF ↗
-                                    </a>
-                                  </span>
+                                      <FiTrash2 /> Remove
+                                    </button>
+                                  </div>
+                                ) : item.fileUrl ? (
+                                  <div style={{ display: "flex", alignItems: "center", gap: "10px", flexWrap: "wrap" }}>
+                                    <span>
+                                      Attached PDF:{" "}
+                                      <a
+                                        href={getImageUrl(item.fileUrl)}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                      >
+                                        View Current PDF ↗
+                                      </a>
+                                    </span>
+                                    <button
+                                      type="button"
+                                      className="home-remove-file-btn"
+                                      onClick={() => handleRemoveNoticeFile(idx)}
+                                      title="Remove PDF attachment"
+                                    >
+                                      <FiTrash2 /> Remove File
+                                    </button>
+                                  </div>
                                 ) : (
                                   <span style={{ color: "#8a909c" }}>No PDF file attached yet.</span>
                                 )}
@@ -938,17 +1020,37 @@ const ManageHome = () => {
 
                               <div className="notice-file-info">
                                 {imageFiles[`newsItemFile_${idx}`] ? (
-                                  <span className="notice-file-badge">
-                                    ✓ New Image: {imageFiles[`newsItemFile_${idx}`].name}
-                                  </span>
+                                  <div style={{ display: "flex", alignItems: "center", gap: "8px", flexWrap: "wrap" }}>
+                                    <span className="notice-file-badge">
+                                      ✓ New Image: {imageFiles[`newsItemFile_${idx}`].name}
+                                    </span>
+                                    <button
+                                      type="button"
+                                      className="home-remove-file-btn"
+                                      onClick={() => handleRemoveNoticeFile(idx)}
+                                      title="Remove Image attachment"
+                                    >
+                                      <FiTrash2 /> Remove
+                                    </button>
+                                  </div>
                                 ) : item.fileUrl ? (
-                                  <a
-                                    href={getImageUrl(item.fileUrl)}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                  >
-                                    View Full Image ↗
-                                  </a>
+                                  <div style={{ display: "flex", alignItems: "center", gap: "10px", flexWrap: "wrap" }}>
+                                    <a
+                                      href={getImageUrl(item.fileUrl)}
+                                      target="_blank"
+                                      rel="noopener noreferrer"
+                                    >
+                                      View Full Image ↗
+                                    </a>
+                                    <button
+                                      type="button"
+                                      className="home-remove-file-btn"
+                                      onClick={() => handleRemoveNoticeFile(idx)}
+                                      title="Remove Image attachment"
+                                    >
+                                      <FiTrash2 /> Remove Image
+                                    </button>
+                                  </div>
                                 ) : (
                                   <span style={{ color: "#8a909c" }}>No image file attached yet.</span>
                                 )}

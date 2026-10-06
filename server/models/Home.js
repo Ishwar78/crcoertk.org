@@ -3,6 +3,15 @@ const mongoose = require("mongoose");
 const homeSchema = new mongoose.Schema(
   {
     hero: {
+      sliderImages: {
+        type: [String],
+        default: [
+          "/images/student-hero.jpg",
+          "/images/campus-about.jpg",
+          "/images/campus-home.jpg",
+          "/images/academic-campus.jpg",
+        ],
+      },
       eyebrow: {
         type: String,
         default: "Shaping Future Educators",

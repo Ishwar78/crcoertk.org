@@ -67,6 +67,16 @@ router.get("/", async (req, res) => {
       home = created.toObject();
     }
 
+    if (!home.hero) home.hero = {};
+    if (!home.hero.sliderImages || home.hero.sliderImages.length === 0) {
+      home.hero.sliderImages = [
+        "/images/student-hero.jpg",
+        "/images/campus-about.jpg",
+        "/images/campus-home.jpg",
+        "/images/academic-campus.jpg",
+      ];
+    }
+
     res.json({
       success: true,
       data: home,
@@ -89,6 +99,16 @@ router.get("/admin", protectAdmin, async (req, res) => {
 
     if (!home) {
       home = await Home.create({});
+    }
+
+    if (!home.hero) home.hero = {};
+    if (!home.hero.sliderImages || home.hero.sliderImages.length === 0) {
+      home.hero.sliderImages = [
+        "/images/student-hero.jpg",
+        "/images/campus-about.jpg",
+        "/images/campus-home.jpg",
+        "/images/academic-campus.jpg",
+      ];
     }
 
     res.json({
@@ -132,10 +152,18 @@ router.put("/", protectAdmin, upload.any(), async (req, res) => {
 
     // Merge payload fields
     if (payload.hero) {
-      home.hero = { ...home.hero.toObject(), ...payload.hero };
+      const mergedHero = { ...home.hero.toObject(), ...payload.hero };
+      if (Array.isArray(payload.hero.sliderImages)) {
+        mergedHero.sliderImages = payload.hero.sliderImages;
+      }
+      home.hero = mergedHero;
     }
     if (payload.newsEvents) {
-      home.newsEvents = { ...home.newsEvents.toObject(), ...payload.newsEvents };
+      const mergedNews = { ...home.newsEvents.toObject(), ...payload.newsEvents };
+      if (Array.isArray(payload.newsEvents.items)) {
+        mergedNews.items = payload.newsEvents.items;
+      }
+      home.newsEvents = mergedNews;
     }
     if (payload.programmes) {
       home.programmes = { ...home.programmes.toObject(), ...payload.programmes };
@@ -160,6 +188,13 @@ router.put("/", protectAdmin, upload.any(), async (req, res) => {
 
         if (file.fieldname === "heroImage") {
           home.hero.image = filePath;
+        } else if (
+          file.fieldname === "newHeroSliderImage" ||
+          file.fieldname.startsWith("heroSlider_") ||
+          file.fieldname.startsWith("heroSliderImage")
+        ) {
+          if (!home.hero.sliderImages) home.hero.sliderImages = [];
+          home.hero.sliderImages.push(filePath);
         } else if (file.fieldname === "newsIntroImage") {
           home.newsEvents.introImage = filePath;
         } else if (file.fieldname === "aboutImage") {

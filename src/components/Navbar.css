@@ -151,7 +151,7 @@
 .brand-campus {
     height: 105px;
     overflow: hidden;
-    border-radius: 0 0 0 70px;
+    /* border-radius: 0 0 0 70px; */
     position: relative;
     z-index: 1;
 }
@@ -159,7 +159,7 @@
 .brand-campus img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
     display: block;
 }
 
