@@ -122,6 +122,8 @@ const initialData = {
         image: "/images/docs-books.jpg",
         link: "/academics",
         btnText: "Know More",
+        inquiryBtnText: "Inquiry Now",
+        inquiryLink: "/contact",
       },
       {
         badge: "Master of Education",
@@ -131,6 +133,8 @@ const initialData = {
         image: "/images/docs-books.jpg",
         link: "/academics",
         btnText: "Know More",
+        inquiryBtnText: "Inquiry Now",
+        inquiryLink: "/contact",
       },
     ],
   },
@@ -1114,6 +1118,8 @@ const ManageHome = () => {
                             image: "/images/docs-books.jpg",
                             link: "/academics",
                             btnText: "Know More",
+                            inquiryBtnText: "Inquiry Now",
+                            inquiryLink: "/contact",
                           },
                         ];
                         updateSection("programmes", "programs", updated);
@@ -1184,7 +1190,7 @@ const ManageHome = () => {
                         </label>
 
                         <label className="home-field">
-                          <span>Button Text</span>
+                          <span>Primary Button Text (Know More)</span>
                           <input
                             type="text"
                             value={prog.btnText || ""}
@@ -1197,13 +1203,41 @@ const ManageHome = () => {
                         </label>
 
                         <label className="home-field">
-                          <span>Button Link</span>
+                          <span>Primary Button Link</span>
                           <input
                             type="text"
                             value={prog.link || ""}
                             onChange={(e) => {
                               const updated = [...data.programmes.programs];
                               updated[idx] = { ...updated[idx], link: e.target.value };
+                              updateSection("programmes", "programs", updated);
+                            }}
+                          />
+                        </label>
+
+                        <label className="home-field">
+                          <span>Inquiry Button Text</span>
+                          <input
+                            type="text"
+                            placeholder="Inquiry Now"
+                            value={prog.inquiryBtnText || ""}
+                            onChange={(e) => {
+                              const updated = [...data.programmes.programs];
+                              updated[idx] = { ...updated[idx], inquiryBtnText: e.target.value };
+                              updateSection("programmes", "programs", updated);
+                            }}
+                          />
+                        </label>
+
+                        <label className="home-field">
+                          <span>Inquiry Button Link</span>
+                          <input
+                            type="text"
+                            placeholder="/contact"
+                            value={prog.inquiryLink || ""}
+                            onChange={(e) => {
+                              const updated = [...data.programmes.programs];
+                              updated[idx] = { ...updated[idx], inquiryLink: e.target.value };
                               updateSection("programmes", "programs", updated);
                             }}
                           />

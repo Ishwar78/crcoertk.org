@@ -170,6 +170,8 @@ const homeSchema = new mongoose.Schema(
             image: String,
             link: String,
             btnText: String,
+            inquiryBtnText: { type: String, default: "Inquiry Now" },
+            inquiryLink: { type: String, default: "/contact" },
           },
         ],
         default: [
@@ -181,6 +183,8 @@ const homeSchema = new mongoose.Schema(
             image: "/images/docs-books.jpg",
             link: "/academics",
             btnText: "Know More",
+            inquiryBtnText: "Inquiry Now",
+            inquiryLink: "/contact",
           },
           {
             badge: "Master of Education",
@@ -190,6 +194,8 @@ const homeSchema = new mongoose.Schema(
             image: "/images/docs-books.jpg",
             link: "/academics",
             btnText: "Know More",
+            inquiryBtnText: "Inquiry Now",
+            inquiryLink: "/contact",
           },
         ],
       },

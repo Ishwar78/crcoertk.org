@@ -132,7 +132,8 @@ const defaultHomeData = {
         image: "/images/docs-books.jpg",
         link: "/academics",
         btnText: "Know More",
-         
+        inquiryBtnText: "Inquiry Now",
+        inquiryLink: "/contact",
       },
       {
         badge: "Master of Education",
@@ -142,6 +143,8 @@ const defaultHomeData = {
         image: "/images/docs-books.jpg",
         link: "/academics",
         btnText: "Know More",
+        inquiryBtnText: "Inquiry Now",
+        inquiryLink: "/contact",
       },
     ],
   },
@@ -821,17 +824,23 @@ export default function Home() {
 
                     <p>{prog.description}</p>
 
-                    <Link
-                      to={
-                        prog.link ||
-                        "/academics"
-                      }
-                    >
-                      {prog.btnText ||
-                        "Know More"}
+                    <div className="program-actions">
+                      <Link
+                        to={prog.link || "/academics"}
+                        className="program-btn primary"
+                      >
+                        {prog.btnText || "Know More"}
+                        <FiArrowRight />
+                      </Link>
 
-                      <FiArrowRight />
-                    </Link>
+                      <Link
+                        to={prog.inquiryLink || "/contact"}
+                        className="program-btn outline"
+                      >
+                        {prog.inquiryBtnText || "Inquiry Now"}
+                        <FiArrowRight />
+                      </Link>
+                    </div>
 
                   </div>
 

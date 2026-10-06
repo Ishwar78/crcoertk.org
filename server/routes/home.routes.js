@@ -166,7 +166,11 @@ router.put("/", protectAdmin, upload.any(), async (req, res) => {
       home.newsEvents = mergedNews;
     }
     if (payload.programmes) {
-      home.programmes = { ...home.programmes.toObject(), ...payload.programmes };
+      const mergedProg = { ...home.programmes.toObject(), ...payload.programmes };
+      if (Array.isArray(payload.programmes.programs)) {
+        mergedProg.programs = payload.programmes.programs;
+      }
+      home.programmes = mergedProg;
     }
     if (payload.about) {
       home.about = { ...home.about.toObject(), ...payload.about };
