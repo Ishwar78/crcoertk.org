@@ -268,16 +268,17 @@ const defaultData = {
 
   principal: {
     image:
-      "/images/principal.jpg",
+      "/Principle.png",
 
     label:
       "Principal",
 
     quote:
-      "Our aim is to develop enlightened, responsible and skilled teachers who can bring positive changes in society.",
+           "Empowering educators to inspire minds, transform classrooms, and architect the future of global learning ecosystems.",
+
 
     paragraph:
-      "We focus on holistic development, discipline and the pursuit of excellence in teacher education.",
+      "It is an honor to welcome you to the digital portal of Chhotu Ram College of Education, Rohtak. As an institution permanently affiliated with Maharshi Dayanand University (MDU), Rohtak, and distinguished with an 'A' Grade by NAAC, we view teacher education not merely as a degree program, but as a crucial exercise in national development and systemic reform . The modern educational landscape demands a profound shift from passive instruction to progressive, evidence-based pedagogy. Guided by this imperative, our management and faculty have co-created a dynamic ecosystem designed to bridge the gap between educational theory and real-world classroom execution.",
 
     signature:
       "Principal, CRCOE",

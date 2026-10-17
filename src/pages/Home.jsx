@@ -29,10 +29,10 @@ const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5025";
 const defaultHomeData = {
   hero: {
     sliderImages: [
-      "/images/student-hero.jpg",
-      "/images/campus-about.jpg",
-      "/images/campus-home.jpg",
-      "/images/academic-campus.jpg",
+      
+      "/collegephoto.png",
+      "/college.png",
+      "/college1.png",
     ],
     eyebrow: "Shaping Future Educators",
     titlePart1: "CHHOTU RAM",
@@ -70,7 +70,7 @@ const defaultHomeData = {
   },
 
   newsEvents: {
-    introImage: "/images/campus-about.jpg",
+    introImage: "/collegephoto.png",
     introSubtitle: "STAY UPDATED",
     introTitle: "Latest News\n& Events",
     introDescription:
@@ -156,7 +156,7 @@ const defaultHomeData = {
       "Chhotu Ram College of Education, Rohtak is dedicated to providing quality teacher education and nurturing future educators through knowledge, values, practical learning and a student-centric environment.",
     buttonText: "Read More",
     buttonLink: "/about",
-    image: "/images/campus-about.jpg",
+    image: "/collegephoto.png",
 
     features: [
       {
@@ -191,15 +191,16 @@ const defaultHomeData = {
     headingAccent: "Message",
 
     quote:
-      "Our aim is to develop enlightened, responsible and skilled teachers who can bring positive changes in society.",
+      "Empowering educators to inspire minds, transform classrooms, and architect the future of global learning ecosystems.",
 
     description:
-      "We focus on holistic development, discipline and the pursuit of excellence in teacher education.",
+      "It is an honor to welcome you to the digital portal of Chhotu Ram College of Education, Rohtak. As an institution permanently affiliated with Maharshi Dayanand University (MDU), Rohtak, and distinguished with an 'A' Grade by NAAC, we view teacher education not merely as a degree program, but as a crucial exercise in national development and systemic reform . The modern educational landscape demands a profound shift from passive instruction to progressive, evidence-based pedagogy. Guided by this imperative, our management and faculty have co-created a dynamic ecosystem designed to bridge the gap between educational theory and real-world classroom execution.",
+      
 
     buttonText: "Read Full Message",
     buttonLink: "/about",
 
-    image: "/images/principal.jpg",
+    image: "/Principle.png",
   },
 
   /* =========================================================
@@ -770,12 +771,12 @@ export default function Home() {
                 </div>
               </div>
 
-              <div className="all-news-link">
+              {/* <div className="all-news-link">
                 <Link to="/news">
                   View All News
                   <FiArrowRight />
                 </Link>
-              </div>
+              </div> */}
 
             </div>
 
