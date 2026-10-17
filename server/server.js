@@ -81,6 +81,8 @@ const facultyRoutes = require("./routes/faculty.routes");
 const aboutRoutes = require("./routes/about.routes");
 const homeRoutes = require("./routes/home.routes");
 const facilitiesRoutes = require("./routes/facilities.routes");
+const tickerRoutes = require("./routes/ticker.routes");
+const popupRoutes = require("./routes/popup.routes");
 
 
 app.use(
@@ -115,6 +117,16 @@ app.use(
 app.use(
   "/api/facilities",
   facilitiesRoutes
+);
+
+app.use(
+  "/api/ticker",
+  tickerRoutes
+);
+
+app.use(
+  "/api/popup",
+  popupRoutes
 );
 
 

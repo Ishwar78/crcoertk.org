@@ -1,7 +1,9 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { FiMenu, FiX } from "react-icons/fi";
+import { FiMenu, FiX, FiVolume2 } from "react-icons/fi";
 import "./Navbar.css";
+
+const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5025";
 
 const links = [
   ["About Us", "/about"],
@@ -17,8 +19,45 @@ const links = [
   ["Contact Us", "/contact"],
 ];
 
+const defaultTicker = {
+  enabled: true,
+  badgeText: "ANNOUNCEMENTS",
+  speed: 35,
+  items: [
+    {
+      text: "Admissions Open for B.Ed. & M.Ed. (Session 2026-27) — Apply Online Today!",
+      link: "/admission",
+      badge: "ADMISSION",
+      isExternal: false,
+      isActive: true,
+    },
+    {
+      text: "Accredited 'A' Grade by NAAC (UGC) | Affiliated to M.D. University, Rohtak & NCTE Approved",
+      link: "/about",
+      badge: "NAAC 'A'",
+      isExternal: false,
+      isActive: true,
+    },
+    {
+      text: "Notice: Check the latest academic calendar, examination schedules, and college updates.",
+      link: "/news",
+      badge: "NOTICE",
+      isExternal: false,
+      isActive: true,
+    },
+    {
+      text: "For admission guidance or student queries, contact college helpdesk: 01262-274295",
+      link: "/contact",
+      badge: "HELPDESK",
+      isExternal: false,
+      isActive: true,
+    },
+  ],
+};
+
 export default function Navbar() {
   const [open, setOpen] = useState(false);
+  const [tickerData, setTickerData] = useState(defaultTicker);
   const location = useLocation();
   const headerRef = useRef(null);
   const [headerHeight, setHeaderHeight] = useState(0);
@@ -28,20 +67,41 @@ export default function Navbar() {
     setOpen(false);
   }, [location.pathname]);
 
+  // Load live ticker content from API
+  useEffect(() => {
+    let isMounted = true;
+    fetch(`${API_URL}/api/ticker`)
+      .then((res) => res.json())
+      .then((result) => {
+        if (isMounted && result.success && result.data) {
+          setTickerData(result.data);
+        }
+      })
+      .catch((err) => {
+        console.log("Navbar ticker fetch (using fallback):", err);
+      });
+    return () => {
+      isMounted = false;
+    };
+  }, []);
+
   // Dynamically compute and sync header height to prevent page content overlap
   useEffect(() => {
     const updateHeight = () => {
       if (!headerRef.current) return;
       const brand = headerRef.current.querySelector(".brand-row");
       const nav = headerRef.current.querySelector(".main-nav");
+      const ticker = headerRef.current.querySelector(".nav-ticker-bar");
       const isMobile = window.innerWidth <= 960;
+      const tH = ticker ? ticker.offsetHeight : 0;
 
       if (isMobile) {
-        setHeaderHeight(brand ? brand.offsetHeight : 85);
+        const bH = brand ? brand.offsetHeight : 85;
+        setHeaderHeight(bH + tH);
       } else {
         const bH = brand ? brand.offsetHeight : 120;
         const nH = nav ? nav.offsetHeight : 42;
-        setHeaderHeight(bH + nH);
+        setHeaderHeight(bH + nH + tH);
       }
     };
 
@@ -63,7 +123,11 @@ export default function Navbar() {
       window.removeEventListener("resize", updateHeight);
       clearTimeout(timer);
     };
-  }, []);
+  }, [tickerData]);
+
+  const activeItems = (tickerData.items || []).filter(
+    (item) => item.isActive && item.text
+  );
 
   return (
     <>
@@ -121,6 +185,66 @@ export default function Navbar() {
             </Link>
           ))}
         </nav>
+
+        {/* =================================================
+            SCROLLING ANNOUNCEMENT TICKER TAPE
+        ================================================= */}
+        {tickerData.enabled && activeItems.length > 0 && (
+          <div
+            className="nav-ticker-bar"
+            role="region"
+            aria-label="College Announcements"
+          >
+            <div className="nav-ticker-badge">
+              <FiVolume2 className="ticker-badge-icon" />
+              <span>{tickerData.badgeText || "UPDATES"}</span>
+            </div>
+
+            <div className="nav-ticker-marquee">
+              <div
+                className="nav-ticker-track"
+                style={{ animationDuration: `${tickerData.speed || 35}s` }}
+              >
+                {[...activeItems, ...activeItems].map((item, idx) => {
+                  const content = (
+                    <span className="ticker-item-content">
+                      {item.badge && (
+                        <span className="ticker-item-badge">{item.badge}</span>
+                      )}
+                      <span className="ticker-item-text">{item.text}</span>
+                    </span>
+                  );
+
+                  return (
+                    <span key={idx} className="ticker-item-wrap">
+                      {item.link ? (
+                        item.isExternal ? (
+                          <a
+                            href={item.link}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="ticker-item-link"
+                          >
+                            {content}
+                          </a>
+                        ) : (
+                          <Link to={item.link} className="ticker-item-link">
+                            {content}
+                          </Link>
+                        )
+                      ) : (
+                        content
+                      )}
+                      <span className="ticker-star" aria-hidden="true">
+                        ✦
+                      </span>
+                    </span>
+                  );
+                })}
+              </div>
+            </div>
+          </div>
+        )}
       </header>
 
       {/* Spacer to seamlessly push page content below the fixed header */}

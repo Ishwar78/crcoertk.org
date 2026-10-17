@@ -1,0 +1,400 @@
+/* =========================================================
+   MANAGE NAVBAR TICKER CSS
+========================================================= */
+
+.manage-ticker {
+  font-family: inherit;
+  color: #102d68;
+}
+
+.manage-ticker-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 22px;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.manage-ticker-header span {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  color: #ed0b68;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.manage-ticker-header h2 {
+  margin: 0;
+  font-size: 24px;
+  color: #102d68;
+  font-weight: 700;
+}
+
+.manage-ticker-header h2 strong {
+  color: #ed0b68;
+}
+
+.manage-ticker-header p {
+  margin: 4px 0 0;
+  color: #64748b;
+  font-size: 13px;
+}
+
+.ticker-save-btn {
+  height: 40px;
+  background: #ed0b68;
+  color: #fff;
+  border: 0;
+  border-radius: 8px;
+  padding: 0 20px;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(237, 11, 104, 0.28);
+  transition: all 0.2s ease;
+}
+
+.ticker-save-btn:hover:not(:disabled) {
+  background: #d0095a;
+  transform: translateY(-1px);
+}
+
+.ticker-save-btn:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+/* STATUS MESSAGE */
+.ticker-admin-message {
+  padding: 12px 18px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.ticker-admin-message.success {
+  background: #ecfdf5;
+  color: #047857;
+  border: 1px solid #a7f3d0;
+}
+
+.ticker-admin-message.error {
+  background: #fef2f2;
+  color: #b91c1c;
+  border: 1px solid #fecaca;
+}
+
+/* LIVE PREVIEW CARD */
+.ticker-preview-card {
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 16px 20px;
+  margin-bottom: 24px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+}
+
+.ticker-preview-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.ticker-preview-header h4 {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 700;
+  color: #475569;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.ticker-preview-status {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 4px;
+}
+
+.ticker-preview-status.on {
+  background: #dcfce7;
+  color: #15803d;
+}
+
+.ticker-preview-status.off {
+  background: #fee2e2;
+  color: #b91c1c;
+}
+
+/* CONTAINER CARD */
+.ticker-card {
+  background: #fff;
+  border: 1px solid #e9edf3;
+  border-radius: 14px;
+  padding: 24px;
+  margin-bottom: 24px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+}
+
+.ticker-card-title {
+  border-bottom: 1px solid #edf0f4;
+  padding-bottom: 14px;
+  margin-bottom: 20px;
+}
+
+.ticker-card-title h3 {
+  margin: 0;
+  color: #102d68;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.ticker-card-title p {
+  margin: 4px 0 0;
+  color: #8a909c;
+  font-size: 12px;
+}
+
+/* CONTROLS GRID */
+.ticker-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.ticker-field {
+  display: block;
+}
+
+.ticker-field.full {
+  grid-column: 1 / -1;
+}
+
+.ticker-field > span {
+  display: block;
+  margin-bottom: 6px;
+  color: #102d68;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.ticker-field input,
+.ticker-field select,
+.ticker-field textarea {
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid #dfe4eb;
+  border-radius: 8px;
+  outline: none;
+  padding: 10px 12px;
+  color: #102d68;
+  font-family: inherit;
+  font-size: 14px;
+  background: #fff;
+  transition: border-color 0.2s;
+}
+
+.ticker-field input,
+.ticker-field select {
+  height: 42px;
+}
+
+.ticker-field textarea {
+  min-height: 70px;
+  resize: vertical;
+}
+
+.ticker-field input:focus,
+.ticker-field select:focus,
+.ticker-field textarea:focus {
+  border-color: #ed0b68;
+  box-shadow: 0 0 0 3px rgba(237, 11, 104, 0.08);
+}
+
+/* TOGGLE SWITCH */
+.ticker-toggle-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 18px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  grid-column: 1 / -1;
+}
+
+.ticker-toggle-label h4 {
+  margin: 0;
+  font-size: 14px;
+  color: #102d68;
+}
+
+.ticker-toggle-label p {
+  margin: 3px 0 0;
+  font-size: 12px;
+  color: #64748b;
+}
+
+.ticker-switch {
+  position: relative;
+  display: inline-block;
+  width: 48px;
+  height: 26px;
+}
+
+.ticker-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.ticker-slider {
+  position: absolute;
+  cursor: pointer;
+  inset: 0;
+  background-color: #cbd5e1;
+  transition: 0.3s;
+  border-radius: 26px;
+}
+
+.ticker-slider:before {
+  position: absolute;
+  content: "";
+  height: 20px;
+  width: 20px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  transition: 0.3s;
+  border-radius: 50%;
+}
+
+.ticker-switch input:checked + .ticker-slider {
+  background-color: #ed0b68;
+}
+
+.ticker-switch input:checked + .ticker-slider:before {
+  transform: translateX(22px);
+}
+
+/* TICKER ITEMS SECTION */
+.ticker-items-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.ticker-items-header h4 {
+  margin: 0;
+  font-size: 16px;
+  color: #102d68;
+  font-weight: 700;
+}
+
+.ticker-add-btn {
+  height: 34px;
+  border: 1px solid #ed0b68;
+  background: #fff;
+  color: #ed0b68;
+  border-radius: 6px;
+  padding: 0 14px;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+}
+
+.ticker-add-btn:hover {
+  background: #ed0b68;
+  color: #fff;
+}
+
+/* TICKER ITEM CARD */
+.ticker-item-card {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 16px;
+  margin-bottom: 14px;
+  transition: border-color 0.2s ease;
+}
+
+.ticker-item-card.disabled {
+  opacity: 0.6;
+  background: #f1f5f9;
+}
+
+.ticker-item-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.ticker-item-badge-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.ticker-item-num {
+  font-size: 12px;
+  font-weight: 700;
+  color: #ed0b68;
+  text-transform: uppercase;
+}
+
+.ticker-active-checkbox {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #475569;
+  cursor: pointer;
+}
+
+.ticker-del-btn {
+  border: 0;
+  background: #fee2e2;
+  color: #ef4444;
+  border-radius: 6px;
+  width: 30px;
+  height: 30px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background 0.2s;
+}
+
+.ticker-del-btn:hover {
+  background: #fecaca;
+  color: #b91c1c;
+}
+
+@media (max-width: 768px) {
+  .ticker-grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -25,6 +25,8 @@ import AdminDashboard from "./admin/AdminDashboard";
 import ProtectedAdminRoute from "./admin/ProtectedAdminRoute";
 
 import ManageHome from "./admin/pages/ManageHome";
+import ManageTicker from "./admin/pages/ManageTicker";
+import ManagePopup from "./admin/pages/ManagePopup";
 import ManageAbout from "./admin/pages/ManageAbout";
 import ManageAcademics from "./admin/pages/ManageAcademics";
 import ManageAdmission from "./admin/pages/ManageAdmission";
@@ -37,14 +39,15 @@ import ManageDownloads from "./admin/pages/ManageDownloads";
 import ManageStudentSupport from "./admin/pages/ManageStudentSupport";
 import ManageContact from "./admin/pages/ManageContact";
 
-
-
+import PopupModal from "./components/PopupModal";
 import ScrollToTop from "./components/ScrollToTop";
+
 export default function App() {
   return (
     <>
-    <ScrollToTop />
-    <Routes>
+      <ScrollToTop />
+      <PopupModal />
+      <Routes>
 
          
       <Route path="/" element={<Home />} />
@@ -87,6 +90,16 @@ export default function App() {
           <Route
             path="home"
             element={<ManageHome />}
+          />
+
+          <Route
+            path="ticker"
+            element={<ManageTicker />}
+          />
+
+          <Route
+            path="popup"
+            element={<ManagePopup />}
           />
 
           <Route

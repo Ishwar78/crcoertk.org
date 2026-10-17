@@ -1,6 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { FiArrowRight, FiFacebook, FiInstagram, FiYoutube, FiMapPin, FiPhone, FiMail } from "react-icons/fi";
+import { 
+  FiArrowRight, 
+  FiFacebook, 
+  FiInstagram, 
+  FiYoutube, 
+  FiMapPin, 
+  FiPhone, 
+  FiMail 
+} from "react-icons/fi";
 import "./Footer.css";
 
 export default function Footer() {

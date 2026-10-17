@@ -81,7 +81,7 @@ export default function Admission() {
               <FiAward />
               <span>Admissions 2026</span>
             </div>
-
+ 
             <h1>
               Admission <strong>2026</strong>
             </h1>

@@ -22,6 +22,8 @@ import {
   FiLogOut,
   FiMenu,
   FiX,
+  FiVolume2,
+  FiMaximize2,
 } from "react-icons/fi";
 
 import {
@@ -40,6 +42,16 @@ const menuItems = [
     title: "Home",
     path: "/admin/home",
     icon: <FiHome />,
+  },
+  {
+    title: "Navbar Ticker",
+    path: "/admin/ticker",
+    icon: <FiVolume2 />,
+  },
+  {
+    title: "Popup Modal",
+    path: "/admin/popup",
+    icon: <FiMaximize2 />,
   },
   {
     title: "About Us",
